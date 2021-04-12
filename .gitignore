@@ -1,0 +1,17 @@
+# Windows files
+
+desktop.ini
+
+# Main directory
+
+out/
+.game.dir.txt
+.server.dir.txt
+
+# Visual Studio
+
+.vs/
+
+# VS Code
+
+.vscode/
