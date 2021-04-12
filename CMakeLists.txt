@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.17)
 
-project(sqModule)
+project(SqModule)
 
 file(GLOB_RECURSE SRC
 	"dependencies/squirrel/include/*.h"
@@ -11,10 +11,10 @@ file(GLOB_RECURSE SRC
 	"src/sqmain.cpp"
 )
 
-add_library(sqModule SHARED ${SRC})
-target_precompile_headers(sqModule PRIVATE "src/pch.h")
+add_library(SqModule SHARED ${SRC})
+target_precompile_headers(SqModule PRIVATE "src/pch.h")
 
-target_include_directories(sqModule
+target_include_directories(SqModule
 	INTERFACE
 		"include/"
 	PRIVATE
@@ -26,17 +26,17 @@ target_include_directories(sqModule
 if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.game.dir.txt")
 	file(READ ".game.dir.txt" GAME_DIR)
 
-	add_custom_command(TARGET sqModule 
+	add_custom_command(TARGET SqModule 
 		POST_BUILD
-			COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:sqModule> ${GAME_DIR}
-			COMMAND ${CMAKE_COMMAND} -E echo "[Post Build] $<TARGET_FILE_NAME:sqModule> copied to: ${GAME_DIR}")
+			COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:SqModule> ${GAME_DIR}
+			COMMAND ${CMAKE_COMMAND} -E echo "[Post Build] $<TARGET_FILE_NAME:SqModule> copied to: ${GAME_DIR}")
 endif()
 
 if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.server.dir.txt")
 	file(READ ".server.dir.txt" SERVER_DIR)
 
-	add_custom_command(TARGET sqModule 
+	add_custom_command(TARGET SqModule 
 		POST_BUILD
-			COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:sqModule> ${SERVER_DIR}
-			COMMAND ${CMAKE_COMMAND} -E echo "[Post Build] $<TARGET_FILE_NAME:sqModule> copied to: ${SERVER_DIR}")
+			COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:SqModule> ${SERVER_DIR}
+			COMMAND ${CMAKE_COMMAND} -E echo "[Post Build] $<TARGET_FILE_NAME:SqModule> copied to: ${SERVER_DIR}")
 endif()
