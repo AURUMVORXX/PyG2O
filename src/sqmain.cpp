@@ -2,7 +2,8 @@
 
 extern "C" SQRESULT SQRAT_API sqmodule_load(HSQUIRRELVM vm, HSQAPI api)
 {
-	SqModule::init(vm, api);
+	SqModule::Initalize(vm, api);
+	Sqrat::DefaultVM::Set(vm);
 
 	return SQ_OK;
 }

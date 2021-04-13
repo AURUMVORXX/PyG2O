@@ -1,18 +1,5 @@
-#ifndef _SQAPI_H
-#define _SQAPI_H
-
-#include <sqmodule.h>
-
-namespace SqModule
-{
-	extern HSQUIRRELVM vm;
-	extern HSQAPI api;
-
-	extern SQPRINTFUNCTION print;
-	extern SQPRINTFUNCTION error;
-
-	void init(HSQUIRRELVM vm, HSQAPI api);
-}
+#ifndef _SQUIRREL_API_H
+#define _SQUIRREL_API_H
 
 /*vm*/
 #define sq_open SqModule::api->open

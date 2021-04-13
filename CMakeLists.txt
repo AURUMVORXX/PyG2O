@@ -5,8 +5,9 @@ project(SqModule)
 file(GLOB_RECURSE SRC
 	"dependencies/squirrel/include/*.h"
 	"dependencies/sqrat/include/*.h"
-	"src/sqmodule_api.h"
-	"src/sqmodule_api.cpp"
+	"src/api/squirrel_api.h"
+	"src/api/module_api.h"
+	"src/api/module_api.cpp"
 	"src/pch.h"
 	"src/sqmain.cpp"
 )
