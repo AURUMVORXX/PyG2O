@@ -5,7 +5,8 @@
 - [Usage requirements](#usage-requirements)
 - [Build requirements](#build-requirements)
 - [Build instructions](#build-instructions)
-- [Loading module](#loading-module)
+- [Loading client module](#loading-client-module)
+- [Loading server module](#loading-server-module)
 
 ## Usage requirements
 
@@ -65,10 +66,12 @@ depending on the target platform.
 - type ``cmake ..``
 - type ``cmake --build .``
 
-## Loading Module
+## Loading client module
 
 ### Global (client modules will be shared across multiple servers)
 
+**_NOTE:_** You always gives a path to a module relative to a .xml file. \
+**_NOTE:_** The client module must be located in top server directory. \
 **_NOTE:_** The client module must be located in Game/Multiplayer/Modules directory. \
 **_NOTE:_** This approach can cause problems when different server is using older/newer version \
 of the client module. 
@@ -76,27 +79,35 @@ of the client module.
 To load your module, you have to add reference in .xml file (for example: __config.xml__).
 
 ```xml
-<!-- For windows client-->
 <module src="NameOfTheModule.dll" type="client" />
-<!-- For windows server -->
-<module src="NameOfTheModule.dll" type="server" />
-<!-- For linux server -->
-<module src="./NameOfTheModule.so" type="server" />
 ```
 
 ### Server specific
 
-**_NOTE:_** The client modules must be located in ServerFolder/YourServerName. \
-**_NOTE:_** The client modules must be located in Game/Multiplayer/Modules/YourServerName directory.
+**_NOTE:_** You always gives a path to a module relative to a .xml file. \
+**_NOTE:_** The client module must be located in ServerFolder/YourServerName. \
+**_NOTE:_** The client module must be located in Game/Multiplayer/Modules/YourServerName directory.
 
-Loading client modules this way will help you to prevent situations when different \
+Loading client module this way will help you to prevent situations when different \
 server is using the older/newer version of the module than yours.
 
 To load your module, you have to add reference in .xml file (for example: __config.xml__).
 
 ```xml
-<!-- For windows client-->
 <module src="YourServerName/NameOfTheModule.dll" type="client" />
+```
+
+# Loading server module
+
+
+**_NOTE:_** You always gives a path to a module relative to a .xml file.
+
+You can put your server module in any directory you want, only client modules \
+must be placed in specific directories.
+
+To load your module, you have to add reference in .xml file (for example: __config.xml__).
+
+```xml
 <!-- For windows server -->
 <module src="NameOfTheModule.dll" type="server" />
 <!-- For linux server -->
