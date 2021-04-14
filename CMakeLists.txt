@@ -11,7 +11,7 @@ file(GLOB_RECURSE SRC
 	"src/pch.h"
 	"src/sqmain.cpp"
 )
-
+ 
 add_library(SqModule SHARED ${SRC})
 target_precompile_headers(SqModule PRIVATE "src/pch.h")
 
@@ -19,7 +19,7 @@ target_include_directories(SqModule
 	INTERFACE
 		"include/"
 	PRIVATE
-		"include/sqModule/"
+		"src/"
 		"dependencies/squirrel/include/"
 		"dependencies/sqrat/include/"
 )

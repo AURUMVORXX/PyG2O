@@ -8,7 +8,7 @@ namespace SqModule
 	extern HSQUIRRELVM vm;
 	extern HSQAPI api;
 
-	void Initalize(HSQUIRRELVM vm, HSQAPI api);
+	void Initialize(HSQUIRRELVM vm, HSQAPI api);
 	void Print(const SQChar* msg);
 	void Error(const SQChar* msg);
 }
