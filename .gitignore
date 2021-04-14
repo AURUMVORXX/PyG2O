@@ -4,6 +4,7 @@ desktop.ini
 
 # Main directory
 
+build/
 out/
 .game.dir.txt
 .server.dir.txt
