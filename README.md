@@ -54,7 +54,7 @@ depending on the target platform.
 - type ``cd build``
 - type ``cmake ..``
 - open visual studio .sln and compile the project
-- if you want to build from command line instead, \
+- alternatively if you want to build from command line instead, \
     type ``cmake --build .``
 
 ### Linux
@@ -87,7 +87,7 @@ To load your module, you have to add reference in .xml file (for example: __conf
 ### Server specific
 
 **_NOTE:_** The client modules must be located in ServerFolder/YourServerName. \
-**_NOTE:_** The client module must be located in Game/Multiplayer/Modules/YourServerName directory.
+**_NOTE:_** The client modules must be located in Game/Multiplayer/Modules/YourServerName directory.
 
 Loading client modules this way will help you to prevent situations when different \
 server is using the older/newer version of the module than yours.
