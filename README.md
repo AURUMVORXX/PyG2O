@@ -29,7 +29,7 @@ depending on the target platform.
     
     Visual Studio Components
     * Windows SDK
-    * one of the following toolsets, pick one: (v140, v141, v142)
+    * one of the following toolsets, pick one: v140, v141, v142 (recommended v142)
     * (Optional) CMake Tools for Visual Studio
 - [CMake 3.17+](https://cmake.org/download/)
 
