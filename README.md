@@ -50,7 +50,7 @@ depending on the target platform.
 #### Visual Studio without CMake tools
 
 - open command line in repo-directory
-- type ``mkrdir build``
+- type ``mkdir build``
 - type ``cd build``
 - type ``cmake ..``
 - open visual studio .sln and compile the project
