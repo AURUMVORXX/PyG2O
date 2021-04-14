@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.17)
 
 project(SqModule)
 
-file(GLOB_RECURSE SRC
+file(GLOB SRC
 	"dependencies/squirrel/include/*.h"
 	"dependencies/sqrat/include/*.h"
 	"src/api/squirrel_api.h"
