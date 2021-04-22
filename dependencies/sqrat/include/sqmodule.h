@@ -205,7 +205,7 @@ extern "C" {
         SQRESULT        (*setclosureroot)(HSQUIRRELVM v, SQInteger idx);
         SQRESULT        (*getclosureroot)(HSQUIRRELVM v, SQInteger idx);
         void            (*pushthread)(HSQUIRRELVM v, HSQUIRRELVM thread);
-        SQRESULT        (*typeof)(HSQUIRRELVM v, SQInteger idx);
+        SQRESULT        (*type_of)(HSQUIRRELVM v, SQInteger idx);
         SQHash          (*gethash)(HSQUIRRELVM v, SQInteger idx);
         SQRELEASEHOOK   (*getreleasehook)(HSQUIRRELVM v, SQInteger idx);
         SQRESULT        (*getfunctioninfo)(HSQUIRRELVM v, SQInteger level, SQFunctionInfo* fi);
