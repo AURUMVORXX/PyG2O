@@ -151,7 +151,7 @@ private:
 /// \param size Number of bytes to read
 ///
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-SQInteger BytecodeReader(SQUserPointer user_data, SQUserPointer data, SQInteger size) {
+inline SQInteger BytecodeReader(SQUserPointer user_data, SQUserPointer data, SQInteger size) {
     Bytecode * bytecode = reinterpret_cast<Bytecode *>(user_data);
     return bytecode->ReadData(data, static_cast<size_t>(size));;
 }
@@ -164,7 +164,7 @@ SQInteger BytecodeReader(SQUserPointer user_data, SQUserPointer data, SQInteger 
 /// \param size Number of bytes to write
 ///
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-SQInteger BytecodeWriter(SQUserPointer user_data, SQUserPointer data, SQInteger size) {
+inline SQInteger BytecodeWriter(SQUserPointer user_data, SQUserPointer data, SQInteger size) {
     Bytecode * bytecode = reinterpret_cast<Bytecode *>(user_data);
     return bytecode->AppendData(data, static_cast<size_t>(size));
 }
