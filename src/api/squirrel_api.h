@@ -58,7 +58,7 @@
 #define sq_pushnull SqModule::api->pushnull
 #define sq_pushthread SqModule::api->pushthread
 #define sq_gettype SqModule::api->gettype
-#define sq_typeof SqModule::api->typeof
+#define sq_typeof SqModule::api->type_of
 #define sq_getsize SqModule::api->getsize
 #define sq_gethash SqModule::api->gethash
 #define sq_getbase SqModule::api->getbase
