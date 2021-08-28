@@ -189,6 +189,49 @@ extern "C" {
         /*debug*/
         SQRESULT        (*stackinfos)(HSQUIRRELVM v,SQInteger level,SQStackInfos *si);
         void            (*setdebughook)(HSQUIRRELVM v);
+    
+        /*missing vm*/
+        void            (*setsharedforeignptr)(HSQUIRRELVM v, SQUserPointer p);
+        SQUserPointer   (*getsharedforeignptr)(HSQUIRRELVM v);
+        void            (*setvmreleasehook)(HSQUIRRELVM v, SQRELEASEHOOK hook);
+        SQRELEASEHOOK   (*getvmreleasehook)(HSQUIRRELVM v);
+        void            (*setsharedreleasehook)(HSQUIRRELVM v, SQRELEASEHOOK hook);
+        SQRELEASEHOOK   (*getsharedreleasehook)(HSQUIRRELVM v);
+        SQPRINTFUNCTION (*geterrorfunc)(HSQUIRRELVM v);
+        SQInteger       (*getversion)();
+
+        /*missing object creation handling*/
+        void            (*newtableex)(HSQUIRRELVM v, SQInteger initialcapacity);
+        SQRESULT        (*setclosureroot)(HSQUIRRELVM v, SQInteger idx);
+        SQRESULT        (*getclosureroot)(HSQUIRRELVM v, SQInteger idx);
+        void            (*pushthread)(HSQUIRRELVM v, HSQUIRRELVM thread);
+        SQRESULT        (*type_of)(HSQUIRRELVM v, SQInteger idx);
+        SQHash          (*gethash)(HSQUIRRELVM v, SQInteger idx);
+        SQRELEASEHOOK   (*getreleasehook)(HSQUIRRELVM v, SQInteger idx);
+        SQRESULT        (*getfunctioninfo)(HSQUIRRELVM v, SQInteger level, SQFunctionInfo* fi);
+        SQRESULT        (*getclosurename)(HSQUIRRELVM v, SQInteger idx);
+        SQRESULT        (*getmemberhandle)(HSQUIRRELVM v, SQInteger idx, HSQMEMBERHANDLE* handle);
+        SQRESULT        (*getbyhandle)(HSQUIRRELVM v, SQInteger idx, const HSQMEMBERHANDLE* handle);
+        SQRESULT        (*setbyhandle)(HSQUIRRELVM v, SQInteger idx, const HSQMEMBERHANDLE* handle);
+    
+        /*missing object manipulation*/
+        SQRESULT        (*newmember)(HSQUIRRELVM v, SQInteger idx, SQBool bstatic);
+        SQRESULT        (*rawnewmember)(HSQUIRRELVM v, SQInteger idx, SQBool bstatic);
+
+        /*missing calls*/
+        SQRESULT        (*getcallee)(HSQUIRRELVM v);
+        SQRESULT        (*throwobject)(HSQUIRRELVM v);
+
+        /*missing raw object handling*/
+        SQUnsignedInteger   (*getrefcount)(HSQUIRRELVM v, HSQOBJECT* po);
+        SQUserPointer       (*objtouserpointer)(const HSQOBJECT* o);
+        SQUnsignedInteger   (*getvmrefcount)(HSQUIRRELVM v, const HSQOBJECT* po);
+
+        /*missing GC*/
+        SQRESULT        (*resurrectunreachable)(HSQUIRRELVM v);
+
+        /*missing debug*/
+        void            (*setnativedebughook)(HSQUIRRELVM v, SQDEBUGHOOK hook);
     } sq_api;
     typedef sq_api* HSQAPI;
     /// @endcond

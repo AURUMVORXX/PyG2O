@@ -16,8 +16,6 @@ file(GLOB SRC
 	"src/pch.h"
 	"src/sqmain.cpp"
 )
- 
-add_subdirectory("dependencies/squirrel/squirrel")
 
 add_library(SqModule SHARED ${SRC})
 target_precompile_headers(SqModule PRIVATE "src/pch.h")
@@ -30,8 +28,6 @@ target_include_directories(SqModule
 		"dependencies/squirrel/include/"
 		"dependencies/sqrat/include/"
 )
-
-target_link_libraries(SqModule PRIVATE squirrel_static)
 
 if (NOT ${GAME_PATH} STREQUAL "")
 	install(TARGETS SqModule
