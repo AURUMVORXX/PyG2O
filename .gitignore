@@ -4,15 +4,13 @@ desktop.ini
 
 # Main directory
 
-build/
-out/
-.game.dir.txt
-.server.dir.txt
+/build/
+/out/
 
 # Visual Studio
 
-.vs/
+/.vs/
 
 # VS Code
 
-.vscode/
+/.vscode/
