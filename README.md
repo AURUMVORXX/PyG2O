@@ -85,8 +85,7 @@ You can set these options, by either manually editing the file, or by using cmak
     generate an installation step. by default it's set to ``""`` (disabled).
 
 - **INSTALL_AFTER_BUILD** this cache option allows you to run  
-    cmake install step after a successfull build.  
-    By default it's disabled.
+    cmake install step after a successfull build. By default it's disabled.
 
 ## Loading client module
 
