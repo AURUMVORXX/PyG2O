@@ -5,6 +5,7 @@
 - [Usage requirements](#usage-requirements)
 - [Build requirements](#build-requirements)
 - [Build instructions](#build-instructions)
+- [CMake options](#cmake-options)
 - [Loading client module](#loading-client-module)
 - [Loading server module](#loading-server-module)
 
@@ -65,6 +66,27 @@ depending on the target platform.
 - type ``cd build``
 - type ``cmake ..``
 - type ``cmake --build .``
+
+## CMake options
+
+This project has some configurable options.  
+
+### Cache options
+
+Cache options are stored inside **CMakeCache.txt** inside generated CMake build folder.  
+You can set these options, by either manually editing the file, or by using cmake-gui.
+
+- **GAME_PATH** this cache option allows you to setup the destination  
+    where module will be installed. If it's set to some value, it will  
+    generate an installation step. by default it's set to ``""`` (disabled).
+
+- **SERVER_PATH** this cache option allows you to setup the destination  
+    where module will be installed. If it's set to some value, it will  
+    generate an installation step. by default it's set to ``""`` (disabled).
+
+- **INSTALL_AFTER_BUILD** this cache option allows you to run  
+    cmake install step after a successfull build.  
+    By default it's disabled.
 
 ## Loading client module
 
