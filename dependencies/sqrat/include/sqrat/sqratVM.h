@@ -121,12 +121,8 @@ private:
                                      SQInteger column)
     {
         SQChar buf[512];
-	#ifdef _MSC_VER
-        scsprintf(buf, 512, _SC("%s:%d:%d: %s"), source, (int) line, (int) column, desc);
-	#else
-		scsprintf(buf, _SC("%s:%d:%d: %s"), source, (int) line, (int) column, desc);
-	#endif
-        buf[sizeof(buf)/sizeof(SQChar) - 1] = 0;
+        scsprintf(buf, _SC("%s:%d:%d: %s"), source, (int) line, (int) column, desc);
+        buf[sizeof(buf) - 1] = 0;
         s_getVM(v)->m_lastErrorMsg = buf;
     }
 
