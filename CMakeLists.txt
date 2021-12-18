@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.17)
 
 project(SqModule)
 
-option(INSTALL_AFTER_BUILD "Run cmake --install separately for every target after each build. By default this option is set to OFF" ON)
+option(INSTALL_AFTER_BUILD "Run cmake --install separately for every target after each build. By default this option is set to OFF" OFF)
 
 set(GAME_PATH "" CACHE PATH "This option specifies the game location. It's only used for the installation step.")
 set(SERVER_PATH "" CACHE PATH "This option specifies the server location. It's only used for the installation step.")
