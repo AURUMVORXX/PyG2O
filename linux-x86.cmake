@@ -6,7 +6,7 @@ set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR x86)
 
 # specify shared library suffix
-set(SHARED_LIBRARY_SUFFIX ${CMAKE_SYSTEM_PROCESSOR})
+set(SHARED_LIBRARY_SUFFIX "x86")
 
 # specify the compilers
 set(CMAKE_C_COMPILER gcc)
