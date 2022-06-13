@@ -29,6 +29,14 @@ target_include_directories(SqModule
 		"dependencies/sqrat/include/"
 )
 
+if(DEFINED SHARED_LIBRARY_SUFFIX)
+	set_target_properties(SqModule
+			PROPERTIES 
+				PREFIX ""
+				SUFFIX ".${CMAKE_SYSTEM_PROCESSOR}${CMAKE_SHARED_LIBRARY_SUFFIX}"
+	)
+endif()
+
 if (NOT ${GAME_PATH} STREQUAL "")
 	install(TARGETS SqModule
 			RUNTIME
