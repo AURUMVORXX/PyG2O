@@ -3,7 +3,10 @@
 
 # specify the target system properties
 set(CMAKE_SYSTEM_NAME Windows)
-set(CMAKE_GENERATOR_PLATFORM Win32 CACHE INTERNAL "")
+
+if (CMAKE_GENERATOR MATCHES "Visual Studio*")
+	set(CMAKE_GENERATOR_PLATFORM Win32 CACHE INTERNAL "")
+endif()
 
 # specify shared library suffix
 set(SHARED_LIBRARY_SUFFIX "x86")
