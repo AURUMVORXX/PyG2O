@@ -94,14 +94,17 @@ public:
     ///
     /// \param name The key in the table being assigned a function
     /// \param func Squirrel function that is being placed in the Table
+    /// \param nparamscheck The parameters count used in runtime arguments count checking (including hidden this parameter).
+    /// \param type The type mask used in runtime parameters type checking
     ///
     /// \return The Table itself so the call can be chained
     ///
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    TableBase& SquirrelFunc(const SQChar* name, SQFUNCTION func) {
+    TableBase& SquirrelFunc(const SQChar* name, SQFUNCTION func, SQInteger nparamscheck = 0, const SQChar* typemask = 0) {
         sq_pushobject(vm, GetObject());
         sq_pushstring(vm, name, -1);
         sq_newclosure(vm, func, 0);
+        sq_setparamscheck(vm, nparamscheck, typemask);
         sq_newslot(vm, -3, false);
         sq_pop(vm,1); // pop table
         return *this;
