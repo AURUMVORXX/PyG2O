@@ -97,7 +97,7 @@ public:
 
     static inline ClassData<C>* getClassData(HSQUIRRELVM vm) {
         sq_pushregistrytable(vm);
-        sq_pushstring(vm, "__classes", -1);
+        sq_pushstring(vm, _SC("__classes"), -1);
 #ifndef NDEBUG
         SQRESULT r = sq_rawget(vm, -2);
         assert(SQ_SUCCEEDED(r)); // fails if getClassData is called when the data does not exist for the given VM yet (bind the class)
@@ -124,7 +124,7 @@ public:
     static inline bool hasClassData(HSQUIRRELVM vm) {
         if (!getStaticClassData().Expired()) {
             sq_pushregistrytable(vm);
-            sq_pushstring(vm, "__classes", -1);
+            sq_pushstring(vm, _SC("__classes"), -1);
             if (SQ_SUCCEEDED(sq_rawget(vm, -2))) {
                 sq_pushstring(vm, ClassName().c_str(), -1);
                 if (SQ_SUCCEEDED(sq_rawget(vm, -2))) {
@@ -157,23 +157,11 @@ public:
         SQUNUSED(size);
         std::pair<C*, SharedPtr<typename unordered_map<C*, HSQOBJECT>::type> >* instance = reinterpret_cast<std::pair<C*, SharedPtr<typename unordered_map<C*, HSQOBJECT>::type> >*>(ptr);
         instance->second->erase(instance->first);
-
         delete instance;
         return 0;
     }
 
-	static SQInteger DeleteInstanceFree(SQUserPointer ptr, SQInteger size) {
-		SQUNUSED(size);
-		std::pair<C*, SharedPtr<typename unordered_map<C*, HSQOBJECT>::type> >* instance = reinterpret_cast<std::pair<C*, SharedPtr<typename unordered_map<C*, HSQOBJECT>::type> >*>(ptr);
-		instance->second->erase(instance->first);
-		
-		delete instance->first;
-		delete instance;
-
-		return 0;
-	}
-
-    static void PushInstance(HSQUIRRELVM vm, C* ptr, bool free = false) {
+    static void PushInstance(HSQUIRRELVM vm, C* ptr) {
         if (!ptr) {
             sq_pushnull(vm);
             return;
@@ -191,7 +179,7 @@ public:
         sq_createinstance(vm, -1);
         sq_remove(vm, -2);
         sq_setinstanceup(vm, -1, new std::pair<C*, SharedPtr<typename unordered_map<C*, HSQOBJECT>::type> >(ptr, cd->instances));
-		free ? sq_setreleasehook(vm, -1, &DeleteInstanceFree) : sq_setreleasehook(vm, -1, &DeleteInstance);
+        sq_setreleasehook(vm, -1, &DeleteInstance);
         sq_getstackobj(vm, -1, &((*cd->instances)[ptr]));
     }
 

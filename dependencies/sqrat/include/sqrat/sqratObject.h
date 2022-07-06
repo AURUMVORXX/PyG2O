@@ -36,11 +36,6 @@
 #include "sqratOverloadMethods.h"
 #include "sqratUtil.h"
 
-#ifdef WIN32
-// Windows defines fix
-#undef GetObject
-#endif
-
 namespace Sqrat {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,11 +99,10 @@ public:
     ///
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     template<class T>
-    Object(T* instance, HSQUIRRELVM v = DefaultVM::Get(), bool free = false) : vm(v), release(true) {
-        ClassType<T>::PushInstance(vm, instance, free);
+    Object(T* instance, HSQUIRRELVM v = DefaultVM::Get()) : vm(v), release(true) {
+        ClassType<T>::PushInstance(vm, instance);
         sq_getstackobj(vm, -1, &obj);
         sq_addref(vm, &obj);
-		sq_pop(vm, 1);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -131,13 +125,14 @@ public:
     ///
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Object& operator=(const Object& so) {
-        if(release) {
-            Release();
+        if( this != &so ) {
+          if(release) {
+              Release();
+          }
+          vm = so.vm;
+          obj = so.obj;
+          sq_addref(vm, &GetObject());
         }
-        vm = so.vm;
-        obj = so.obj;
-        release = so.release;
-        sq_addref(vm, &GetObject());
         return *this;
     }
 
@@ -280,6 +275,44 @@ public:
         sq_pop(vm, 2);
         return ret;
 #endif
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Checks if the object has a slot with a specified key
+    ///
+    /// \param key Name of the key
+    ///
+    /// \return True if the Object has a value associated with key, otherwise false
+    ///
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    bool HasKey(const SQChar* key) const {
+        sq_pushobject(vm, GetObject());
+        sq_pushstring(vm, key, -1);
+        if (SQ_FAILED(sq_get(vm, -2))) {
+            sq_pop(vm, 1);
+            return false;
+        }
+        sq_pop(vm, 2);
+        return true;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Checks if the object has a slot with a specified index
+    ///
+    /// \param index Index to check
+    ///
+    /// \return True if the Object has a value associated with index, otherwise false
+    ///
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    bool HasKey(SQInteger index) const {
+        sq_pushobject(vm, GetObject());
+        sq_pushinteger(vm, index);
+        if (SQ_FAILED(sq_get(vm, -2))) {
+            sq_pop(vm, 1);
+            return false;
+        }
+        sq_pop(vm, 2);
+        return true;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -139,7 +139,7 @@ public:
     /// \return True if the Function currently has a null value, otherwise false
     ///
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    bool IsNull() {
+    bool IsNull() const {
         return sq_isnull(obj);
     }
 
@@ -237,8 +237,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 1)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 1)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -286,7 +286,8 @@ public:
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
 
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 2)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 2)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -340,7 +341,8 @@ public:
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
 
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 3)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 3)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -396,7 +398,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 4)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 4)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -455,7 +458,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 5)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 5)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -517,7 +521,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 6)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 6)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -583,7 +588,8 @@ public:
 
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 7)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 7)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -651,7 +657,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 8)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 8)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -722,7 +729,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 9)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 9)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -796,7 +804,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 10)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 10)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -873,7 +882,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 11)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 11)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -953,7 +963,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 12)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 12)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -1036,7 +1047,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 13)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 13)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -1122,7 +1134,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 14)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 14)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -1211,7 +1224,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 15)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 15)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return SharedPtr<R>();
@@ -1267,7 +1281,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 1)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 1)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1308,7 +1323,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 2)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 2)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1355,7 +1371,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 3)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 3)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1405,7 +1422,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 4)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 4)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1458,7 +1476,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 5)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 5)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1514,7 +1533,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 6)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 6)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1573,7 +1593,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 7)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 7)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1635,7 +1656,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 8)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 8)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1700,7 +1722,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 9)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 9)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1768,7 +1791,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 10)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 10)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1839,7 +1863,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 11)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 11)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1913,7 +1938,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 12)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 12)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -1991,7 +2017,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 13)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 13)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -2071,7 +2098,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 14)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 14)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;
@@ -2154,7 +2182,8 @@ public:
 #if !defined (SCRAT_NO_ERROR_CHECKING)
         SQUnsignedInteger nparams;
         SQUnsignedInteger nfreevars;
-        if (SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 15)) {
+        if (obj._type != OT_NATIVECLOSURE &&
+            SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 15)) {
             sq_pop(vm, 2);
             SQTHROW(vm, _SC("wrong number of parameters"));
             return;

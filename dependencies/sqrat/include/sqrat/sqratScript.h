@@ -33,6 +33,7 @@
 #include <string.h>
 
 #include "sqratObject.h"
+#include "sqratBytecode.h"
 
 namespace Sqrat {
 
@@ -235,6 +236,58 @@ public:
         sqstd_writeclosuretofile(vm, path.c_str());
 #endif
         sq_pop(vm, 1); // needed?
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Saves script's bytecode to string
+    ///
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    std::string SaveBytecode() {
+        Bytecode bytecode;
+#if !defined (SCRAT_NO_ERROR_CHECKING)
+        if (!sq_isnull(obj)) {
+            sq_pushobject(vm, obj);
+            if (SQ_FAILED(sq_writeclosure(vm, BytecodeWriter, &bytecode))) {
+                SQTHROW(vm, LastErrorString(vm));
+            }
+        }
+#else
+        sq_pushobject(vm, obj);
+        sq_writeclosure(vm, BytecodeWriter, &bytecode);
+#endif
+        sq_pop(vm, 1); // needed?
+        return std::string(reinterpret_cast<char*>(bytecode.Data()), bytecode.Size());
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Loads script's bytecode from string
+    ///
+    /// \param str String containing script's bytecode
+    ///
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    bool LoadBytecode(const std::string& str) {
+#if !defined (SCRAT_NO_ERROR_CHECKING)
+        if (str.empty()) {
+            return false;
+        }
+#endif
+        if(!sq_isnull(obj)) {
+            sq_release(vm, &obj);
+            sq_resetobject(&obj);
+        }
+        Bytecode bytecode;
+        bytecode.SetData(str.c_str(), str.size());
+#if !defined (SCRAT_NO_ERROR_CHECKING)
+        if (SQ_FAILED(sq_readclosure(vm, BytecodeReader, &bytecode))) {
+            return false;
+        }
+#else
+        sq_readclosure(vm, BytecodeReader, &bytecode);
+#endif
+        sq_getstackobj(vm,-1,&obj);
+        sq_addref(vm, &obj);
+        sq_pop(vm, 1);
+        return true;
     }
 };
 

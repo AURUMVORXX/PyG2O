@@ -94,7 +94,7 @@ public:
     ///
     /// \param name The key in the table being assigned a function
     /// \param func Squirrel function that is being placed in the Table
-    /// \param nparamscheck The parameters count used in runtime arguments count checking (including hidden this parameter).
+    /// \param nparamscheck The parameters count used in runtime arguments count checking (including hidden this parameter)
     /// \param type The type mask used in runtime parameters type checking
     ///
     /// \return The Table itself so the call can be chained
