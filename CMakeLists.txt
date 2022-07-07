@@ -8,11 +8,11 @@ set(GAME_PATH "" CACHE PATH "This option specifies the game location. It's only 
 set(SERVER_PATH "" CACHE PATH "This option specifies the server location. It's only used for the installation step.")
 
 file(GLOB SRC
-	"dependencies/squirrel/include/*.h"
-	"dependencies/sqrat/include/*.h"
 	"src/api/squirrel_api.h"
+
 	"src/api/module_api.h"
 	"src/api/module_api.cpp"
+
 	"src/pch.h"
 	"src/sqmain.cpp"
 )
@@ -25,9 +25,9 @@ target_include_directories(SqModule
 		"include/"
 	PRIVATE
 		"src/"
-		"dependencies/squirrel/include/"
-		"dependencies/sqrat/include/"
 )
+
+add_subdirectory(dependencies)
 
 if(DEFINED SHARED_LIBRARY_SUFFIX)
 	set_target_properties(SqModule
