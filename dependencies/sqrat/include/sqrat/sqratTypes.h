@@ -84,7 +84,7 @@ struct popAsInt
         case OT_FLOAT:
             SQFloat sqValuef;
             sq_getfloat(vm, idx, &sqValuef);
-			value = static_cast<T>(static_cast<int>(sqValuef));
+            value = static_cast<T>(static_cast<int>(sqValuef));
             break;
         default:
             SQTHROW(vm, FormatTypeError(vm, idx, _SC("integer")));
@@ -858,40 +858,40 @@ struct Var<const string&> {
 template<>
 struct Var<SQUserPointer> {
 
-	SQUserPointer value; ///< The actual value of get operations
+    SQUserPointer value; ///< The actual value of get operations
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/// Attempts to get the value off the stack at idx as a SQUserPointer
-	///
-	/// \param vm  Target VM
-	/// \param idx Index trying to be read
-	///
-	/// \remarks
-	/// This function MUST have its Error handled if it occurred.
-	///
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	Var(HSQUIRRELVM vm, SQInteger idx) {
-		SQUserPointer sqValue;
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Attempts to get the value off the stack at idx as a SQUserPointer
+    ///
+    /// \param vm  Target VM
+    /// \param idx Index trying to be read
+    ///
+    /// \remarks
+    /// This function MUST have its Error handled if it occurred.
+    ///
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Var(HSQUIRRELVM vm, SQInteger idx) {
+        SQUserPointer sqValue;
 #if !defined (SCRAT_NO_ERROR_CHECKING)
-		if (SQ_FAILED(sq_getuserpointer(vm, idx, &sqValue))) {
-			SQTHROW(vm, FormatTypeError(vm, idx, _SC("userpointer")));
-		}
+        if (SQ_FAILED(sq_getuserpointer(vm, idx, &sqValue))) {
+            SQTHROW(vm, FormatTypeError(vm, idx, _SC("userpointer")));
+        }
 #else
-		sq_getuserpointer(vm, idx, &sqValue);
+        sq_getuserpointer(vm, idx, &sqValue);
 #endif
-		value = sqValue;
-	}
+        value = sqValue;
+    }
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/// Called by Sqrat::PushVar to put a SQUserPointer on the stack
-	///
-	/// \param vm    Target VM
-	/// \param value Value to push on to the VM's stack
-	///
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	static void push(HSQUIRRELVM vm, const SQUserPointer value) {
-		sq_pushuserpointer(vm, value);
-	}
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Called by Sqrat::PushVar to put a SQUserPointer on the stack
+    ///
+    /// \param vm    Target VM
+    /// \param value Value to push on to the VM's stack
+    ///
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    static void push(HSQUIRRELVM vm, const SQUserPointer value) {
+        sq_pushuserpointer(vm, value);
+    }
 };
 
 #ifdef SQUNICODE

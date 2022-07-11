@@ -491,6 +491,8 @@ public:
     ///
     /// \param name Name of the function as it will appear in Squirrel
     /// \param func Function to bind
+    /// \param nparamscheck The parameters count used in runtime arguments count checking (including hidden this parameter)
+    /// \param type The type mask used in runtime parameters type checking
     ///
     /// \return The Class itself so the call can be chained
     ///
@@ -499,10 +501,11 @@ public:
     /// stack and all arguments will be after that index in the order they were given to the function.
     ///
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    Class& SquirrelFunc(const SQChar* name, SQFUNCTION func) {
+    Class& SquirrelFunc(const SQChar* name, SQFUNCTION func, SQInteger nparamscheck = 0, const SQChar* typemask = 0) {
         sq_pushobject(vm, ClassType<C>::getClassData(vm)->classObj);
         sq_pushstring(vm, name, -1);
         sq_newclosure(vm, func, 0);
+        sq_setparamscheck(vm, nparamscheck, typemask);
         sq_newslot(vm, -3, false);
         sq_pop(vm, 1); // pop table
 

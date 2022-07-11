@@ -161,7 +161,16 @@ public:
         return 0;
     }
 
-    static void PushInstance(HSQUIRRELVM vm, C* ptr) {
+    static SQInteger DeleteInstanceFree(SQUserPointer ptr, SQInteger size) {
+        SQUNUSED(size);
+        std::pair<C*, SharedPtr<typename unordered_map<C*, HSQOBJECT>::type> >* instance = reinterpret_cast<std::pair<C*, SharedPtr<typename unordered_map<C*, HSQOBJECT>::type> >*>(ptr);
+        instance->second->erase(instance->first);
+        delete instance->first;
+        delete instance;
+        return 0;
+    }
+
+    static void PushInstance(HSQUIRRELVM vm, C* ptr, bool free = false) {
         if (!ptr) {
             sq_pushnull(vm);
             return;
@@ -179,7 +188,7 @@ public:
         sq_createinstance(vm, -1);
         sq_remove(vm, -2);
         sq_setinstanceup(vm, -1, new std::pair<C*, SharedPtr<typename unordered_map<C*, HSQOBJECT>::type> >(ptr, cd->instances));
-        sq_setreleasehook(vm, -1, &DeleteInstance);
+        free ? sq_setreleasehook(vm, -1, &DeleteInstanceFree) : sq_setreleasehook(vm, -1, &DeleteInstance);
         sq_getstackobj(vm, -1, &((*cd->instances)[ptr]));
     }
 

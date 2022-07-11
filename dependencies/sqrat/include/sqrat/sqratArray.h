@@ -94,14 +94,17 @@ public:
     ///
     /// \param index The index in the array being assigned a function
     /// \param func  Squirrel function that is being placed in the Array
+    /// \param nparamscheck The parameters count used in runtime arguments count checking (including hidden this parameter)
+    /// \param type The type mask used in runtime parameters type checking
     ///
     /// \return The Array itself so the call can be chained
     ///
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ArrayBase& SquirrelFunc(const SQInteger index, SQFUNCTION func) {
+    ArrayBase& SquirrelFunc(const SQInteger index, SQFUNCTION func, SQInteger nparamscheck = 0, const SQChar* typemask = 0) {
         sq_pushobject(vm, GetObject());
         sq_pushinteger(vm, index);
         sq_newclosure(vm, func, 0);
+        sq_setparamscheck(vm, nparamscheck, typemask);
         sq_set(vm, -3);
         sq_pop(vm,1); // pop array
         return *this;

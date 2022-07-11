@@ -36,6 +36,10 @@
 #include "sqratOverloadMethods.h"
 #include "sqratUtil.h"
 
+#ifdef WIN32
+// Windows defines fix
+#undef GetObject
+#endif
 namespace Sqrat {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -99,10 +103,11 @@ public:
     ///
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     template<class T>
-    Object(T* instance, HSQUIRRELVM v = DefaultVM::Get()) : vm(v), release(true) {
-        ClassType<T>::PushInstance(vm, instance);
+    Object(T* instance, HSQUIRRELVM v = DefaultVM::Get(), bool free = false) : vm(v), release(true) {
+        ClassType<T>::PushInstance(vm, instance, free);
         sq_getstackobj(vm, -1, &obj);
         sq_addref(vm, &obj);
+        sq_pop(vm, 1);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
