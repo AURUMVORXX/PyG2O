@@ -12,6 +12,7 @@ build:windows:
     - $env:Path += ";C:\Program Files\CMake\bin"
     - cmake . -DCMAKE_TOOLCHAIN_FILE="$TOOLCHAIN.cmake"
     - cmake --build . --config Release
+     - cp Release/$CI_PROJECT_NAME.*.dll ./
   after_script:
     - $env = "${TOOLCHAIN}_JOB_ID=$CI_JOB_ID" -replace "-", "_"
     - Add-Content -Path job.env -Value $env
@@ -21,7 +22,7 @@ build:windows:
   artifacts:
     name: $CI_PROJECT_NAME
     paths:
-    - Release/$CI_PROJECT_NAME.*.dll
+    - $CI_PROJECT_NAME.*.dll
     expire_in: never
     reports:
        dotenv: job.env
