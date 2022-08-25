@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.17)
 
-project(SqModule)
+project(squirrel-template)
 
 option(INSTALL_AFTER_BUILD "Run cmake --install separately for every target after each build. By default this option is set to OFF" OFF)
 
@@ -17,10 +17,10 @@ file(GLOB SRC
 	"src/sqmain.cpp"
 )
 
-add_library(SqModule SHARED ${SRC})
-target_precompile_headers(SqModule PRIVATE "src/pch.h")
+add_library(squirrel-template SHARED ${SRC})
+target_precompile_headers(squirrel-template PRIVATE "src/pch.h")
 
-target_include_directories(SqModule
+target_include_directories(squirrel-template
 	INTERFACE
 		"include/"
 	PRIVATE
@@ -30,7 +30,7 @@ target_include_directories(SqModule
 add_subdirectory(dependencies)
 
 if(DEFINED SHARED_LIBRARY_SUFFIX)
-	set_target_properties(SqModule
+	set_target_properties(squirrel-template
 			PROPERTIES 
 				PREFIX ""
 				SUFFIX ".${SHARED_LIBRARY_SUFFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}"
@@ -38,14 +38,14 @@ if(DEFINED SHARED_LIBRARY_SUFFIX)
 endif()
 
 if (NOT ${GAME_PATH} STREQUAL "")
-	install(TARGETS SqModule
+	install(TARGETS squirrel-template
 			RUNTIME
 			  DESTINATION ${GAME_PATH}
 			  COMPONENT "clientModule"
 	)
 
 	if(INSTALL_AFTER_BUILD)
-		add_custom_command(TARGET SqModule 
+		add_custom_command(TARGET squirrel-template 
 			POST_BUILD
 				COMMAND ${CMAKE_COMMAND} --install ${CMAKE_CURRENT_BINARY_DIR} --component "clientModule"
 		)
@@ -53,14 +53,14 @@ if (NOT ${GAME_PATH} STREQUAL "")
 endif()
 
 if (NOT ${SERVER_PATH} STREQUAL "")
-	install(TARGETS SqModule
+	install(TARGETS squirrel-template
 			RUNTIME
 			  DESTINATION ${SERVER_PATH}
 			  COMPONENT "serverModule"
 	)
 
 	if(INSTALL_AFTER_BUILD)
-		add_custom_command(TARGET SqModule 
+		add_custom_command(TARGET squirrel-template 
 			POST_BUILD
 				COMMAND ${CMAKE_COMMAND} --install ${CMAKE_CURRENT_BINARY_DIR} --component "serverModule"
 		)

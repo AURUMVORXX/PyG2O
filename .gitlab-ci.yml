@@ -19,9 +19,9 @@ build:windows:
     matrix:
       - TOOLCHAIN: [windows-x86, windows-x64]
   artifacts:
-    name: sqmodule
+    name: $CI_PROJECT_NAME
     paths:
-    - Release/sqmodule.*.dll
+    - Release/$CI_PROJECT_NAME.*.dll
     expire_in: never
     reports:
        dotenv: job.env
@@ -39,9 +39,9 @@ build:linux:
     matrix:
       - TOOLCHAIN: [linux-x86, linux-x64, linux-arm, linux-arm64]
   artifacts:
-    name: sqmodule
+    name: $CI_PROJECT_NAME
     paths:
-    - sqmodule.*
+    - $CI_PROJECT_NAME.*
     expire_in: never
     reports:
        dotenv: job.env
@@ -64,22 +64,22 @@ release:
     description: "./CHANGELOG.md"
     assets:
       links:
-        - name: "sqmodule.x86.dll"
-          url: "https://gitlab.com/GothicMultiplayerTeam/modules/squirrel-template/-/jobs/$windows_x86_JOB_ID/artifacts/download"
+        - name: "$CI_PROJECT_NAME.x86.dll"
+          url: "$CI_PROJECT_URL/-/jobs/$windows_x86_JOB_ID/artifacts/download"
           link_type: "package"
-        - name: "sqmodule.x64.dll"
-          url: "https://gitlab.com/GothicMultiplayerTeam/modules/squirrel-template/-/jobs/$windows_x64_JOB_ID/artifacts/download"
+        - name: "$CI_PROJECT_NAME.x64.dll"
+          url: "$CI_PROJECT_URL/-/jobs/$windows_x64_JOB_ID/artifacts/download"
           link_type: "package"
-        - name: "sqmodule.x86.so"
-          url: "https://gitlab.com/GothicMultiplayerTeam/modules/squirrel-template/-/jobs/$linux_x86_JOB_ID/artifacts/download"
+        - name: "$CI_PROJECT_NAME.x86.so"
+          url: "$CI_PROJECT_URL/-/jobs/$linux_x86_JOB_ID/artifacts/download"
           link_type: "package"
-        - name: "sqmodule.x64.so"
-          url: "https://gitlab.com/GothicMultiplayerTeam/modules/squirrel-template/-/jobs/$linux_x64_JOB_ID/artifacts/download"
+        - name: "$CI_PROJECT_NAME.x64.so"
+          url: "$CI_PROJECT_URL/-/jobs/$linux_x64_JOB_ID/artifacts/download"
           link_type: "package"
-        - name: "sqmodule.arm.so"
-          url: "https://gitlab.com/GothicMultiplayerTeam/modules/squirrel-template/-/jobs/$linux_arm_JOB_ID/artifacts/download"
+        - name: "$CI_PROJECT_NAME.arm.so"
+          url: "$CI_PROJECT_URL/-/jobs/$linux_arm_JOB_ID/artifacts/download"
           link_type: "package"
-        - name: "sqmodule.arm64.so"
-          url: "https://gitlab.com/GothicMultiplayerTeam/modules/squirrel-template/-/jobs/$linux_arm64_JOB_ID/artifacts/download"
+        - name: "$CI_PROJECT_NAME.arm64.so"
+          url: "$CI_PROJECT_URL/-/jobs/$linux_arm64_JOB_ID/artifacts/download"
           link_type: "package"
 
