@@ -296,6 +296,45 @@ public:
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Binds a Squirrel function as defined by the Squirrel documentation as a class property
+    ///
+    /// \param name   Name of the variable as it will appear in Squirrel
+    /// \param getter Getter for the variable
+    /// \param setter Setter for the variable
+    ///
+    /// \return The Class itself so the call can be chained
+    ///
+    /// \remarks
+    /// This method binds a squirrel setter and getter functions in C++ to Squirrel as if it is a class variable.
+    /// Inside of the function, the class instance the function was called with will be at index 1 on the stack.
+    ///
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Class& SquirrelProp(const SQChar* name, SQFUNCTION getter, SQFUNCTION setter)
+    {
+        ClassData<C>* cd = ClassType<C>::getClassData(vm);
+
+        if (getter != NULL) {
+            // Add the getter
+            sq_pushobject(vm, cd->getTable);
+            sq_pushstring(vm, name, -1);
+            sq_newclosure(vm, getter, 0);
+            sq_newslot(vm, -3, false);
+            sq_pop(vm, 1);
+        }
+
+        if (setter != NULL) {
+            // Add the setter
+            sq_pushobject(vm, cd->setTable);
+            sq_pushstring(vm, name, -1);
+            sq_newclosure(vm, setter, 0);
+            sq_newslot(vm, -3, false);
+            sq_pop(vm, 1);
+        }
+
+        return *this;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// Binds a class property (using global functions instead of member functions)
     ///
     /// \param name      Name of the variable as it will appear in Squirrel
@@ -346,6 +385,30 @@ public:
     Class& Prop(const SQChar* name, F getMethod) {
         // Add the getter
         BindAccessor(name, &getMethod, sizeof(getMethod), SqMemberOverloadedFunc(getMethod), ClassType<C>::getClassData(vm)->getTable);
+
+        return *this;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Binds a Squirrel function as defined by the Squirrel documentation as a read-only class property
+    ///
+    /// \param name   Name of the variable as it will appear in Squirrel
+    /// \param getter Getter for the variable
+    ///
+    /// \return The Class itself so the call can be chained
+    ///
+    /// \remarks
+    /// This method binds a squirrel getter function in C++ to Squirrel as if it is a class variable.
+    /// Inside of the function, the class instance the function was called with will be at index 1 on the stack.
+    ///
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Class& SquirrelProp(const SQChar* name, SQFUNCTION getter)
+    {
+        sq_pushobject(vm, ClassType<C>::getClassData(vm)->getTable);
+        sq_pushstring(vm, name, -1);
+        sq_newclosure(vm, getter, 0);
+        sq_newslot(vm, -3, false);
+        sq_pop(vm, 1);
 
         return *this;
     }
