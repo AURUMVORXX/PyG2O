@@ -57,7 +57,7 @@ release:
     - job: build:windows
       artifacts: true
   variables:
-    TAG: '0.1.0.1'
+    TAG: '0.1'
   script:
     - echo "Create Release $TAG"
   release:
