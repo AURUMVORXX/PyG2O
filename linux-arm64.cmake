@@ -6,7 +6,7 @@ set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR aarch64)
 
 # specify shared library suffix
-set(SHARED_LIBRARY_SUFFIX "arm64")
+set(OUT_FILE_SUFFIX "arm64")
 
 if (${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "aarch64")
     # specify native compiler

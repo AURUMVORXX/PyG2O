@@ -9,4 +9,4 @@ if (CMAKE_GENERATOR MATCHES "Visual Studio*")
 endif()
 
 # specify shared library suffix
-set(SHARED_LIBRARY_SUFFIX "x86")
+set(OUT_FILE_SUFFIX "x86")
