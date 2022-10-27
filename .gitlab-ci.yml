@@ -32,7 +32,7 @@ build:linux:
   image: registry.gitlab.com/gothicmultiplayerteam/buildimage:ubuntu-18.04
   when: manual
   script:
-    - cmake . -DCMAKE_TOOLCHAIN_FILE="$TOOLCHAIN.cmake"
+    - cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="$TOOLCHAIN.cmake"
     - cmake --build . && exit $?
   after_script:
     - echo "${TOOLCHAIN}_JOB_ID=$CI_JOB_ID" | tr - _ >> job.env
@@ -57,7 +57,7 @@ release:
     - job: build:windows
       artifacts: true
   variables:
-    TAG: '0.1'
+    TAG: '0.1.0.1'
   script:
     - echo "Create Release $TAG"
   release:
