@@ -33,7 +33,7 @@ if(DEFINED OUT_FILE_SUFFIX)
 	set_target_properties(squirrel-template
 			PROPERTIES 
 				PREFIX ""
-				SUFFIX ".${OUT_FILE_SUFFIX}${CMAKE_OUT_FILE_SUFFIX}"
+				SUFFIX ".${OUT_FILE_SUFFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}"
 	)
 endif()
 
