@@ -51,11 +51,7 @@ release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   when: manual
-  needs:
-    - job: build:linux
-      artifacts: true
-    - job: build:windows
-      artifacts: true
+  needs: [build:linux, build:windows]
   variables:
     TAG: '0.1'
   script:
