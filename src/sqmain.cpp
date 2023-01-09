@@ -1,4 +1,4 @@
-#include "pch.h"
+#include <sqrat.h>
 
 extern "C" SQRESULT SQRAT_API sqmodule_load(HSQUIRRELVM vm, HSQAPI api)
 {

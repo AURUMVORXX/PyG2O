@@ -18,7 +18,17 @@ file(GLOB SRC
 )
 
 add_library(squirrel-template SHARED ${SRC})
-target_precompile_headers(squirrel-template PRIVATE "src/pch.h")
+
+target_compile_definitions(squirrel-template
+	PRIVATE
+		SCRAT_EXPORT
+)
+
+target_precompile_headers(squirrel-template
+	PRIVATE
+		"src/api/module_api.h"
+		"src/api/squirrel_api.h"
+)
 
 target_include_directories(squirrel-template
 	INTERFACE
