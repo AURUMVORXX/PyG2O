@@ -13,7 +13,6 @@ file(GLOB SRC
 	"src/api/module_api.h"
 	"src/api/module_api.cpp"
 
-	"src/pch.h"
 	"src/sqmain.cpp"
 )
 
