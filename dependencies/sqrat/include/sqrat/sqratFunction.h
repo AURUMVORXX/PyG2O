@@ -1279,8 +1279,8 @@ public:
         sq_pushobject(vm, env);
 
 #if !defined (SCRAT_NO_ERROR_CHECKING)
-        SQUnsignedInteger nparams;
-        SQUnsignedInteger nfreevars;
+        SQInteger nparams;
+        SQInteger nfreevars;
         if (obj._type != OT_NATIVECLOSURE &&
             SQ_SUCCEEDED(sq_getclosureinfo(vm, -2, &nparams, &nfreevars)) && (nparams != 1)) {
             sq_pop(vm, 2);
