@@ -23,7 +23,11 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -static-libgcc -static-libstdc++")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
 
 # specify the paths for find_(name), functions (target environment). 
-set(CMAKE_FIND_ROOT_PATH /usr/lib)
+set(CMAKE_FIND_ROOT_PATH
+    /usr/lib
+    /usr/aarch64-linux-gnu
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
 # search only for programs in the build host directories (find_program)
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
