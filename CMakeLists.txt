@@ -2,13 +2,11 @@ cmake_minimum_required(VERSION 3.21)
 
 project(squirrel-template)
 
-file(GLOB SRC
-	"src/api/squirrel_api.h"
+file(GLOB_RECURSE SRC
+	"include/*.h"
 
-	"src/api/module_api.h"
-	"src/api/module_api.cpp"
-
-	"src/sqmain.cpp"
+	"src/*.h"
+	"src/*.cpp"
 )
 
 add_library(${PROJECT_NAME} SHARED ${SRC})
