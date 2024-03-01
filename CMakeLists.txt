@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.21)
 
 project(squirrel-template)
 
@@ -11,14 +11,14 @@ file(GLOB SRC
 	"src/sqmain.cpp"
 )
 
-add_library(squirrel-template SHARED ${SRC})
+add_library(${PROJECT_NAME} SHARED ${SRC})
 
-target_compile_definitions(squirrel-template
+target_compile_definitions(${PROJECT_NAME}
 	PRIVATE
 		SCRAT_EXPORT
 )
 
-target_include_directories(squirrel-template
+target_include_directories(${PROJECT_NAME}
 	INTERFACE
 		"include/"
 	PRIVATE
@@ -28,7 +28,7 @@ target_include_directories(squirrel-template
 add_subdirectory(dependencies)
 
 if(DEFINED OUT_FILE_SUFFIX)
-	set_target_properties(squirrel-template
+	set_target_properties(${PROJECT_NAME}
 			PROPERTIES 
 				PREFIX ""
 				SUFFIX ".${OUT_FILE_SUFFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}"
