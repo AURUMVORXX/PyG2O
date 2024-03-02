@@ -1,3 +1,6 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
 stages:
  - build
  - release
@@ -5,27 +8,41 @@ stages:
 build:windows:
   stage: build
   tags:
-  - windows
+    - windows
   when: manual
+  before_script: |
+    function loadenv($bat_file)
+    {
+      $env_file = New-TemporaryFile
+      cmd /c " `"$bat_file`" $args && set > `"$env_file`" "
+
+      foreach($line in Get-Content "$env_file") 
+      {
+        if($line -match "^(.*?)=(.*)$")
+        {
+          Set-Content "env:\$($matches[1])" $matches[2]
+        }
+      }
+
+      Remove-Item "$env_file"
+    }
   script:
-    - choco install -y cmake --installargs '"ADD_CMAKE_TO_PATH=System"'
-    - $env:Path += ";C:\Program Files\CMake\bin"
-    - cmake . -DCMAKE_TOOLCHAIN_FILE="$TOOLCHAIN.cmake"
-    - cmake --build . --config Release
-     - cp Release/$CI_PROJECT_NAME.*.dll ./
+    - loadenv "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" ${PLATFORM}
+    - cmake . --preset Windows-${PLATFORM}-Release
+    - cmake --build --preset Windows-${PLATFORM}-Release
+    - cp out/build/Windows-${PLATFORM}-Release/${CI_PROJECT_NAME}.*.dll ./
   after_script:
-    - $env = "${TOOLCHAIN}_JOB_ID=$CI_JOB_ID" -replace "-", "_"
-    - Add-Content -Path job.env -Value $env
+    - Add-Content -Path job.env -Value "windows_${PLATFORM}_JOB_ID=${CI_JOB_ID}"
   parallel:
     matrix:
-      - TOOLCHAIN: [windows-x86, windows-x64]
+      - PLATFORM: [x86, x64]
   artifacts:
-    name: $CI_PROJECT_NAME
+    name: ${CI_PROJECT_NAME}
     paths:
-    - $CI_PROJECT_NAME.*.dll
+      - ${CI_PROJECT_NAME}.*.dll
     expire_in: never
     reports:
-       dotenv: job.env
+        dotenv: job.env
 
 build:linux:
   stage: build
