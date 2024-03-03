@@ -21,6 +21,9 @@
 				"type": "equals",
 				"lhs": "${hostSystemName}",
 				"rhs": "Linux"
+			},
+			"cacheVariables": {
+				"CMAKE_CXX_FLAGS": "-static-libgcc -static-libstdc++"
 			}
 		},
 		{

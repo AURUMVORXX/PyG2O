@@ -45,7 +45,7 @@ build:windows:
 
     loadenv "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" ${ARCHITECTURE}
   after_script:
-    - Add-Content -Path job.env -Value "windows_${ARCHITECTURE}_JOB_ID=${CI_JOB_ID}"
+    - Add-Content -Path job.env -Value "${SYSTEM}_${ARCHITECTURE}_job_id=${CI_JOB_ID}"
   parallel:
     matrix:
       - ARCHITECTURE: [x86, x64]
@@ -57,7 +57,7 @@ build:linux:
     SYSTEM: "Linux"
     SHARED_LIB_SUFFIX: ".so"
   after_script:
-    - echo "linux_${ARCHITECTURE}_JOB_ID=${CI_JOB_ID}" >> job.env
+    - echo "${SYSTEM}_${ARCHITECTURE}_job_id=${CI_JOB_ID}" >> job.env
   parallel:
     matrix:
       - ARCHITECTURE: [x64, arm, arm64]
@@ -77,17 +77,17 @@ release:
     assets:
       links:
         - name: "${CI_PROJECT_NAME}.x86.dll"
-          url: "${CI_PROJECT_URL}/-/jobs/${windows_x86_JOB_ID}/artifacts/download"
+          url: "${CI_PROJECT_URL}/-/jobs/${Windows_x86_job_id}/artifacts/download"
           link_type: "package"
         - name: "${CI_PROJECT_NAME}.x64.dll"
-          url: "${CI_PROJECT_URL}/-/jobs/${windows_x64_JOB_ID}/artifacts/download"
+          url: "${CI_PROJECT_URL}/-/jobs/${Windows_x64_job_id}/artifacts/download"
           link_type: "package"
         - name: "${CI_PROJECT_NAME}.x64.so"
-          url: "${CI_PROJECT_URL}/-/jobs/${linux_x64_JOB_ID}/artifacts/download"
+          url: "${CI_PROJECT_URL}/-/jobs/${Linux_x64_job_id}/artifacts/download"
           link_type: "package"
         - name: "${CI_PROJECT_NAME}.arm.so"
-          url: "${CI_PROJECT_URL}/-/jobs/${linux_arm_JOB_ID}/artifacts/download"
+          url: "${CI_PROJECT_URL}/-/jobs/${Linux_arm_job_id}/artifacts/download"
           link_type: "package"
         - name: "${CI_PROJECT_NAME}.arm64.so"
-          url: "${CI_PROJECT_URL}/-/jobs/${linux_arm64_JOB_ID}/artifacts/download"
+          url: "${CI_PROJECT_URL}/-/jobs/${Linux_arm64_job_id}/artifacts/download"
           link_type: "package"
