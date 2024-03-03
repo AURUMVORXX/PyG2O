@@ -5,11 +5,27 @@ stages:
  - build
  - release
 
-build:windows:
+.build:
   stage: build
-  tags:
-    - windows
   when: manual
+  script:
+    - cmake . --preset ${SYSTEM}-${ARCHITECTURE}-Release
+    - cmake --build --preset ${SYSTEM}-${ARCHITECTURE}-Release
+    - cp out/build/${SYSTEM}-${ARCHITECTURE}-Release/${CI_PROJECT_NAME}.${ARCHITECTURE}${SHARED_LIB_SUFFIX} ./
+  artifacts:
+    name: ${CI_PROJECT_NAME}
+    paths:
+      - ${CI_PROJECT_NAME}.${ARCHITECTURE}${SHARED_LIB_SUFFIX}
+    expire_in: never
+    reports:
+        dotenv: job.env
+
+build:windows:
+  extends: .build
+  tags: [windows]
+  variables:
+    SYSTEM: "Windows"
+    SHARED_LIB_SUFFIX: ".dll"
   before_script: |
     function loadenv($bat_file)
     {
@@ -26,43 +42,25 @@ build:windows:
 
       Remove-Item "$env_file"
     }
-  script:
-    - loadenv "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" ${PLATFORM}
-    - cmake . --preset Windows-${PLATFORM}-Release
-    - cmake --build --preset Windows-${PLATFORM}-Release
-    - cp out/build/Windows-${PLATFORM}-Release/${CI_PROJECT_NAME}.*.dll ./
+
+    loadenv "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" ${ARCHITECTURE}
   after_script:
-    - Add-Content -Path job.env -Value "windows_${PLATFORM}_JOB_ID=${CI_JOB_ID}"
+    - Add-Content -Path job.env -Value "windows_${ARCHITECTURE}_JOB_ID=${CI_JOB_ID}"
   parallel:
     matrix:
-      - PLATFORM: [x86, x64]
-  artifacts:
-    name: ${CI_PROJECT_NAME}
-    paths:
-      - ${CI_PROJECT_NAME}.*.dll
-    expire_in: never
-    reports:
-        dotenv: job.env
+      - ARCHITECTURE: [x86, x64]
 
 build:linux:
-  stage: build
+  extends: .build
   image: registry.gitlab.com/gothicmultiplayerteam/buildimage:ubuntu-18.04
-  when: manual
-  script:
-    - cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="$TOOLCHAIN.cmake"
-    - cmake --build . && exit $?
+  variables:
+    SYSTEM: "Linux"
+    SHARED_LIB_SUFFIX: ".so"
   after_script:
-    - echo "${TOOLCHAIN}_JOB_ID=$CI_JOB_ID" | tr - _ >> job.env
+    - echo "linux_${ARCHITECTURE}_JOB_ID=${CI_JOB_ID}" >> job.env
   parallel:
     matrix:
-      - TOOLCHAIN: [linux-x86, linux-x64, linux-arm, linux-arm64]
-  artifacts:
-    name: $CI_PROJECT_NAME
-    paths:
-    - $CI_PROJECT_NAME.*
-    expire_in: never
-    reports:
-       dotenv: job.env
+      - ARCHITECTURE: [x64, arm, arm64]
     
 release:
   stage: release
@@ -78,22 +76,18 @@ release:
     description: "./CHANGELOG.md"
     assets:
       links:
-        - name: "$CI_PROJECT_NAME.x86.dll"
-          url: "$CI_PROJECT_URL/-/jobs/$windows_x86_JOB_ID/artifacts/download"
+        - name: "${CI_PROJECT_NAME}.x86.dll"
+          url: "${CI_PROJECT_URL}/-/jobs/${windows_x86_JOB_ID}/artifacts/download"
           link_type: "package"
-        - name: "$CI_PROJECT_NAME.x64.dll"
-          url: "$CI_PROJECT_URL/-/jobs/$windows_x64_JOB_ID/artifacts/download"
+        - name: "${CI_PROJECT_NAME}.x64.dll"
+          url: "${CI_PROJECT_URL}/-/jobs/${windows_x64_JOB_ID}/artifacts/download"
           link_type: "package"
-        - name: "$CI_PROJECT_NAME.x86.so"
-          url: "$CI_PROJECT_URL/-/jobs/$linux_x86_JOB_ID/artifacts/download"
+        - name: "${CI_PROJECT_NAME}.x64.so"
+          url: "${CI_PROJECT_URL}/-/jobs/${linux_x64_JOB_ID}/artifacts/download"
           link_type: "package"
-        - name: "$CI_PROJECT_NAME.x64.so"
-          url: "$CI_PROJECT_URL/-/jobs/$linux_x64_JOB_ID/artifacts/download"
+        - name: "${CI_PROJECT_NAME}.arm.so"
+          url: "${CI_PROJECT_URL}/-/jobs/${linux_arm_JOB_ID}/artifacts/download"
           link_type: "package"
-        - name: "$CI_PROJECT_NAME.arm.so"
-          url: "$CI_PROJECT_URL/-/jobs/$linux_arm_JOB_ID/artifacts/download"
+        - name: "${CI_PROJECT_NAME}.arm64.so"
+          url: "${CI_PROJECT_URL}/-/jobs/${linux_arm64_JOB_ID}/artifacts/download"
           link_type: "package"
-        - name: "$CI_PROJECT_NAME.arm64.so"
-          url: "$CI_PROJECT_URL/-/jobs/$linux_arm64_JOB_ID/artifacts/download"
-          link_type: "package"
-
