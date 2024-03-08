@@ -144,4 +144,4 @@ release:
           url: "${CI_PROJECT_URL}/-/jobs/${Linux_arm64_job_id}/artifacts/download"
           link_type: "package"
         - name: "${PROJECT_NAME}_docs"
-          url: "${CI_PROJECT_UR}L/-/jobs/${Docs_job_id}/artifacts/download"
+          url: "${CI_PROJECT_URL}/-/jobs/${Docs_job_id}/artifacts/download"
