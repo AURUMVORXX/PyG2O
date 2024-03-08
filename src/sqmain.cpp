@@ -1,4 +1,4 @@
-#include "sqapi.h"
+#include <sqapi.h>
 
 /* squirreldoc (func)
 *
