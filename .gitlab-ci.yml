@@ -73,9 +73,8 @@ build:docs:
     - apk add git
     - git clone https://gitlab.com/GothicMultiplayerTeam/docsgenerator.git
   script:
-    - pip install mkdocs==1.5.3
-    - pip install mkdocs-material==9.5.12
-    - pip install Jinja2==3.1.3
+    - pip install -r docs/requirements.txt
+    - pip install -r docsgenerator/requirements.txt
     - python docsgenerator/generate.py ${VERSION} src --builddir "docs/docs/script-reference" --markdown
   artifacts:
     paths:
