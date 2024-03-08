@@ -4,6 +4,10 @@ variables:
   PROJECT_NAME: ${CI_PROJECT_NAME}
   VERSION: "0.1"
 
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+
 stages:
  - build
  - release
