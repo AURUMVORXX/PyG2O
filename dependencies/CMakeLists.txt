@@ -1,5 +1,3 @@
-add_subdirectory(squirrel)
-add_subdirectory(sqrat)
+add_subdirectory(sqapi)
 
-target_link_libraries(squirrel-template PUBLIC Squirrel)
-target_link_libraries(squirrel-template PUBLIC SqRat)
+target_link_libraries(${PROJECT_NAME} PUBLIC sqapi)

@@ -1,0 +1,3 @@
+[submodule "dependencies/sqapi"]
+	path = dependencies/sqapi
+	url = https://gitlab.com/GothicMultiplayerTeam/dependencies/sqapi.git
