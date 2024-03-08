@@ -55,7 +55,7 @@ build:windows:
 
 build:linux:
   extends: .build
-  image: registry.gitlab.com/gothicmultiplayerteam/buildimage:ubuntu-18.04
+  image: registry.gitlab.com/gothicmultiplayerteam/buildimage:ubuntu-20.04-${ARCHITECTURE}
   variables:
     SYSTEM: "Linux"
     SHARED_LIB_SUFFIX: ".so"
