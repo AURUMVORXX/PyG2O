@@ -60,7 +60,8 @@
 				"strategy": "external"
 			},
 			"cacheVariables": {
-				"OUT_FILE_SUFFIX": "arm"
+				"OUT_FILE_SUFFIX": "arm",
+				"CMAKE_TOOLCHAIN_FILE": "linux-arm.cmake"
 			}
 		},
 		{
@@ -71,7 +72,8 @@
 				"strategy": "external"
 			},
 			"cacheVariables": {
-				"OUT_FILE_SUFFIX": "arm64"
+				"OUT_FILE_SUFFIX": "arm64",
+				"CMAKE_TOOLCHAIN_FILE": "linux-arm64.cmake"
 			}
 		},
 		{
