@@ -6,13 +6,13 @@ set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
 # specify cross compiler
-set(CMAKE_C_COMPILER arm-linux-gnueabi-gcc)
-set(CMAKE_CXX_COMPILER arm-linux-gnueabi-g++)
+set(CMAKE_C_COMPILER arm-linux-gnueabihf-gcc)
+set(CMAKE_CXX_COMPILER arm-linux-gnueabihf-g++)
 
 # specify the paths for find_(name), functions (target environment). 
 set(CMAKE_FIND_ROOT_PATH
     /usr/lib
-	/usr/arm-linux-gnueabi
+	/usr/arm-linux-gnueabihf
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
