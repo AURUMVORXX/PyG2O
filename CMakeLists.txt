@@ -115,3 +115,11 @@ add_custom_command(
   COMMAND ${CMAKE_COMMAND} 
   -E copy_directory ${CPYTHON_STDLIB_DIR} $<TARGET_FILE_DIR:${PROJECT_NAME}>/lib
 )
+
+# Copy the PyG2O library into the build/lib folder
+add_custom_command(
+  TARGET ${PROJECT_NAME} 
+  POST_BUILD
+  COMMAND ${CMAKE_COMMAND} 
+  -E copy_directory ${CMAKE_SOURCE_DIR}/g2o $<TARGET_FILE_DIR:${PROJECT_NAME}>/lib/g2o
+)
