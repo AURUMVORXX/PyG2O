@@ -71,6 +71,18 @@ SQInteger sq_onBan(HSQUIRRELVM vm)
     return 0;
 }
 
+SQInteger sq_onUnban(HSQUIRRELVM vm)
+{
+    SQObject obj;
+    sq_getstackobj(vm, 2, &obj);
+    Sqrat::Table banData = Sqrat::Table(obj, vm);
+    
+    py::dict kwargs = sqParseTable(banData);
+    g2o.attr("callEvent")("onUnban", **kwargs);
+    
+    return 0;
+}
+
 void registerSquirrelEvents()
 {
     addEventHandler("onInit", sq_onInit, 0);
@@ -78,4 +90,5 @@ void registerSquirrelEvents()
     addEventHandler("onTick", sq_onTick, 0);
     addEventHandler("onTime", sq_onTime, 0);
     addEventHandler("onBan", sq_onBan, 0);
+    addEventHandler("onUnban", sq_onUnban, 0);
 }
