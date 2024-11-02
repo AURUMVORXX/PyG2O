@@ -1,7 +1,7 @@
 
 eventList = {}
 
-def callEvent(name, **args):
+def callEvent(name : str, **args : dict):
     if name in eventList:
         for event in eventList[name]:
             event['function'](**args)
@@ -10,7 +10,7 @@ def addEvent(name):
     if not name in eventList:
         eventList[name] = []
         
-def event(name, priority = 9999):
+def event(name : str, priority : int = 9999):
     def inlineEvt(func):
         if not name in eventList:
             pass
@@ -20,7 +20,7 @@ def event(name, priority = 9999):
         return func
     return inlineEvt
     
-def removeEventHandler(name, func):
+def removeEventHandler(name : str, func : int):
     if not name in eventList:
         pass
     
@@ -35,3 +35,4 @@ addEvent('onExit')
 addEvent('onTick')
 addEvent('onTime')
 addEvent('onBan')
+addEvent('onUnban')
