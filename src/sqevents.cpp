@@ -1,6 +1,6 @@
 #include <sqapi.h>
 #include <pybind11/embed.h>
-#include <iostream>
+#include "sqcontainers.h"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
@@ -19,7 +19,7 @@ void addEventHandler(const char* eventName, SQFUNCTION closure, unsigned int pri
     HSQOBJECT closureHandle;
 
     sq_newclosure(vm, closure, 0);
-    sq_getstackobj(vm, -1, &closureHandle); 
+    sq_getstackobj(vm, -1, &closureHandle);
 
     Sqrat::Function func(vm, Sqrat::RootTable().GetObject(), closureHandle);
     sq_addEventHandler(eventName, func, priority);
@@ -49,12 +49,24 @@ SQInteger sq_onTime(HSQUIRRELVM vm)
 {
     SQInteger day, hour, min;
     
-    sq_getinteger(vm, 4, &day);
+    sq_getinteger(vm, 2, &day);
     sq_getinteger(vm, 3, &hour);
-    sq_getinteger(vm, 2, &min);
+    sq_getinteger(vm, 4, &min);
     
     py::dict kwargs = py::dict("day"_a=day, "hour"_a=hour, "min"_a=min);
     g2o.attr("callEvent")("onTime", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onBan(HSQUIRRELVM vm)
+{
+    SQObject obj;
+    sq_getstackobj(vm, 2, &obj);
+    Sqrat::Table banData = Sqrat::Table(obj, vm);
+    
+    py::dict kwargs = sqParseTable(banData);
+    g2o.attr("callEvent")("onBan", **kwargs);
     
     return 0;
 }
@@ -65,4 +77,5 @@ void registerSquirrelEvents()
     addEventHandler("onExit", sq_onExit, 0);
     addEventHandler("onTick", sq_onTick, 0);
     addEventHandler("onTime", sq_onTime, 0);
+    addEventHandler("onBan", sq_onBan, 0);
 }

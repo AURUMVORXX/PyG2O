@@ -28,9 +28,10 @@ def removeEventHandler(name, func):
         if item['function'] == func:
             del eventList[name][index]
 
-## registering all the events
+## registering all events
 
 addEvent('onInit')
 addEvent('onExit')
 addEvent('onTick')
 addEvent('onTime')
+addEvent('onBan')
