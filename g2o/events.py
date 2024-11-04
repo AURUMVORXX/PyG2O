@@ -88,19 +88,19 @@ def event(name : str, priority : int = 9999):
         return func
     return inlineEvt
     
-def removeEventHandler(name : str, func : function):
+def removeEventHandler(name : str, func : object):
     """
     This function will unbind function from specified event.
     Original: [removeEventHandler](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/event/removeEventHandler/)
     
     ## Declaration
     ```python
-    def removeEventHandler(name : str, func : function)
+    def removeEventHandler(name : str, func : object)
     ```
     
     ## Parameters
     * `str` **name**: the name of the event
-    * `function` **func**: the reference to a function which is currently bound to specified event.
+    * `object` **func**: the reference to a function which is currently bound to specified event.
     
     ## Usage
     ```python
