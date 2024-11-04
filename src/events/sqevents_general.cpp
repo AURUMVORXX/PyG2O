@@ -1,5 +1,6 @@
 #include <sqapi.h>
 #include <pybind11/embed.h>
+#include "NoNut/core/Utils.h"
 #include "sqcontainers.h"
 #include "sqevents.h"
 
@@ -30,9 +31,9 @@ SQInteger sq_onTime(HSQUIRRELVM vm)
 {
     SQInteger day, hour, min;
     
-    sq_getinteger(vm, 2, &day);
-    sq_getinteger(vm, 3, &hour);
-    sq_getinteger(vm, 4, &min);
+    nonut::sqGetValue(vm, 2, &day);
+    nonut::sqGetValue(vm, 3, &hour);
+    nonut::sqGetValue(vm, 4, &min);
     
     py::dict kwargs = py::dict("day"_a=day, "hour"_a=hour, "min"_a=min);
     g2o.attr("callEvent")("onTime", **kwargs);
@@ -42,8 +43,8 @@ SQInteger sq_onTime(HSQUIRRELVM vm)
 
 SQInteger sq_onBan(HSQUIRRELVM vm)
 {
-    SQObject obj;
-    sq_getstackobj(vm, 2, &obj);
+    HSQOBJECT obj;
+    nonut::sqGetValue(vm, 2, &obj);
     Sqrat::Table banData = Sqrat::Table(obj, vm);
     
     py::dict kwargs = sqParseTable(banData);
@@ -54,8 +55,8 @@ SQInteger sq_onBan(HSQUIRRELVM vm)
 
 SQInteger sq_onUnban(HSQUIRRELVM vm)
 {
-    SQObject obj;
-    sq_getstackobj(vm, 2, &obj);
+    HSQOBJECT obj;
+    nonut::sqGetValue(vm, 2, &obj);
     Sqrat::Table banData = Sqrat::Table(obj, vm);
     
     py::dict kwargs = sqParseTable(banData);

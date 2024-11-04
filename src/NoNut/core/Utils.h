@@ -18,7 +18,7 @@ namespace nonut
 			std::is_same_v<T, Bool*> ||
 			std::is_same_v<T, Int*> ||
 			std::is_same_v<T, Float*> ||
-			std::is_same_v<T, SQChar**> ||
+			std::is_same_v<T, const SQChar**> ||
 			std::is_same_v<T, HSQOBJECT*> ||
 			std::is_same_v<T, SQUserPointer*>,
 			"Not supported return type");
@@ -29,7 +29,7 @@ namespace nonut
 			sq_getinteger(vm, idx, outPtr);
 		if constexpr (std::is_same_v<T, Float*>)
 			sq_getfloat(vm, idx, outPtr);
-		if constexpr (std::is_same_v<T, SQChar**>)
+		if constexpr (std::is_same_v<T, const SQChar**>)
 			sq_getstring(vm, idx, outPtr);
 		if constexpr (std::is_same_v<T, HSQOBJECT*>)
 		{

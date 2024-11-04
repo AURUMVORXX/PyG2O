@@ -15,7 +15,4 @@ namespace nonut
 	constexpr SQObject SQ_NULL{ OT_NULL };
 }
 
-namespace nonut::g2o{}
-namespace g2o = nonut::g2o;
-
 #endif // CORE_COMMONHEADER_H_

@@ -1,6 +1,8 @@
 #ifndef NONUT_CORE_USER_DATA_H
 #define NONUT_CORE_USER_DATA_H
 
+#include <sqapi.h>
+
 namespace nonut
 {
 	class UserData

@@ -13,6 +13,7 @@ namespace nonut
 	public:
 		static void registerFunction(String funcName, const SQFUNCTION func, size_t funcSize)
 		{
+			HSQUIRRELVM vm = Sqrat::DefaultVM::Get();
 			const auto top = sq_gettop(vm);
 			sq_pushroottable(vm);
 			sq_pushstring(vm, funcName.c_str(), funcName.length());
