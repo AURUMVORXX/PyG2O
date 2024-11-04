@@ -66,6 +66,8 @@ file(GLOB_RECURSE SOURCE
 
 	"src/*.h"
 	"src/*.cpp"
+  "src/events/*.h"
+  "src/events/*.cpp"
 )
 
 # Linking directories
