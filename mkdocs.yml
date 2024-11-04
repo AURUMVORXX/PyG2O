@@ -15,7 +15,8 @@ plugins:
 repo_url: https://github.com/AURUMVORXX/PyG2O.git
   
 nav:
-  - Home: index.md
+  - How to use: howtouse.md
+  - QnA: qna.md
   - Events:
     - General:
       - onInit: defaultEvents/onInit.md
@@ -30,6 +31,7 @@ nav:
       - removeEventHandler: events/removeEventHandler.md
       - addEvent: events/addEvent.md
       - callEvent: events/callEvent.md
+  - How to build: howtobuild.md
 
 theme:
   name: material
