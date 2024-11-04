@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21)
 include(${CMAKE_ROOT}/Modules/ExternalProject.cmake)
 project(PyG2O)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 # Specify build type
@@ -63,7 +63,9 @@ endif()
 
 file(GLOB_RECURSE SOURCE
 	"include/*.h"
-
+  
+  "src/NoNut/core/*.h"
+  "src/NoNut/core/*.cpp"
 	"src/*.h"
 	"src/*.cpp"
   "src/events/*.h"
