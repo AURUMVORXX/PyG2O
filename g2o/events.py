@@ -32,7 +32,7 @@ def callEvent(evtName : str, **kwargs : dict):
         for event in eventList[evtName]:
             event['function'](**kwargs)
         
-def addEvent(name):
+def addEvent(name : str):
     """
     This function will register a new event with specified name.
     Events can be used to notify function(s) when something will happen, like player joins the server, etc.
