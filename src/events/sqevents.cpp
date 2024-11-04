@@ -36,4 +36,13 @@ void registerSquirrelEvents()
     addEventHandler("onTime", sq_onTime, 0);
     addEventHandler("onBan", sq_onBan, 0);
     addEventHandler("onUnban", sq_onUnban, 0);
+    
+    addEventHandler("onPlayerChangeColor", sq_onPlayerChangeColor, 0);
+    addEventHandler("onPlayerChangeFocus", sq_onPlayerChangeFocus, 0);
+    addEventHandler("onPlayerChangeHealth", sq_onPlayerChangeHealth, 0);
+    addEventHandler("onPlayerChangeMana", sq_onPlayerChangeMana, 0);
+    addEventHandler("onPlayerChangeMaxHealth", sq_onPlayerChangeMaxHealth, 0);
+    addEventHandler("onPlayerChangeMaxMana", sq_onPlayerChangeMaxMana, 0);
+    addEventHandler("onPlayerChangeWeaponMode", sq_onPlayerChangeWeaponMode, 0);
+    addEventHandler("onPlayerChangeWorld", sq_onPlayerChangeWorld, 0);
 }
