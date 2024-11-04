@@ -18,15 +18,11 @@ py::dict sqParseTable(Sqrat::Table tab)
         
         if (key._type != OT_STRING)
             continue;
-            
-        py::str pkey = "{0}_";
         
         switch(value._type)
         {
             case OT_STRING:
-                // TODO: for some reason, key names 'name' and 'reason' crashing the server (maybe some more)
-                // Adding _ to key names is fixing this, but need to find a better solution
-                result[pkey.format(sq_objtostring(&key))] = sq_objtostring(&value);
+                result[sq_objtostring(&key)] = sq_objtostring(&value);
                 break;
             case OT_INTEGER:
                 result[sq_objtostring(&key)] = sq_objtointeger(&value);

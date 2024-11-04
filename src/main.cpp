@@ -2,7 +2,7 @@
 #include <pybind11/embed.h>
 #include <iostream>
 #include <pybind11/embed.h>
-#include "sqevents.h"
+#include "events/sqevents.h"
 
 namespace py = pybind11;
 py::scoped_interpreter guard{};
