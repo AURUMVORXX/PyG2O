@@ -45,4 +45,29 @@ void registerSquirrelEvents()
     addEventHandler("onPlayerChangeMaxMana", sq_onPlayerChangeMaxMana, 0);
     addEventHandler("onPlayerChangeWeaponMode", sq_onPlayerChangeWeaponMode, 0);
     addEventHandler("onPlayerChangeWorld", sq_onPlayerChangeWorld, 0);
+    
+    addEventHandler("onPlayerCommand", sq_onPlayerCommand, 0);
+    addEventHandler("onPlayerDead", sq_onPlayerDead, 0);
+    addEventHandler("onPlayerDisconnect", sq_onPlayerDisconnect, 0);
+    addEventHandler("onPlayerEnterWorld", sq_onPlayerEnterWorld, 0);
+    addEventHandler("onPlayerJoin", sq_onPlayerJoin, 0);
+    addEventHandler("onPlayerMessage", sq_onPlayerMessage, 0);
+    addEventHandler("onPlayerMobInteract", sq_onPlayerMobInteract, 0);
+    addEventHandler("onPlayerRespawn", sq_onPlayerRespawn, 0);
+    addEventHandler("onPlayerShoot", sq_onPlayerShoot, 0);
+    addEventHandler("onPlayerSpellCast", sq_onPlayerSpellCast, 0);
+    addEventHandler("onPlayerSpellSetup", sq_onPlayerSpellSetup, 0);
+    addEventHandler("onPlayerTeleport", sq_onPlayerTeleport, 0);
+    addEventHandler("onPlayerToggleFaceAni", sq_onPlayerToggleFaceAni, 0);
+    
+    addEventHandler("onPlayerEquipAmulet", sq_onPlayerEquipAmulet, 0);
+    addEventHandler("onPlayerEquipArmor", sq_onPlayerEquipArmor, 0);
+    addEventHandler("onPlayerEquipBelt", sq_onPlayerEquipBelt, 0);
+    addEventHandler("onPlayerEquipHandItem", sq_onPlayerEquipHandItem, 0);
+    addEventHandler("onPlayerEquipHelmet", sq_onPlayerEquipHelmet, 0);
+    addEventHandler("onPlayerEquipMeleeWeapon", sq_onPlayerEquipMeleeWeapon, 0);
+    addEventHandler("onPlayerEquipRangedWeapon", sq_onPlayerEquipRangedWeapon, 0);
+    addEventHandler("onPlayerEquipRing", sq_onPlayerEquipRing, 0);
+    addEventHandler("onPlayerEquipShield", sq_onPlayerEquipShield, 0);
+    addEventHandler("onPlayerEquipSpell", sq_onPlayerEquipSpell, 0);
 }

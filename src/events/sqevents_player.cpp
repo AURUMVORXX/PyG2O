@@ -108,14 +108,343 @@ SQInteger sq_onPlayerChangeWeaponMode(HSQUIRRELVM vm)
 
 SQInteger sq_onPlayerChangeWorld(HSQUIRRELVM vm)
 {
-    SQInteger playerid, world, waypoint;
+    SQInteger playerid;
+    const SQChar* world;
+    const SQChar* waypoint;
     
     sq_getinteger(vm, 2, &playerid);
-    sq_getinteger(vm, 3, &world);
-    sq_getinteger(vm, 4, &waypoint);
+    sq_getstring(vm, 3, &world);
+    sq_getstring(vm, 4, &waypoint);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "world"_a=world, "waypoint"_a=waypoint);
     g2o.attr("callEvent")("onPlayerChangeWorld", **kwargs);
+    
+    return 0;
+}
+
+// -------------------------------------------------------
+
+SQInteger sq_onPlayerCommand(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* command;
+    const SQChar* params;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &command);
+    sq_getstring(vm, 4, &params);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "command"_a=command, "params"_a=params);
+    g2o.attr("callEvent")("onPlayerCommand", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerDead(HSQUIRRELVM vm)
+{
+    SQInteger playerid, killerid;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getinteger(vm, 3, &killerid);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "killerid"_a=killerid);
+    g2o.attr("callEvent")("onPlayerDead", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerDisconnect(HSQUIRRELVM vm)
+{
+    SQInteger playerid, reason;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getinteger(vm, 3, &reason);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "reason"_a=reason);
+    g2o.attr("callEvent")("onPlayerDisconnect", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerEnterWorld(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* world;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &world);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "world"_a=world);
+    g2o.attr("callEvent")("onPlayerEnterWorld", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerJoin(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    
+    sq_getinteger(vm, 2, &playerid);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid);
+    g2o.attr("callEvent")("onPlayerJoin", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerMessage(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* message;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &message);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "message"_a=message);
+    g2o.attr("callEvent")("onPlayerMessage", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerMobInteract(HSQUIRRELVM vm)
+{
+    SQInteger playerid, from, to;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getinteger(vm, 3, &from);
+    sq_getinteger(vm, 3, &to);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "from"_a=from, "to"_a = to);
+    g2o.attr("callEvent")("onPlayerMobInteract", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerRespawn(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    
+    sq_getinteger(vm, 2, &playerid);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid);
+    g2o.attr("callEvent")("onPlayerRespawn", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerShoot(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* munition;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &munition);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "munition"_a=munition);
+    g2o.attr("callEvent")("onPlayerShoot", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerSpellCast(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerSpellCast", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerSpellSetup(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerSpellSetup", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerTeleport(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* vobName;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &vobName);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "vobName"_a=vobName);
+    g2o.attr("callEvent")("onPlayerTeleport", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerToggleFaceAni(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* aniName;
+    SQBool toggle;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &aniName);
+    sq_getbool(vm, 4, &toggle);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "vobName"_a=aniName, "toggle"_a = toggle);
+    g2o.attr("callEvent")("onPlayerToggleFaceAni", **kwargs);
+    
+    return 0;
+}
+
+// -------------------------------------------------------
+
+SQInteger sq_onPlayerEquipAmulet(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerEquipAmulet", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerEquipArmor(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerEquipArmor", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerEquipBelt(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerEquipBelt", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerEquipHandItem(HSQUIRRELVM vm)
+{
+    SQInteger playerid, hand;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getinteger(vm, 3, &hand);
+    sq_getstring(vm, 4, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "hand"_a = hand, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerEquipHandItem", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerEquipHelmet(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerEquipHelmet", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerEquipMeleeWeapon(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerEquipMeleeWeapon", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerEquipRangedWeapon(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerEquipRangedWeapon", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerEquipRing(HSQUIRRELVM vm)
+{
+    SQInteger playerid, hand;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getinteger(vm, 3, &hand);
+    sq_getstring(vm, 4, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "hand"_a = hand, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerEquipRing", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerEquipShield(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getstring(vm, 3, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerEquipShield", **kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerEquipSpell(HSQUIRRELVM vm)
+{
+    SQInteger playerid, slotId;
+    const SQChar* instance;
+    
+    sq_getinteger(vm, 2, &playerid);
+    sq_getinteger(vm, 3, &slotId);
+    sq_getstring(vm, 4, &instance);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "slotId"_a = slotId, "instance"_a=instance);
+    g2o.attr("callEvent")("onPlayerEquipSpell", **kwargs);
     
     return 0;
 }
