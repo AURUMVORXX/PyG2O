@@ -5,6 +5,8 @@
 
 This event is triggered when new ban is being added.
 
+Original: [onBan](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-events/general/onBan/)
+
 ## Parameters
 * `dict` **kwargs**:
     * `str` **mac**: MAC address of the banned player.

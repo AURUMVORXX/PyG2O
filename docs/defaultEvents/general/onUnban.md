@@ -5,6 +5,8 @@
 
 This event is triggered when ban with specified info is being removed.
 
+Original: [onExit](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-events/general/onUnban/)
+
 ## Parameters
 * `dict` **kwargs**:
     * `str` **mac**: MAC address of the banned player.
