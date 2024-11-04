@@ -45,6 +45,8 @@ SQInteger sq_onPlayerSpellSetup(HSQUIRRELVM);
 SQInteger sq_onPlayerTeleport(HSQUIRRELVM);
 SQInteger sq_onPlayerToggleFaceAni(HSQUIRRELVM);
 
+SQInteger sq_onPacket(HSQUIRRELVM);
+
 void registerSquirrelEvents();
 
 #endif

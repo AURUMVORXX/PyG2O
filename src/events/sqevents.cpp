@@ -84,4 +84,6 @@ void registerSquirrelEvents()
     addEventHandler("onPlayerEquipRing", sq_onPlayerEquipRing, 0);
     addEventHandler("onPlayerEquipShield", sq_onPlayerEquipShield, 0);
     addEventHandler("onPlayerEquipSpell", sq_onPlayerEquipSpell, 0);
+    
+    addEventHandler("onPacket", sq_onPacket, 0);
 }

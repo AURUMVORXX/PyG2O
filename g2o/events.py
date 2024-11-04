@@ -161,3 +161,5 @@ addEvent('onPlayerEquipRangedWeapon')
 addEvent('onPlayerEquipRing')
 addEvent('onPlayerEquipShield')
 addEvent('onPlayerEquipSpell')
+
+addEvent('onPacket')

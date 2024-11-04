@@ -66,6 +66,10 @@ file(GLOB_RECURSE SOURCE
   
   "src/NoNut/core/*.h"
   "src/NoNut/core/*.cpp"
+  "src/classes/sq/*.h"
+  "src/classes/sq/*.cpp"
+  "src/classes/py/*.h"
+  "src/classes/py/*.cpp"
 	"src/*.h"
 	"src/*.cpp"
   "src/events/*.h"
