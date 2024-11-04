@@ -1,6 +1,11 @@
 #ifndef _SQEVENTS_H_
 #define _SQEVENTS_H
 
+namespace py = pybind11;
+using namespace pybind11::literals;
+
+void callEvent(const char*, py::dict);
+
 SQInteger sq_onInit(HSQUIRRELVM);
 SQInteger sq_onExit(HSQUIRRELVM);
 SQInteger sq_onTick(HSQUIRRELVM);

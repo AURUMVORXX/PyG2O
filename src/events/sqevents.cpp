@@ -7,6 +7,7 @@ namespace py = pybind11;
 using namespace pybind11::literals;
 
 extern py::module_ g2o;
+extern py::module_ pysys;
 
 void addEventHandler(const char* eventName, SQFUNCTION closure, unsigned int priority = 9999)
 {
@@ -26,6 +27,19 @@ void addEventHandler(const char* eventName, SQFUNCTION closure, unsigned int pri
     sq_addEventHandler(eventName, func, priority);
 
     sq_pop(vm, 1);
+}
+
+void callEvent(const char* eventName, py::dict kwargs)
+{
+    try
+	{
+        g2o.attr("callEvent")(eventName, **kwargs);
+
+	}
+	catch (py::error_already_set &e)
+	{
+        pysys.attr("stderr").attr("write")(e.what());
+	}
 }
 
 void registerSquirrelEvents()

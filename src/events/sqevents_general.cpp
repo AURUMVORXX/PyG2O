@@ -36,7 +36,7 @@ SQInteger sq_onTime(HSQUIRRELVM vm)
     nonut::sqGetValue(vm, 4, &min);
     
     py::dict kwargs = py::dict("day"_a=day, "hour"_a=hour, "min"_a=min);
-    g2o.attr("callEvent")("onTime", **kwargs);
+    callEvent("onTime", kwargs);
     
     return 0;
 }
@@ -48,7 +48,7 @@ SQInteger sq_onBan(HSQUIRRELVM vm)
     Sqrat::Table banData = Sqrat::Table(obj, vm);
     
     py::dict kwargs = sqParseTable(banData);
-    g2o.attr("callEvent")("onBan", **kwargs);
+    callEvent("onBan", kwargs);
     
     return 0;
 }
@@ -60,7 +60,7 @@ SQInteger sq_onUnban(HSQUIRRELVM vm)
     Sqrat::Table banData = Sqrat::Table(obj, vm);
     
     py::dict kwargs = sqParseTable(banData);
-    g2o.attr("callEvent")("onUnban", **kwargs);
+    callEvent("onUnban", kwargs);
     
     return 0;
 }
