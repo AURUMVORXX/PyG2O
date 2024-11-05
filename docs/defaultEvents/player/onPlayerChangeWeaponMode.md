@@ -6,8 +6,8 @@ Original: [onPlayerChangeWeaponMode](https://gothicmultiplayerteam.gitlab.io/doc
 ## Parameters
 * `dict` **kwargs**:
     * `int` **playerid**: the id of the player which changes the weapon mode.
-    * `int` **oldWeaponMode**: the old weapon mode which was used by the player. For more information see **TBD**.
-    * `int` **newWeaponMode**:  the new weapon mode in which player is currently using. For more information see **TBD**.
+    * `int` **oldWeaponMode**: the old weapon mode which was used by the player. For more information see [Weapon mode](../../constants/weapon-mode.md).
+    * `int` **newWeaponMode**:  the new weapon mode in which player is currently using. For more information see [Weapon mode](../../constants/weapon-mode.md).
     
 ## Usage
 ```python

@@ -6,7 +6,7 @@ Original: [onPlayerDisconnect](https://gothicmultiplayerteam.gitlab.io/docs/0.3.
 ## Parameters
 * `dict` **kwargs**:
     * `int` **playerid**: he id of the player who disconnected from the server.
-    * `int` **reason**: the reason why player got disconnected. For more information see **TBD**.
+    * `int` **reason**: the reason why player got disconnected. For more information see [Network](../../constants/network.md).
     
 ## Usage
 ```python

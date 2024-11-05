@@ -6,7 +6,7 @@ Original: [onPlayerEquipHandItem](https://gothicmultiplayerteam.gitlab.io/docs/0
 ## Parameters
 * `dict` **kwargs**:
     * `int` **playerid**: the id of the player who gets an item to his hand.
-    * `int` **hand**: the id of the hand in which player holds item. For more information see **TBD**.
+    * `int` **hand**: the id of the hand in which player holds item. For more information see [Hand](../../constants/hand.md).
     * `str` **str | null**: instance: the item instance from Daedalus scripts.
     
 ## Usage
