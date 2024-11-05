@@ -25,6 +25,8 @@ nav:
       - onTime: defaultEvents/general/onTime.md
       - onBan: defaultEvents/general/onBan.md
       - onUnban: defaultEvents/general/onUnban.md
+    - Network:
+      - onPacket: defaultEvents/network/onPacket.md
     - Player:
       - onPlayerChangeColor: defaultEvents/player/onPlayerChangeColor.md
       - onPlayerChangeFocus: defaultEvents/player/onPlayerChangeFocus.md
@@ -57,6 +59,9 @@ nav:
       - onPlayerSpellSetup: defaultEvents/player/onPlayerSpellSetup.md
       - onPlayerTeleport: defaultEvents/player/onPlayerTeleport.md
       - onPlayerToggleFaceAni: defaultEvents/player/onPlayerToggleFaceAni.md
+  - Classes:
+    - Network:
+      - Packet: classes/network/Packet.md
   - Functions:
     - Events: 
       - event: events/event.md
