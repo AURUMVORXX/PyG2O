@@ -1,5 +1,5 @@
-#ifndef NONUT_G2O_SERVER_CLASS_PACKET
-#define NONUT_G2O_SERVER_CLASS_PACKET
+#ifndef _PACKET_H_
+#define _PACKET_H_
 #include <string>
 
 #include <NoNut/core/Class.h>
@@ -13,7 +13,6 @@ namespace nonut
 		Packet();
 		explicit Packet(SQObject object);
 
-		// Methods
 		Function<void> reset;
 		Function<void, Int, Int> send;
 		Function<void, Int> sendToAll;
@@ -36,10 +35,9 @@ namespace nonut
 		Function<Float> readFloat;
 		Function<String> readString;
 		
-		// Properties
 		Property<Int> bitsUsed;
 		Property<Int> bytesUsed;
 	};
 }
-#endif // NONUT_G2O_SERVER_CLASS_PACKET
+#endif
 

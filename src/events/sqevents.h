@@ -22,6 +22,7 @@ SQInteger sq_onPlayerChangeMaxMana(HSQUIRRELVM);
 SQInteger sq_onPlayerChangeWeaponMode(HSQUIRRELVM);
 SQInteger sq_onPlayerChangeWorld(HSQUIRRELVM);
 SQInteger sq_onPlayerCommand(HSQUIRRELVM);
+SQInteger sq_onPlayerDamage(HSQUIRRELVM);
 SQInteger sq_onPlayerDead(HSQUIRRELVM);
 SQInteger sq_onPlayerDisconnect(HSQUIRRELVM);
 SQInteger sq_onPlayerEnterWorld(HSQUIRRELVM);

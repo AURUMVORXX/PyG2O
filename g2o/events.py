@@ -138,6 +138,7 @@ addEvent('onPlayerChangeWeaponMode')
 addEvent('onPlayerChangeWorld')
 
 addEvent('onPlayerCommand')
+addEvent('onPlayerDamage')
 addEvent('onPlayerDead')
 addEvent('onPlayerDisconnect')
 addEvent('onPlayerEnterWorld')

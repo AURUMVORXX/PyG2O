@@ -1,5 +1,5 @@
 #ifndef _PYPACKET_H_
-#define _PYPACKET_
+#define _PYPACKET_H_
 
 #include <classes/sq/Packet.h>
 

@@ -1,6 +1,7 @@
 #include <sqapi.h>
 #include <pybind11/embed.h>
 #include "NoNut/core/Utils.h"
+#include <classes/py/DamageDescription.h>
 #include "sqevents.h"
 
 namespace py = pybind11;
@@ -137,6 +138,21 @@ SQInteger sq_onPlayerCommand(HSQUIRRELVM vm)
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "command"_a=command, "params"_a=params);
     callEvent("onPlayerCommand", kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerDamage(HSQUIRRELVM vm)
+{
+    SQInteger playerid, killerid;
+    HSQOBJECT sqobj;
+    
+    nonut::sqGetValue(vm, 2, &playerid);
+    nonut::sqGetValue(vm, 3, &killerid);
+    nonut::sqGetValue(vm, 4, &sqobj);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "killerid"_a=killerid, "description"_a=PyDamageDescription(sqobj));
+    callEvent("onPlayerDamage", kwargs);
     
     return 0;
 }

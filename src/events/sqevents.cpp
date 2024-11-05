@@ -61,6 +61,7 @@ void registerSquirrelEvents()
     addEventHandler("onPlayerChangeWorld", sq_onPlayerChangeWorld, 0);
     
     addEventHandler("onPlayerCommand", sq_onPlayerCommand, 0);
+    addEventHandler("onPlayerDamage", sq_onPlayerDamage, 0);
     addEventHandler("onPlayerDead", sq_onPlayerDead, 0);
     addEventHandler("onPlayerDisconnect", sq_onPlayerDisconnect, 0);
     addEventHandler("onPlayerEnterWorld", sq_onPlayerEnterWorld, 0);
