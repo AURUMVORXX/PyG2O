@@ -17,6 +17,23 @@ repo_url: https://github.com/AURUMVORXX/PyG2O.git
 nav:
   - How to use: howtouse.md
   - QnA: qna.md
+  - Classes:
+    - Network:
+      - Packet: classes/network/Packet.md
+  - Constants:
+    - AntiCheat: constants/anticheat.md
+    - Context: constants/context.md
+    - Damage: constants/damage.md
+    - General: constants/general.md
+    - Hand: constants/hand.md
+    - Item: constants/item.md
+    - Network: constants/network.md
+    - NPC: constants/npc.md
+    - Reliability: constants/reliability.md
+    - Skill weapon: constants/skill-weapon.md
+    - Talent: constants/talent.md
+    - Weapon mode: constants/weapon-mode.md
+    - Weather: constants/weather.md
   - Events:
     - General:
       - onInit: defaultEvents/general/onInit.md
@@ -59,9 +76,6 @@ nav:
       - onPlayerSpellSetup: defaultEvents/player/onPlayerSpellSetup.md
       - onPlayerTeleport: defaultEvents/player/onPlayerTeleport.md
       - onPlayerToggleFaceAni: defaultEvents/player/onPlayerToggleFaceAni.md
-  - Classes:
-    - Network:
-      - Packet: classes/network/Packet.md
   - Functions:
     - Events: 
       - event: events/event.md

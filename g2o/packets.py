@@ -25,7 +25,7 @@ class Packet(sqg2o.Packet):
         This method will send the packet data to the specified player.
         **Parameters:**
         * `int` **playerid**: the id of the player to whom you want to send the packet.
-        * `int` **reliability**: the reliability type, for more information see **TBD**.
+        * `int` **reliability**: the reliability type, for more information see [Reliability](../../constants/reliability.md).
         """
         return super().send(playerid, reliability)
     
@@ -33,7 +33,7 @@ class Packet(sqg2o.Packet):
         """
         This method will send the packet data to the specified player.
         **Parameters:**
-        * `int` **reliability**: the reliability type, for more information see **TBD**.
+        * `int` **reliability**: the reliability type, for more information see [Reliability](../../constants/reliability.md).
         """
         return super().send(playerid, reliability)
     

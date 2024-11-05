@@ -6,7 +6,7 @@ Original: [onPlayerEquipRing](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0
 ## Parameters
 * `dict` **kwargs**:
     * `int` **playerid**: the id of the player who equips a ring.
-    * `int` **hand**: the hand id that the player is putting the ring on. For more information see **TBD**.
+    * `int` **hand**: the hand id that the player is putting the ring on. For more information see [Hand](../../constants/hand.md).
     * `str` **str | null**: instance: the item instance from Daedalus scripts.
     
 ## Usage
