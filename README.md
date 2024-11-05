@@ -8,4 +8,7 @@ Python support for server-side scripts in [Gothic 2 Online](https://gothic-onlin
 ## Credits
 
 #### Marcin - [NoNut](https://gitlab.com/g2o/modules/dependencies/nonut.git)
-*Used as part of this module*
+*Used as part of PyG2O module*
+
+#### Patrix9999, Martinus-1453 - [Squirrel Module Template](https://gitlab.com/GothicMultiplayerTeam/modules/squirrel-template)
+*PyG2O is based on this template*
