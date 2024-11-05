@@ -1,10 +1,12 @@
 #include <pybind11/embed.h>
 #include "classes/py/Packet.h"
+#include "classes/py/DamageDescription.h"
 #include <NoNut/core/Constant.h>
 
 namespace py = pybind11;
 
 PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
+    
     py::class_<PyPacket>(m, "Packet")
         .def(py::init<>())
         .def("reset",           &PyPacket::reset)
@@ -30,6 +32,21 @@ PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
         .def("readString",      &PyPacket::readString)
         .def("__del__",         &PyPacket::del)
         
-        .def_property_readonly("bitsUsed", &PyPacket::getBitsUsed)
-        .def_property_readonly("bytesUsed", &PyPacket::getBytesUsed);
+        .def_property_readonly("bitsUsed",          &PyPacket::getBitsUsed)
+        .def_property_readonly("bytesUsed",         &PyPacket::getBytesUsed);
+        
+// -------------------------------------------------------------------------
+        
+    py::class_<PyDamageDescription>(m, "DamageDescription")
+        .def(py::init<>())
+        .def("__del__",                             &PyDamageDescription::del)
+        
+        .def_property_readonly("item_instance",     &PyDamageDescription::getItemInstance)
+        
+        .def_property("flags",                      &PyDamageDescription::getFlags,         &PyDamageDescription::setFlags, py::return_value_policy::reference_internal)
+        .def_property("damage",                     &PyDamageDescription::getDamage,        &PyDamageDescription::setDamage, py::return_value_policy::reference_internal)
+        .def_property("distance",                   &PyDamageDescription::getDistance,      &PyDamageDescription::setDistance, py::return_value_policy::reference_internal)
+        .def_property("spell_id",                   &PyDamageDescription::getSpellId,       &PyDamageDescription::setSpellId, py::return_value_policy::reference_internal)
+        .def_property("spell_level",                &PyDamageDescription::getSpellLevel,    &PyDamageDescription::setSpellLevel, py::return_value_policy::reference_internal)
+        .def_property("node",                       &PyDamageDescription::getNode,          &PyDamageDescription::setNode, py::return_value_policy::reference_internal);
 }
