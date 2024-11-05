@@ -8,4 +8,4 @@ Python support for server-side scripts in [Gothic 2 Online](https://gothic-onlin
 ## Credits
 
 #### Marcin - [NoNut](https://gitlab.com/g2o/modules/dependencies/nonut.git)
-*Used in ``src/NoNut/core`` and also huge clarification about how Squirrel works*
+*Used as part of this module*
