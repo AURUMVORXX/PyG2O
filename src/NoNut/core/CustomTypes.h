@@ -5,7 +5,7 @@
 
 #include "Utils.h"
 
-namespace nonut::g2o
+namespace nonut
 {
 	struct GameTime : CustomType
 	{

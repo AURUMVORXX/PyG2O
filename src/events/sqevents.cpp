@@ -64,6 +64,7 @@ void registerSquirrelEvents()
     addEventHandler("onPlayerDamage", sq_onPlayerDamage, 0);
     addEventHandler("onPlayerDead", sq_onPlayerDead, 0);
     addEventHandler("onPlayerDisconnect", sq_onPlayerDisconnect, 0);
+    addEventHandler("onPlayerDropItem", sq_onPlayerDropItem, 0);
     addEventHandler("onPlayerEnterWorld", sq_onPlayerEnterWorld, 0);
     addEventHandler("onPlayerJoin", sq_onPlayerJoin, 0);
     addEventHandler("onPlayerMessage", sq_onPlayerMessage, 0);
@@ -72,6 +73,7 @@ void registerSquirrelEvents()
     addEventHandler("onPlayerShoot", sq_onPlayerShoot, 0);
     addEventHandler("onPlayerSpellCast", sq_onPlayerSpellCast, 0);
     addEventHandler("onPlayerSpellSetup", sq_onPlayerSpellSetup, 0);
+    addEventHandler("onPlayerTakeItem", sq_onPlayerTakeItem, 0);
     addEventHandler("onPlayerTeleport", sq_onPlayerTeleport, 0);
     addEventHandler("onPlayerToggleFaceAni", sq_onPlayerToggleFaceAni, 0);
     

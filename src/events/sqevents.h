@@ -25,6 +25,7 @@ SQInteger sq_onPlayerCommand(HSQUIRRELVM);
 SQInteger sq_onPlayerDamage(HSQUIRRELVM);
 SQInteger sq_onPlayerDead(HSQUIRRELVM);
 SQInteger sq_onPlayerDisconnect(HSQUIRRELVM);
+SQInteger sq_onPlayerDropItem(HSQUIRRELVM);
 SQInteger sq_onPlayerEnterWorld(HSQUIRRELVM);
 SQInteger sq_onPlayerEquipAmulet(HSQUIRRELVM);
 SQInteger sq_onPlayerEquipArmor(HSQUIRRELVM);
@@ -43,6 +44,7 @@ SQInteger sq_onPlayerRespawn(HSQUIRRELVM);
 SQInteger sq_onPlayerShoot(HSQUIRRELVM);
 SQInteger sq_onPlayerSpellCast(HSQUIRRELVM);
 SQInteger sq_onPlayerSpellSetup(HSQUIRRELVM);
+SQInteger sq_onPlayerTakeItem(HSQUIRRELVM);
 SQInteger sq_onPlayerTeleport(HSQUIRRELVM);
 SQInteger sq_onPlayerToggleFaceAni(HSQUIRRELVM);
 

@@ -3,7 +3,7 @@
 #include "Array.h"
 #include "Property.h"
 
-namespace nonut::g2o
+namespace nonut
 {
 #define GET_SLOT(slot, type) slot = arrayWrapper.get<type>(#slot)
 
