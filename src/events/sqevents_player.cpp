@@ -2,6 +2,7 @@
 #include <pybind11/embed.h>
 #include "NoNut/core/Utils.h"
 #include <classes/py/DamageDescription.h>
+#include <classes/py/ItemGround.h>
 #include "sqevents.h"
 
 namespace py = pybind11;
@@ -183,6 +184,20 @@ SQInteger sq_onPlayerDisconnect(HSQUIRRELVM vm)
     return 0;
 }
 
+SQInteger sq_onPlayerDropItem(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    HSQOBJECT sqobj;
+    
+    nonut::sqGetValue(vm, 2, &playerid);
+    nonut::sqGetValue(vm, 3, &sqobj);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "itemGround"_a=PyItemGround(sqobj));
+    callEvent("onPlayerDropItem", kwargs);
+    
+    return 0;
+}
+
 SQInteger sq_onPlayerEnterWorld(HSQUIRRELVM vm)
 {
     SQInteger playerid;
@@ -287,6 +302,20 @@ SQInteger sq_onPlayerSpellSetup(HSQUIRRELVM vm)
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
     callEvent("onPlayerSpellSetup", kwargs);
+    
+    return 0;
+}
+
+SQInteger sq_onPlayerTakeItem(HSQUIRRELVM vm)
+{
+    SQInteger playerid;
+    HSQOBJECT sqobj;
+    
+    nonut::sqGetValue(vm, 2, &playerid);
+    nonut::sqGetValue(vm, 3, &sqobj);
+    
+    py::dict kwargs = py::dict("playerid"_a=playerid, "itemGround"_a=PyItemGround(sqobj));
+    callEvent("onPlayerTakeItem", kwargs);
     
     return 0;
 }

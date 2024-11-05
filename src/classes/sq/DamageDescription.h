@@ -13,7 +13,6 @@ namespace nonut
 		DamageDescription();
 		explicit DamageDescription(SQObject object);
 
-		// Properties
 		Property<Int>       flags;
 		Property<Int>       damage;
 		Property<String>    item_instance;
