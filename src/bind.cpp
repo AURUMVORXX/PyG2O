@@ -1,5 +1,6 @@
 #include <pybind11/embed.h>
 #include "classes/py/Packet.h"
+#include <NoNut/core/Constant.h>
 
 namespace py = pybind11;
 

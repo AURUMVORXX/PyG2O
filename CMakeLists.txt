@@ -70,6 +70,8 @@ file(GLOB_RECURSE SOURCE
   "src/classes/sq/*.cpp"
   "src/classes/py/*.h"
   "src/classes/py/*.cpp"
+  "src/constants/*.h"
+  "src/constants/*.cpp"
 	"src/*.h"
 	"src/*.cpp"
   "src/events/*.h"

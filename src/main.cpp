@@ -1,6 +1,7 @@
 #include <sqapi.h>
 #include <pybind11/embed.h>
 #include "events/sqevents.h"
+#include "constants/sqconstants.h"
 
 namespace py = pybind11;
 py::scoped_interpreter guard{};
@@ -12,8 +13,14 @@ py::module_ scripts;
 
 extern "C" SQRESULT SQRAT_API sqmodule_load(HSQUIRRELVM vm, HSQAPI api)
 {
+	SqModule::Initialize(vm, api);
+	Sqrat::DefaultVM::Set(vm);
+	
 	try
 	{
+		registerSquirrelConstants();
+		registerSquirrelEvents();
+		
 		g2o 		= py::module_::import("g2o");
 		scripts 	= py::module_::import("scripts");
 
@@ -22,11 +29,6 @@ extern "C" SQRESULT SQRAT_API sqmodule_load(HSQUIRRELVM vm, HSQAPI api)
 	{
 		pysys.attr("stderr").attr("write")(e.what());
 	}
-	
-	SqModule::Initialize(vm, api);
-	Sqrat::DefaultVM::Set(vm);
-	
-	registerSquirrelEvents();
 
 	return SQ_OK;
 }
