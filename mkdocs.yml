@@ -15,7 +15,7 @@ plugins:
 repo_url: https://github.com/AURUMVORXX/PyG2O.git
   
 nav:
-  - How to use: howtouse.md
+  - How to use: index.md
   - QnA: qna.md
   - Classes:
     - Network:
