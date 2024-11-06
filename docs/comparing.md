@@ -26,11 +26,11 @@ def evtColor(**kwargs):
 def testEvt(**kwargs):
     print(kwargs)
     
-g2o.callEvent('MyTestEvent', name = 'aurumvorax', 'id' = 15)
+g2o.callEvent('MyTestEvent', name = 'aurumvorax', id = 15)
 # OR
-g2o.callEvent('MyTestEvent', {name: 'aurumvorax', 'id': 15})
+g2o.callEvent('MyTestEvent', {'name': 'aurumvorax', 'id': 15})
 # OR
-args = {name: 'aurumvorax', 'id': 15}
+args = {'name': 'aurumvorax', 'id': 15}
 g2o.callEvent('MyTestEvent', args)
 ```
 ---
