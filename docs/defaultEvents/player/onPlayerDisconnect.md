@@ -13,6 +13,6 @@ Original: [onPlayerDisconnect](https://gothicmultiplayerteam.gitlab.io/docs/0.3.
 import g2o
         
 @g2o.event('onPlayerDisconnect')
-def onChangeDC(**kwargs):
+def onDC(**kwargs):
     print(f'Player {kwargs['playerid']} has left from the server')
 ```
