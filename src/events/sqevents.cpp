@@ -89,4 +89,12 @@ void registerSquirrelEvents()
     addEventHandler("onPlayerEquipSpell", sq_onPlayerEquipSpell, 0);
     
     addEventHandler("onPacket", sq_onPacket, 0);
+    
+    addEventHandler("onPlayerUseCheat", sq_onPlayerUseCheat, 0);
+    
+    addEventHandler("onNpcActionFinished", sq_onNpcActionFinished, 0);
+    addEventHandler("onNpcActionSent", sq_onNpcActionSent, 0);
+    addEventHandler("onNpcChangeHostPlayer", sq_onNpcChangeHostPlayer, 0);
+    addEventHandler("onNpcCreated", sq_onNpcCreated, 0);
+    addEventHandler("onNpcDestroyed", sq_onNpcDestroyed, 0);
 }

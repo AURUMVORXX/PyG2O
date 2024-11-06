@@ -50,6 +50,14 @@ SQInteger sq_onPlayerToggleFaceAni(HSQUIRRELVM);
 
 SQInteger sq_onPacket(HSQUIRRELVM);
 
+SQInteger sq_onPlayerUseCheat(HSQUIRRELVM);
+
+SQInteger sq_onNpcActionFinished(HSQUIRRELVM);
+SQInteger sq_onNpcActionSent(HSQUIRRELVM);
+SQInteger sq_onNpcChangeHostPlayer(HSQUIRRELVM);
+SQInteger sq_onNpcCreated(HSQUIRRELVM);
+SQInteger sq_onNpcDestroyed(HSQUIRRELVM);
+
 void registerSquirrelEvents();
 
 #endif
