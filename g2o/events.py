@@ -166,3 +166,11 @@ addEvent('onPlayerEquipShield')
 addEvent('onPlayerEquipSpell')
 
 addEvent('onPacket')
+
+addEvent('onPlayerUseCheat')
+
+addEvent('onNpcActionFinished')
+addEvent('onNpcActionSent')
+addEvent('onNpcChangeHostPlayer')
+addEvent('onNpcCreated')
+addEvent('onNpcDestroyed')
