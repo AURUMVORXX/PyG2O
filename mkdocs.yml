@@ -16,6 +16,7 @@ repo_url: https://github.com/AURUMVORXX/PyG2O.git
   
 nav:
   - How to use: index.md
+  - Comparing with Squirrel: comparing.md
   - QnA: qna.md
   - Classes:
     - Game:
