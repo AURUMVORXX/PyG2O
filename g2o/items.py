@@ -8,13 +8,13 @@ class ItemGround(sqg2o.ItemGround):
     ## `int` id *(read-only)*
     Represents the unique id of the item ground.
 
-    ## `string` instance *(read-only)*
+    ## `str` instance *(read-only)*
     Represents the item instance of the item ground.
     
     ## `int` amount *(read-only)*
     Represents the item amount of item ground.
     
-    ## `string` world *(read-only)*
+    ## `str` world *(read-only)*
     Represents the item ground world (.ZEN file path).
     
     ## `int` virtualWorld

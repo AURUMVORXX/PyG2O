@@ -18,6 +18,8 @@ nav:
   - How to use: index.md
   - QnA: qna.md
   - Classes:
+    - Game:
+      - DamageDescription: classes/game/DamageDescription.md
     - Item:
       - ItemGround: classes/item/ItemGround.md
     - Network:
