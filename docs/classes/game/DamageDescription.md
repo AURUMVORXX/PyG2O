@@ -1,3 +1,3 @@
 # `class` DamageDescription
 ---
-::: g2o.damage.DamageDescription
+::: g2o.classes.damage.DamageDescription

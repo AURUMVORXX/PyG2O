@@ -1,3 +1,3 @@
 # `class` ItemGround
 ---
-::: g2o.items.ItemGround
+::: g2o.classes.items.ItemGround

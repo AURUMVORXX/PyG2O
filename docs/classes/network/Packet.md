@@ -1,3 +1,3 @@
 # `class` Packet
 ---
-::: g2o.packets.Packet
+::: g2o.classes.packets.Packet
