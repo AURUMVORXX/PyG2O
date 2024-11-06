@@ -33,8 +33,11 @@ void callEvent(const char* eventName, py::dict kwargs)
 {
     try
 	{
-        g2o.attr("callEvent")(eventName, **kwargs);
-
+        bool result = g2o.attr("callEvent")(eventName, **kwargs).cast<bool>();
+        if (result)
+        {
+            Sqrat::RootTable().GetFunction("cancelEvent").Execute();
+        }
 	}
 	catch (py::error_already_set &e)
 	{
