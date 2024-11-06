@@ -39,6 +39,8 @@ nav:
     - Weapon mode: constants/weapon-mode.md
     - Weather: constants/weather.md
   - Events:
+    - Anticheat:
+      - onPlayerUseCheat: defaultEvents/anticheat/onPlayerUseCheat.md
     - General:
       - onInit: defaultEvents/general/onInit.md
       - onExit: defaultEvents/general/onExit.md
@@ -48,6 +50,12 @@ nav:
       - onUnban: defaultEvents/general/onUnban.md
     - Network:
       - onPacket: defaultEvents/network/onPacket.md
+    - Npc:
+      - onNpcActionFinished: defaultEvents/npc/onNpcActionFinished.md
+      - onNpcActionSent: defaultEvents/npc/onNpcActionSent.md
+      - onNpcChangeHostPlayer: defaultEvents/npc/onNpcChangeHostPlayer.md
+      - onNpcCreated: defaultEvents/npc/onNpcCreated.md
+      - onNpcDestroyed: defaultEvents/npc/onNpcDestroyed.md
     - Player:
       - onPlayerChangeColor: defaultEvents/player/onPlayerChangeColor.md
       - onPlayerChangeFocus: defaultEvents/player/onPlayerChangeFocus.md
