@@ -5,10 +5,10 @@ class Packet(sqg2o.Packet):
     This class represents data packet that gets send over the network.
     Original: [Packet](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-classes/network/Packet/)
     
-    ## `int` bitsUsed
+    ## `int` bitsUsed *(read-only)*
     Represents the total number of bits used by the script packet data.
 
-    ## `int` bytesUsed
+    ## `int` bytesUsed *(read-only)*
     Represents the total number of bytes used by the script packet data.
     """
     def __init__(self):
