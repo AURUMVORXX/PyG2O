@@ -12,7 +12,6 @@ private:
     nonut::ItemGround *sqobj;
     
 public:
-    PyItemGround()                              { sqobj = new nonut::ItemGround(); };
     PyItemGround(SQObject obj)                  { sqobj = new nonut::ItemGround(obj); }
     
     py::tuple getPosition()                     { return py::make_tuple(sqobj->getPosition().toTuple()); }

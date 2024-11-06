@@ -9,5 +9,6 @@ from g2o.events     import removeEvent
 from g2o.packets    import Packet
 from g2o.damage     import DamageDescription
 from g2o.items      import ItemGround
+from g2o.daedalus   import Daedalus
 
 from sqg2oconst     import *

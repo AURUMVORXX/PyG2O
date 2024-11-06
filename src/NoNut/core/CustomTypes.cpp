@@ -108,4 +108,33 @@ namespace nonut
 		GET_SLOT(y, Float);
 		GET_SLOT(z, Float);
 	}
+	
+	void SqDict::convert(SQObject object)
+	{
+		Sqrat::Table tab = Sqrat::Table(object);
+		Sqrat::Object::iterator tabIterator;
+		int i = 0;
+		
+		while (tab.Next(tabIterator))
+		{
+			HSQOBJECT key   = tabIterator.getKey();
+			HSQOBJECT value = tabIterator.getValue();
+			
+			if (key._type != OT_STRING)
+				continue;
+			
+			if (value._type == OT_STRING)
+				data[sq_objtostring(&key)] = sq_objtostring(&value);
+			else if (value._type == OT_INTEGER)
+				data[sq_objtostring(&key)] = sq_objtointeger(&value);
+			else if (value._type == OT_FLOAT)
+				data[sq_objtostring(&key)] = sq_objtofloat(&value);
+			else if (value._type == OT_TABLE)
+			{
+				SqDict result = SqDict();
+				result.convert(object);
+				data[sq_objtostring(&key)] = result.data;
+			}
+		}
+	}
 }

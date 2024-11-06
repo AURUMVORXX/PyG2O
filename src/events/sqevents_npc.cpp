@@ -1,7 +1,6 @@
 #include <sqapi.h>
 #include <pybind11/embed.h>
 #include "NoNut/core/Utils.h"
-#include "sqcontainers.h"
 #include "sqevents.h"
 
 SQInteger sq_onNpcActionFinished(HSQUIRRELVM vm)

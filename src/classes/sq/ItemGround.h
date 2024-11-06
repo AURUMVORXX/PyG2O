@@ -10,8 +10,7 @@ namespace nonut
 	class ItemGround : public Class
 	{
 	public:
-		ItemGround();
-		explicit ItemGround(SQObject object);
+		ItemGround(SQObject object);
         
         Function<nonut::Position3d> getPosition;
         Function<nonut::Position3d> getRotation;
