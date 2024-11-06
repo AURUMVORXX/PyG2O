@@ -1,4 +1,5 @@
 # `event` onPlayerChangeWorld
+> [!TIP] This event can be cancelled
 This event is triggered when player tries to change his currently played world (ZEN).
 
 Original: [onPlayerChangeWorld](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-events/player/onPlayerChangeWorld/)

@@ -67,6 +67,7 @@ nav:
       - onPlayerChangeWeaponMode: defaultEvents/player/onPlayerChangeWeaponMode.md
       - onPlayerChangeWorld: defaultEvents/player/onPlayerChangeWorld.md
       - onPlayerCommand: defaultEvents/player/onPlayerCommand.md
+      - onPlayerDamage: defaultEvents/player/onPlayerDamage.md
       - onPlayerDead: defaultEvents/player/onPlayerDead.md
       - onPlayerDisconnect: defaultEvents/player/onPlayerDisconnect.md
       - onPlayerDropItem: defaultEvents/player/onPlayerDropItem.md

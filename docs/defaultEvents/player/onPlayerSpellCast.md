@@ -1,4 +1,5 @@
 # `event` onPlayerSpellCast
+> [!TIP] This event can be cancelled
 !!! note
     Right now transformation and summon spells are not supported, despite this event will be triggered for them. Cancelling this event willl prevent this action to be synced to other players.
     

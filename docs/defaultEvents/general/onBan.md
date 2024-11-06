@@ -1,4 +1,5 @@
 # `event` onBan
+> [!TIP] This event can be cancelled
 !!! note
     If serial/mac/ip/name indexes doesn't exist, then the parameters has not been specified when ban was added.
     If timestamp doesn't exist, then ban was permanent.
