@@ -1,7 +1,35 @@
 import sqg2o
 
 class DamageDescription(sqg2o.DamageDescription):
+    """
+    This class represents damage information.
+    Original: [DamageDescription](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-classes/item/DamageDescription//)
     
+    ## `int` flags
+    Represents the damage flags.
+
+    ## `int` damage
+    Represents the total damage taken.
+    
+    ## `str` item_instance *(read-only)*
+    !!! note
+        Can be empty if there is no weapon.
+    Represents the weapon instance used to deal damage.
+    
+    ## `int` distance
+    Represents the total distance, calculated from origin point to target.
+    
+    ## `int` spell_id
+    Represents the spell id.
+    
+    ## `int` spell_level
+    Represents the level of chargeable spells.
+    
+    ## `str` node
+    !!! note
+        Can be empty if there was no projectile.
+    Represents the name of the node hit by a point projectile.
+    """
     def __init__(self):
         return super().__init__()
     
