@@ -1,5 +1,6 @@
 
-eventList = {}
+eventList           = {}
+disabledEventList   = []
 
 def callEvent(evtName : str, **kwargs : dict):
     """
@@ -31,9 +32,13 @@ def callEvent(evtName : str, **kwargs : dict):
     
     isEventCancelled = False
     
-    if evtName in eventList:
+    if evtName in eventList and evtName not in disabledEventList:
         for event in eventList[evtName]:
+            
+            event['function'].eventName = evtName
+            event['function'].cancelled = isEventCancelled
             result = event['function'](**kwargs)
+            
             if result != None:
                 isEventCancelled = not result
                 
@@ -87,8 +92,8 @@ def event(name : str, priority : int = 9999):
     ```
     """
     def inlineEvt(func):
-        if not name in eventList:
-            pass
+        if name not in eventList:
+            return None
         
         eventList[name].append({'function': func, 'priority': priority})
         eventList[name].sort(key = lambda x: x['priority'])
@@ -125,6 +130,16 @@ def removeEventHandler(name : str, func : object):
     for index, item in enumerate(eventList[name]):
         if item['function'] == func:
             del eventList[name][index]
+            
+def toggleEvent(name : str, toggle : bool):
+    if not toggle and name not in disabledEventList:
+        disabledEventList.append(name)
+    elif toggle and name in disabledEventList:
+        disabledEventList.remove(name)
+        
+def removeEvent(name : str):
+    if name in eventList:
+        eventList.pop(name)
 
 ## registering default events
 
