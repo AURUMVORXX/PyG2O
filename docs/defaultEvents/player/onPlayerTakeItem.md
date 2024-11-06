@@ -1,4 +1,5 @@
-# `event` onPlayerTakeItem 
+# `event` onPlayerTakeItem
+> [!TIP] This event can be cancelled
 !!! note
     Even if this event is triggered it doesn't mean, that player will get item to his inventory. It only means, that the player tried to get the item from the ground. Server is the last decide if the item can be taken from the ground. Canceling this event will prevent the item to be taken from the ground.
 

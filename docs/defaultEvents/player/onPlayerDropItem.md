@@ -1,4 +1,5 @@
 # `event` onPlayerDropItem
+> [!TIP] This event can be cancelled
 This event is triggered when player drops an item from his inventory to the ground.
 
 Original: [onPlayerDropItem](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-events/player/onPlayerDropItem/)
