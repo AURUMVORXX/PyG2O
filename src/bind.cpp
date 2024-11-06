@@ -3,6 +3,7 @@
 #include "classes/py/DamageDescription.h"
 #include "classes/py/ItemGround.h"
 #include "classes/py/Daedalus.h"
+#include "classes/py/Sky.h"
 #include <NoNut/core/Constant.h>
 
 namespace py = pybind11;
@@ -68,7 +69,21 @@ PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
 // -------------------------------------------------------------------------
 
     py::class_<PyDaedalus>(m, "Daedalus")
-        .def_static("index", &PyDaedalus::index)
-        .def_static("symbol", &PyDaedalus::symbol)
-        .def_static("instance", &PyDaedalus::instance);
+        .def_static("index",                        [](std::string value){ return PyDaedalus::index(value); })
+        .def_static("symbol",                       [](std::string value){ return PyDaedalus::symbol(value); })
+        .def_static("instance",                     [](std::string value){ return PyDaedalus::instance(value); });
+        
+// -------------------------------------------------------------------------
+
+    py::class_<PySky>(m, "Sky")
+        .def_property_static("weather",             [](py::object){ return PySky::getWeather(); }, [](py::object, int value) { PySky::setWeather(value); })
+        .def_property_static("raining",             [](py::object){ return PySky::getRaining(); }, [](py::object, int value) { PySky::setRaining(value); })
+        .def_property_static("renderLightning",     [](py::object){ return PySky::getRenderLightning(); }, [](py::object, int value) { PySky::setRenderLightning(value); })
+        .def_property_static("windScale",           [](py::object){ return PySky::getWindScale(); }, [](py::object, int value) { PySky::setWindScale(value); })
+        .def_property_static("dontRain",            [](py::object){ return PySky::getDontRain(); }, [](py::object, int value) { PySky::setDontRain(value); })
+        
+        .def_static("setRainStartTime",             [](int hour, int min){ return PySky::setRainStartTime(hour, min); })
+        .def_static("setRainStopTime",              [](int hour, int min){ return PySky::setRainStopTime(hour, min); })
+        .def_static("getRainStartTime",             [](){ return PySky::getRainStartTime(); })
+        .def_static("getRainStopTime",              [](){ return PySky::getRainStopTime(); });
 }
