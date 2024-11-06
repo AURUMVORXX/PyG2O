@@ -18,6 +18,8 @@ nav:
   - How to use: index.md
   - QnA: qna.md
   - Classes:
+    - Item:
+      - ItemGround: classes/item/ItemGround.md
     - Network:
       - Packet: classes/network/Packet.md
   - Constants:
@@ -56,6 +58,7 @@ nav:
       - onPlayerCommand: defaultEvents/player/onPlayerCommand.md
       - onPlayerDead: defaultEvents/player/onPlayerDead.md
       - onPlayerDisconnect: defaultEvents/player/onPlayerDisconnect.md
+      - onPlayerDropItem: defaultEvents/player/onPlayerDropItem.md
       - onPlayerEnterWorld: defaultEvents/player/onPlayerEnterWorld.md
       - onPlayerEquipAmulet: defaultEvents/player/onPlayerEquipAmulet.md
       - onPlayerEquipArmor: defaultEvents/player/onPlayerEquipArmor.md
@@ -74,6 +77,7 @@ nav:
       - onPlayerShoot: defaultEvents/player/onPlayerShoot.md
       - onPlayerSpellCast: defaultEvents/player/onPlayerSpellCast.md
       - onPlayerSpellSetup: defaultEvents/player/onPlayerSpellSetup.md
+      - onPlayerTakeItem: defaultEvents/player/onPlayerTakeItem.md
       - onPlayerTeleport: defaultEvents/player/onPlayerTeleport.md
       - onPlayerToggleFaceAni: defaultEvents/player/onPlayerToggleFaceAni.md
   - Functions:
