@@ -80,7 +80,7 @@ class Packet(sqg2o.Packet):
     def writeUInt32(self, value : int):
         """
         !!! note
-            By default squirrel uses int32 values, which means that this method behaves exactly the same as [writeInt32](Packet.md#g2o.packets.Packet.writeInt32) in scripts.
+            By default squirrel uses int32 values, which means that this method behaves exactly the same as [writeInt32](Packet.md#g2o.classes.packets.Packet.writeInt32) in scripts.
         This method will append unsigned int32 value to the packet. (4 bytes)
         **Parameters:**
         * `int` **value**: the number value in range 0 to 4294967295.
