@@ -2,6 +2,7 @@
 #include "classes/py/Packet.h"
 #include "classes/py/DamageDescription.h"
 #include "classes/py/ItemGround.h"
+#include "classes/py/Daedalus.h"
 #include <NoNut/core/Constant.h>
 
 namespace py = pybind11;
@@ -39,8 +40,6 @@ PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
 // -------------------------------------------------------------------------
         
     py::class_<PyDamageDescription>(m, "DamageDescription")
-        .def(py::init<>())
-        .def("__del__",                             &PyDamageDescription::del)
         
         .def_property_readonly("item_instance",     &PyDamageDescription::getItemInstance)
         
@@ -54,7 +53,6 @@ PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
 // -------------------------------------------------------------------------
 
     py::class_<PyItemGround>(m, "ItemGround")
-        .def(py::init<>())
         .def("__del__",                             &PyItemGround::del)
         
         .def("getPosition",                         &PyItemGround::getPosition)
@@ -66,4 +64,11 @@ PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
         .def_property_readonly("world",             &PyItemGround::getWorld)
         
         .def_property("virtualWorld",               &PyItemGround::getVirtualWorld,         &PyItemGround::setVirtualWorld, py::return_value_policy::reference_internal);
+        
+// -------------------------------------------------------------------------
+
+    py::class_<PyDaedalus>(m, "Daedalus")
+        .def_static("index", &PyDaedalus::index)
+        .def_static("symbol", &PyDaedalus::symbol)
+        .def_static("instance", &PyDaedalus::instance);
 }

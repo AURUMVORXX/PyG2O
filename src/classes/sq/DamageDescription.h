@@ -10,8 +10,7 @@ namespace nonut
 	class DamageDescription : public Class
 	{
 	public:
-		DamageDescription();
-		explicit DamageDescription(SQObject object);
+		DamageDescription(SQObject object);
 
 		Property<Int>       flags;
 		Property<Int>       damage;

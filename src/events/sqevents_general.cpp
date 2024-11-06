@@ -1,7 +1,7 @@
 #include <sqapi.h>
 #include <pybind11/embed.h>
 #include "NoNut/core/Utils.h"
-#include "sqcontainers.h"
+#include "NoNut/core/CustomTypes.h"
 #include "sqevents.h"
 
 namespace py = pybind11;
@@ -45,10 +45,10 @@ SQInteger sq_onBan(HSQUIRRELVM vm)
 {
     HSQOBJECT obj;
     nonut::sqGetValue(vm, 2, &obj);
-    Sqrat::Table banData = Sqrat::Table(obj, vm);
     
-    py::dict kwargs = sqParseTable(banData);
-    callEvent("onBan", kwargs);
+    nonut::SqDict dictData;
+    dictData.convert(obj);
+    callEvent("onBan", dictData.data);
     
     return 0;
 }
@@ -57,10 +57,10 @@ SQInteger sq_onUnban(HSQUIRRELVM vm)
 {
     HSQOBJECT obj;
     nonut::sqGetValue(vm, 2, &obj);
-    Sqrat::Table banData = Sqrat::Table(obj, vm);
     
-    py::dict kwargs = sqParseTable(banData);
-    callEvent("onUnban", kwargs);
+    nonut::SqDict dictData;
+    dictData.convert(obj);
+    callEvent("onUnban", dictData.data);
     
     return 0;
 }

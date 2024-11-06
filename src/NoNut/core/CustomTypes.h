@@ -2,8 +2,10 @@
 #define NONUT_G2O_SHARED_CUSTOM_TYPES_H
 
 #include <string>
-
+#include <pybind11/embed.h>
 #include "Utils.h"
+
+namespace py = pybind11;
 
 namespace nonut
 {
@@ -163,6 +165,12 @@ namespace nonut
 		{
 			return std::make_tuple(name, x, y, z);
 		}
+	};
+	
+	struct SqDict : CustomType
+	{
+		void convert(SQObject object) override;
+		py::dict data{};
 	};
 }
 #endif // NONUT_G2O_SHARED_CUSTOM_TYPES_H

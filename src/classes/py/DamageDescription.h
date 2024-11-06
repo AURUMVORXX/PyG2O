@@ -9,7 +9,6 @@ private:
     nonut::DamageDescription *sqobj;
     
 public:
-    PyDamageDescription()                       { sqobj = new nonut::DamageDescription(); };
     PyDamageDescription(SQObject obj)           { sqobj = new nonut::DamageDescription(obj); }
     
     nonut::Int getFlags()                       { return sqobj->flags; }

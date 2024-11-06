@@ -3,20 +3,6 @@
 
 namespace nonut
 {
-	DamageDescription::DamageDescription() :
-		Class("DamageDescription"),
-		
-		PROPERTY_CTOR(flags),
-		PROPERTY_CTOR(damage),
-		PROPERTY_CTOR(item_instance),
-		PROPERTY_CTOR(distance),
-		PROPERTY_CTOR(spell_id),
-		PROPERTY_CTOR(spell_level),
-		PROPERTY_CTOR(node)
-	{
-		classCtor();
-	}
-
 	DamageDescription::DamageDescription(SQObject object) :
 		Class("DamageDescription", object),
         
