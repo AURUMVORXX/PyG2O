@@ -28,9 +28,16 @@ def callEvent(evtName : str, **kwargs : dict):
     g2o.callEvent('testEvt', name = 'Diego')
     ```
     """
+    
+    isEventCancelled = False
+    
     if evtName in eventList:
         for event in eventList[evtName]:
-            event['function'](**kwargs)
+            result = event['function'](**kwargs)
+            if result != None:
+                isEventCancelled = not result
+                
+    return isEventCancelled
         
 def addEvent(name : str):
     """
