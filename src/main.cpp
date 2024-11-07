@@ -20,7 +20,7 @@ extern "C" SQRESULT SQRAT_API sqmodule_load(HSQUIRRELVM vm, HSQAPI api)
 	{
 		registerSquirrelConstants();
 		registerSquirrelEvents();
-		
+
 		g2o 		= py::module_::import("g2o");
 		scripts 	= py::module_::import("scripts");
 

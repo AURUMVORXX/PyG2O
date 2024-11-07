@@ -24,6 +24,7 @@ namespace nonut
 		virtual ~Class();
 
 		[[nodiscard]] SQObject getInstance() const override;
+		bool isNull() const;
 
 	protected:
 		// Object holding information about class
@@ -37,6 +38,8 @@ namespace nonut
 			Function<void, Args...> ctor(CONSTRUCTOR_NAME, classObjectInstance, classObject);
 			ctor(std::forward<Args>(args)...);
 		}
+		
+		bool bIsNull = false;
 	};
 }
 #endif // NONUT_CORE_CLASS_H

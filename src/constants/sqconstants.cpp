@@ -1,7 +1,6 @@
 #include <sqapi.h>
 #include <pybind11/embed.h>
 #include "events/sqevents.h"
-#include <iostream>
 #include "sqconstants.h"
 
 namespace py = pybind11;

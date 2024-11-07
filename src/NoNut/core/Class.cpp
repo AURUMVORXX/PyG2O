@@ -8,6 +8,7 @@ namespace nonut
 		HSQUIRRELVM vm = Sqrat::DefaultVM::Get();
 		if (classObjectInstance._type == OT_NULL)
 		{
+			bIsNull = true;
 			const auto top = sq_gettop(vm);
 
 			sq_pushroottable(vm); //push root table
@@ -59,5 +60,10 @@ namespace nonut
 	SQObject Class::getInstance() const
 	{
 		return classObjectInstance;
+	}
+	
+	bool Class::isNull() const
+	{
+		return bIsNull;
 	}
 }

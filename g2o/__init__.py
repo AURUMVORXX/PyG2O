@@ -9,6 +9,7 @@ from g2o.events             import removeEvent
 from g2o.classes.packets    import Packet
 from g2o.classes.damage     import DamageDescription
 from g2o.classes.items      import ItemGround
+from g2o.classes.items      import ItemsGround
 from g2o.classes.daedalus   import Daedalus
 from g2o.classes.sky        import Sky
 

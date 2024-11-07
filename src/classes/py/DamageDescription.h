@@ -9,7 +9,7 @@ private:
     nonut::DamageDescription *sqobj;
     
 public:
-    PyDamageDescription(SQObject obj)           { sqobj = new nonut::DamageDescription(obj); }
+    PyDamageDescription(SQObject obj)           { if (obj._type == OT_NULL) throw py::type_error("Presented Squirrel Object doesn't exist (type: null)"); sqobj = new nonut::DamageDescription(obj); }
     
     nonut::Int getFlags()                       { return sqobj->flags; }
     nonut::Int getDamage()                      { return sqobj->damage; }

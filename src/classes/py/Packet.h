@@ -10,7 +10,7 @@ private:
     
 public:
     PyPacket()                                  { sqpacket = new nonut::Packet(); };
-    PyPacket(SQObject obj)                      { sqpacket = new nonut::Packet(obj); }
+    PyPacket(SQObject obj)                      { if (obj._type == OT_NULL) throw py::type_error("Presented Squirrel Object doesn't exist (type: null)"); sqpacket = new nonut::Packet(obj); }
     
     void reset()                                { sqpacket->reset(); }
     void send(nonut::Int id, nonut::Int value)  { sqpacket->send(id, value); }
