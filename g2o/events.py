@@ -132,12 +132,62 @@ def removeEventHandler(name : str, func : object):
             del eventList[name][index]
             
 def toggleEvent(name : str, toggle : bool):
+    '''
+    !!! note
+        By default every event is toggled `on` (enabled).
+        
+    This function will toggle event (enable or disable it globally). By toggling event off, you can completely disable certain event from calling it's handlers.
+    Original: [toggleEvent](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/event/toggleEvent/)
+    
+    ## Declaration
+    ```python
+    def toggleEvent(name : str, toggle : bool)
+    ```
+    
+    ## Parameters
+    * `str` **name**: the name of the event
+    * `bool` **toggle**: `false` if you want to disable the event, otherwise true.
+    
+    ## Usage
+    ```python
+    import g2o
+    
+    @g2o.event('onTime')
+    def onTimeEvt(**kwargs):
+        print('Calling only once')
+        g2o.toggleEvent('onTime', false)
+    ```
+    '''
     if not toggle and name not in disabledEventList:
         disabledEventList.append(name)
     elif toggle and name in disabledEventList:
         disabledEventList.remove(name)
         
 def removeEvent(name : str):
+    '''
+    !!! warning
+        Removing an event also cause all event handlers to unregister.
+    This function will unregister an event with specified name.
+    Original: [removeEvent](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/event/removeEvent/)
+    
+    ## Declaration
+    ```python
+    def removeEvent(name : str)
+    ```
+    
+    ## Parameters
+    * `str` **name**: the name of the event
+    
+    ## Usage
+    ```python
+    import g2o
+    
+    @g2o.event('onTime')
+    def onTimeEvt(**kwargs):
+        print('Calling only once')
+        g2o.removeEvent('onTime')
+    ```
+    '''
     if name in eventList:
         eventList.pop(name)
 
