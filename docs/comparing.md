@@ -42,10 +42,12 @@ def evtTake(**kwargs):
     return False
 ```
 ---
-* `isEventCancelled` replaced with built-in function property `cancelled`, alongside with the `eventName` (if you need it for some reason)
+* `isEventCancelled` replaced with built-in function property `cancelled`, alongside with the `eventName`
 ```python
 @g2o.event('onPlayerDropItem')
 def evtDrop(**kwargs):
     print(evtDrop.cancelled)
     print(evtDrop.eventName)
 ```
+---
+* `eventValue` has been removed (RIP)

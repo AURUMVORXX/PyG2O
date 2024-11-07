@@ -93,11 +93,13 @@ nav:
       - onPlayerTeleport: defaultEvents/player/onPlayerTeleport.md
       - onPlayerToggleFaceAni: defaultEvents/player/onPlayerToggleFaceAni.md
   - Functions:
-    - Events: 
-      - event: events/event.md
-      - removeEventHandler: events/removeEventHandler.md
+    - Events:
       - addEvent: events/addEvent.md
+      - event: events/event.md
       - callEvent: events/callEvent.md
+      - removeEvent: events/removeEvent.md
+      - removeEventHandler: events/removeEventHandler.md
+      - toggleEvent: events/toggleEvent.md
   - How to build: howtobuild.md
 
 theme:
