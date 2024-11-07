@@ -132,7 +132,7 @@ namespace nonut
 			else if (value._type == OT_TABLE)
 			{
 				SqDict result = SqDict();
-				result.convert(object);
+				result.convert(value);
 				data[sq_objtostring(&key)] = result.data;
 			}
 		}

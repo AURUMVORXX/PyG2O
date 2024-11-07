@@ -1,5 +1,19 @@
 import sqg2o
 
+class ItemsGround:
+    
+    @staticmethod
+    def getById(id : int):
+        return sqg2o.ItemsGround.getById(id)
+    
+    @staticmethod
+    def create(data : dict) -> int:
+        return sqg2o.ItemsGround.create(data)
+    
+    @staticmethod
+    def destroy(id : int):
+        sqg2o.ItemsGround.destroy(id)
+
 class ItemGround(sqg2o.ItemGround):
     """
     This class represents item on the ground.

@@ -12,7 +12,8 @@ private:
     nonut::ItemGround *sqobj;
     
 public:
-    PyItemGround(SQObject obj)                  { sqobj = new nonut::ItemGround(obj); }
+    PyItemGround(SQObject obj)                  { if (obj._type == OT_NULL) throw py::type_error("Presented Squirrel Object doesn't exist (type: null)");   sqobj = new nonut::ItemGround(obj); }
+    PyItemGround(nonut::ItemGround obj)         { if (obj.isNull()) throw py::type_error("Presented ItemGround doesn't exist (type: null)");                sqobj = &obj; }
     
     py::tuple getPosition()                     { return py::make_tuple(sqobj->getPosition().toTuple()); }
     py::tuple getRotation()                     { return py::make_tuple(sqobj->getRotation().toTuple()); }

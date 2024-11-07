@@ -4,6 +4,7 @@
 #include "classes/py/ItemGround.h"
 #include "classes/py/Daedalus.h"
 #include "classes/py/Sky.h"
+#include "classes/py/ItemsGround.h"
 #include <NoNut/core/Constant.h>
 
 namespace py = pybind11;
@@ -86,4 +87,12 @@ PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
         .def_static("setRainStopTime",              [](int hour, int min){ return PySky::setRainStopTime(hour, min); })
         .def_static("getRainStartTime",             [](){ return PySky::getRainStartTime(); })
         .def_static("getRainStopTime",              [](){ return PySky::getRainStopTime(); });
+        
+// -------------------------------------------------------------------------
+
+    py::class_<PyItemsGround>(m, "ItemsGround")
+    
+        .def_static("getById",                      [](int value){ return PyItemsGround::getById(value); })
+        .def_static("create",                       [](py::dict value){ return PyItemsGround::create(value); })
+        .def_static("destroy",                      [](int value){ return PyItemsGround::destroy(value); });
 }
