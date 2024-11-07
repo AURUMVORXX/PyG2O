@@ -20,6 +20,8 @@ nav:
   - QnA: qna.md
   - Classes:
     - Game:
+      - Daedalus: classes/game/Daedalus.md
+      - Sky: classes/game/Sky.md
       - DamageDescription: classes/game/DamageDescription.md
     - Item:
       - ItemGround: classes/item/ItemGround.md
