@@ -270,7 +270,9 @@ SQInteger sq_onPlayerShoot(HSQUIRRELVM vm)
     const SQChar* munition;
     
     nonut::sqGetValue(vm, 2, &playerid);
-    nonut::sqGetValue(vm, 3, &munition);
+    if (sq_gettype(vm, 3) != OT_NULL)
+        nonut::sqGetValue(vm, 3, &munition);
+    
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "munition"_a=munition);
     callEvent("onPlayerShoot", kwargs);
@@ -284,7 +286,8 @@ SQInteger sq_onPlayerSpellCast(HSQUIRRELVM vm)
     const SQChar* instance;
     
     nonut::sqGetValue(vm, 2, &playerid);
-    nonut::sqGetValue(vm, 3, &instance);
+    if (sq_gettype(vm, 3) != OT_NULL)
+        nonut::sqGetValue(vm, 3, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
     callEvent("onPlayerSpellCast", kwargs);
@@ -298,7 +301,8 @@ SQInteger sq_onPlayerSpellSetup(HSQUIRRELVM vm)
     const SQChar* instance;
     
     nonut::sqGetValue(vm, 2, &playerid);
-    nonut::sqGetValue(vm, 3, &instance);
+    if (sq_gettype(vm, 3) != OT_NULL)
+        nonut::sqGetValue(vm, 3, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
     callEvent("onPlayerSpellSetup", kwargs);
@@ -355,10 +359,11 @@ SQInteger sq_onPlayerToggleFaceAni(HSQUIRRELVM vm)
 SQInteger sq_onPlayerEquipAmulet(HSQUIRRELVM vm)
 {
     SQInteger playerid;
-    const SQChar* instance;
+    const SQChar* instance = "";
     
     nonut::sqGetValue(vm, 2, &playerid);
-    nonut::sqGetValue(vm, 3, &instance);
+    if (sq_gettype(vm, 3) != OT_NULL)
+        nonut::sqGetValue(vm, 3, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
     callEvent("onPlayerEquipAmulet", kwargs);
@@ -369,10 +374,11 @@ SQInteger sq_onPlayerEquipAmulet(HSQUIRRELVM vm)
 SQInteger sq_onPlayerEquipArmor(HSQUIRRELVM vm)
 {
     SQInteger playerid;
-    const SQChar* instance;
+    const SQChar* instance = "";
     
     nonut::sqGetValue(vm, 2, &playerid);
-    nonut::sqGetValue(vm, 3, &instance);
+    if (sq_gettype(vm, 3) != OT_NULL)
+        nonut::sqGetValue(vm, 3, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
     callEvent("onPlayerEquipArmor", kwargs);
@@ -383,10 +389,11 @@ SQInteger sq_onPlayerEquipArmor(HSQUIRRELVM vm)
 SQInteger sq_onPlayerEquipBelt(HSQUIRRELVM vm)
 {
     SQInteger playerid;
-    const SQChar* instance;
+    const SQChar* instance = "";
     
     nonut::sqGetValue(vm, 2, &playerid);
-    nonut::sqGetValue(vm, 3, &instance);
+    if (sq_gettype(vm, 3) != OT_NULL)
+        nonut::sqGetValue(vm, 3, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
     callEvent("onPlayerEquipBelt", kwargs);
@@ -397,11 +404,12 @@ SQInteger sq_onPlayerEquipBelt(HSQUIRRELVM vm)
 SQInteger sq_onPlayerEquipHandItem(HSQUIRRELVM vm)
 {
     SQInteger playerid, hand;
-    const SQChar* instance;
+    const SQChar* instance = "";
     
     nonut::sqGetValue(vm, 2, &playerid);
     nonut::sqGetValue(vm, 3, &hand);
-    nonut::sqGetValue(vm, 4, &instance);
+    if (sq_gettype(vm, 4) != OT_NULL)
+        nonut::sqGetValue(vm, 4, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "hand"_a = hand, "instance"_a=instance);
     callEvent("onPlayerEquipHandItem", kwargs);
@@ -412,10 +420,11 @@ SQInteger sq_onPlayerEquipHandItem(HSQUIRRELVM vm)
 SQInteger sq_onPlayerEquipHelmet(HSQUIRRELVM vm)
 {
     SQInteger playerid;
-    const SQChar* instance;
+    const SQChar* instance = "";
     
     nonut::sqGetValue(vm, 2, &playerid);
-    nonut::sqGetValue(vm, 3, &instance);
+    if (sq_gettype(vm, 3) != OT_NULL)
+        nonut::sqGetValue(vm, 3, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
     callEvent("onPlayerEquipHelmet", kwargs);
@@ -426,10 +435,11 @@ SQInteger sq_onPlayerEquipHelmet(HSQUIRRELVM vm)
 SQInteger sq_onPlayerEquipMeleeWeapon(HSQUIRRELVM vm)
 {
     SQInteger playerid;
-    const SQChar* instance;
+    const SQChar* instance = "";
     
     nonut::sqGetValue(vm, 2, &playerid);
-    nonut::sqGetValue(vm, 3, &instance);
+    if (sq_gettype(vm, 3) != OT_NULL)
+        nonut::sqGetValue(vm, 3, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
     callEvent("onPlayerEquipMeleeWeapon", kwargs);
@@ -440,10 +450,11 @@ SQInteger sq_onPlayerEquipMeleeWeapon(HSQUIRRELVM vm)
 SQInteger sq_onPlayerEquipRangedWeapon(HSQUIRRELVM vm)
 {
     SQInteger playerid;
-    const SQChar* instance;
+    const SQChar* instance = "";
     
     nonut::sqGetValue(vm, 2, &playerid);
-    nonut::sqGetValue(vm, 3, &instance);
+    if (sq_gettype(vm, 3) != OT_NULL)
+        nonut::sqGetValue(vm, 3, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
     callEvent("onPlayerEquipRangedWeapon", kwargs);
@@ -454,11 +465,12 @@ SQInteger sq_onPlayerEquipRangedWeapon(HSQUIRRELVM vm)
 SQInteger sq_onPlayerEquipRing(HSQUIRRELVM vm)
 {
     SQInteger playerid, hand;
-    const SQChar* instance;
+    const SQChar* instance = "";
     
     nonut::sqGetValue(vm, 2, &playerid);
     nonut::sqGetValue(vm, 3, &hand);
-    nonut::sqGetValue(vm, 4, &instance);
+    if (sq_gettype(vm, 4) != OT_NULL)
+        nonut::sqGetValue(vm, 4, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "hand"_a = hand, "instance"_a=instance);
     callEvent("onPlayerEquipRing", kwargs);
@@ -469,10 +481,11 @@ SQInteger sq_onPlayerEquipRing(HSQUIRRELVM vm)
 SQInteger sq_onPlayerEquipShield(HSQUIRRELVM vm)
 {
     SQInteger playerid;
-    const SQChar* instance;
+    const SQChar* instance = "";
     
     nonut::sqGetValue(vm, 2, &playerid);
-    nonut::sqGetValue(vm, 3, &instance);
+    if (sq_gettype(vm, 3) != OT_NULL)
+        nonut::sqGetValue(vm, 3, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
     callEvent("onPlayerEquipShield", kwargs);
@@ -483,11 +496,12 @@ SQInteger sq_onPlayerEquipShield(HSQUIRRELVM vm)
 SQInteger sq_onPlayerEquipSpell(HSQUIRRELVM vm)
 {
     SQInteger playerid, slotId;
-    const SQChar* instance;
+    const SQChar* instance = "";
     
     nonut::sqGetValue(vm, 2, &playerid);
     nonut::sqGetValue(vm, 3, &slotId);
-    nonut::sqGetValue(vm, 4, &instance);
+    if (sq_gettype(vm, 4) != OT_NULL)
+        nonut::sqGetValue(vm, 4, &instance);
     
     py::dict kwargs = py::dict("playerid"_a=playerid, "slotId"_a = slotId, "instance"_a=instance);
     callEvent("onPlayerEquipSpell", kwargs);

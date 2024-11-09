@@ -172,5 +172,11 @@ namespace nonut
 		void convert(SQObject object) override;
 		py::dict data{};
 	};
+	
+	struct SqList : CustomType
+	{
+		void convert(SQObject object) override;
+		py::list data{};
+	};
 }
 #endif // NONUT_G2O_SHARED_CUSTOM_TYPES_H

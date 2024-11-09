@@ -135,6 +135,47 @@ namespace nonut
 				result.convert(value);
 				data[sq_objtostring(&key)] = result.data;
 			}
+			else if (value._type == OT_ARRAY)
+			{
+				SqList result = SqList();
+				result.convert(value);
+				data[sq_objtostring(&key)] = result.data;
+			}
+		}
+	}
+	
+	void SqList::convert(SQObject object)
+	{
+		Sqrat::Array tab = Sqrat::Array(object);
+		Sqrat::Object::iterator arrIterator;
+		int i = 0;
+		
+		while (tab.Next(arrIterator))
+		{
+			HSQOBJECT key   = arrIterator.getKey();
+			HSQOBJECT value = arrIterator.getValue();
+			
+			if (key._type != OT_INTEGER)
+				continue;
+			
+			if (value._type == OT_STRING)
+				data.insert(sq_objtointeger(&key), sq_objtofloat(&value));
+			else if (value._type == OT_INTEGER)
+				data.insert(sq_objtointeger(&key), sq_objtointeger(&value));
+			else if (value._type == OT_FLOAT)
+				data.insert(sq_objtointeger(&key), sq_objtofloat(&value));
+			else if (value._type == OT_TABLE)
+			{
+				SqDict result = SqDict();
+				result.convert(value);
+				data.insert(sq_objtointeger(&key), result.data);
+			}
+			else if (value._type == OT_ARRAY)
+			{
+				SqList result = SqList();
+				result.convert(value);
+				data.insert(sq_objtointeger(&key), result.data);
+			}
 		}
 	}
 }
