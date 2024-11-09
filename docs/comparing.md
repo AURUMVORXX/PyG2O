@@ -1,5 +1,5 @@
 
-* `addEventHandler` replaced with decorator [event](events/event.md)
+* `addEventHandler` replaced with decorator [event](functions/event/event.md)
 ```python
 @g2o.event('onInit')
 def evtInitFirst(**kwargs):
@@ -93,3 +93,5 @@ def evtDrop(**kwargs):
     * `getPlayerRing`
     * `getPlayerShield`
     * `getPlayerSpell`
+---
+* `ItemsGround.getById` throws an exception instead of returning `null` if there's no item with given ID
