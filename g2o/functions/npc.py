@@ -17,7 +17,7 @@ def clearNpcActions(npc_id : int):
 def createNpc(name : str, instance : str = 'PC_HERO') -> int:
     """
     !!! note
-        By default npcs won't be added to world. In order to do that, you have to call **TBD**.
+        By default npcs won't be added to world. In order to do that, you have to call [spawnPlayer](../player/spawnPlayer.md).
     !!! note
         Remote NPC id will always begins from max slots value.
     This function creates remote NPC.
