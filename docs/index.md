@@ -1,6 +1,6 @@
 ## How to use
 1. Download latest module version from the **Release** page
-2. Unzip downloaded archive into your server directory (you should now have **PyG2O.xYY.dll**, **python312.dll** and **libs/** in your root server directory)
+2. Unzip downloaded archive into your server directory (you should now have **PyG2O.xYY.dll**, **python312.dll**, **libs/** and **g2o/** in your root server directory)
 3. Place .DLL module in the place you want and connect it with **config.xml**
 ```xml
 <module  src="PyG2O.x64.dll"  type="server"  />
