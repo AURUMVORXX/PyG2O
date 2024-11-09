@@ -2,6 +2,7 @@
 #include <pybind11/embed.h>
 #include "events/sqevents.h"
 #include "constants/sqconstants.h"
+#include "functions/sqfunctions.h"
 
 namespace py = pybind11;
 py::scoped_interpreter guard{};
@@ -9,7 +10,6 @@ py::scoped_interpreter guard{};
 py::module_ pysys   = py::module_::import("sys");
 py::module_ g2o;
 py::module_ scripts;
-
 
 extern "C" SQRESULT SQRAT_API sqmodule_load(HSQUIRRELVM vm, HSQAPI api)
 {

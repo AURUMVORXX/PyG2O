@@ -11,7 +11,7 @@ def evtInitSecond(**kwargs):
     print('World')
 ```
 ---
-* Positional arguments replaced with keyword arguments (see names of all keywords on the each event page)
+* Positional arguments inside event handles replaced with keyword arguments (see names of all keywords on the each event page)
 ```python
 @g2o.event('onPlayerChangeColor')
 def evtColor(**kwargs):
@@ -49,5 +49,26 @@ def evtDrop(**kwargs):
     print(evtDrop.cancelled)
     print(evtDrop.eventName)
 ```
----
-* `eventValue` has been removed (RIP)
+-----
+* Following functions have been removed <sub><sup>RIP :(</sub></sup>
+
+    * `md5`
+    * `sha1`
+    * `sha256`
+    * `sha384`
+    * `sha512`
+    * `setReloadCallback`
+    * `setUnloadCallback`
+    * `getTimerExecuteTimes`
+    * `getTimerInterval`
+    * `killTimer`
+    * `setTimer`
+    * `setTimerExecuteTimes`
+    * `setTimerInterval`
+    * `sscanf`
+    * `hexToRgb`
+    * `rgbToHex`
+    * `getTickCount`
+    * `eventValue`
+    * `getPlayerMagicLevel`
+    * `setPlayerMagicLevel`

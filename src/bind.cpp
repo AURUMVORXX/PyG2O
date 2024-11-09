@@ -1,10 +1,14 @@
 #include <pybind11/embed.h>
+
 #include "classes/py/Packet.h"
 #include "classes/py/DamageDescription.h"
 #include "classes/py/ItemGround.h"
 #include "classes/py/Daedalus.h"
 #include "classes/py/Sky.h"
 #include "classes/py/ItemsGround.h"
+
+#include "functions/pyfunctions.h"
+
 #include <NoNut/core/Constant.h>
 
 namespace py = pybind11;
@@ -95,4 +99,140 @@ PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
         .def_static("getById",                      [](int value){ return PyItemsGround::getById(value); })
         .def_static("create",                       [](py::dict value){ return PyItemsGround::create(value); })
         .def_static("destroy",                      [](int value){ return PyItemsGround::destroy(value); });
+        
+// -------------------------------------------------------------------------
+
+    m.def("getHostname",            &py_getHostname);
+    m.def("getMaxSlots",            &py_getMaxSlots);
+    m.def("getPlayersCount",        &py_getPlayersCount);
+    
+    m.def("getDistance2d",          &py_getDistance2d);
+    m.def("getDistance3d",          &py_getDistance3d);
+    m.def("getVectorAngle",         &py_getVectorAngle);
+    
+    m.def("exit",                   &py_exit, py::arg() = 0);
+    m.def("getDayLength",           &py_getDayLength);
+    m.def("getServerDescription",   &py_getServerDescription);
+    m.def("getServerWorld",         &py_getServerWorld);
+    m.def("getTime",                &py_getTime);
+    m.def("serverLog",              &py_serverLog);
+    m.def("setDayLength",           &py_setDayLength);
+    m.def("setServerDescription",   &py_setServerDescription);
+    m.def("setServerWorld",         &py_setServerWorld);
+    m.def("setTime",                &py_setTime, py::arg(), py::arg(), py::arg() = 0);
+    
+    m.def("clearNpcActions",        &py_clearNpcActions);
+    m.def("createNpc",              &py_createNpc, py::arg(), py::arg() = "PC_HERO");
+    m.def("destroyNpc",             &py_destroyNpc);
+    m.def("getNpcAction",           &py_getNpcAction);
+    // m.def("getNpcActionType",    &py_getNpcActionType);
+    m.def("getNpcActtions",         &py_getNpcActions);
+    m.def("getNpcActtionsCount",    &py_getNpcActionsCount);
+    m.def("getNpcHostPlayer",       &py_getNpcHostPlayer);
+    m.def("getNpcLastActionId",     &py_getNpcLastActionId);
+    m.def("isNpc",                  &py_isNpc);
+    m.def("isNpcActionFinished",    &py_isNpcActionFinished);
+    m.def("npcAttackMelee",         &py_npcAttackMelee);
+    m.def("npcAttackRanged",        &py_npcAttackRanged);
+    m.def("npcSpellCast",           &py_npcSpellCast);
+    m.def("npcUseClosestMob",       &py_npcUseClosestMob);
+    // m.def("pushNpcAction",       &py_pushNpcAction);
+    m.def("setNpcHostPlayer",       &py_setNpcHostPlayer);
+    
+	m.def("addBan",	                &py_addBan);
+	m.def("applyPlayerOverlay",	    &py_applyPlayerOverlay);
+	m.def("ban",	                &py_ban, py::arg(), py::arg() = 0, py::arg());
+	m.def("drawWeapon",	            &py_drawWeapon);
+	m.def("equipItem",	            &py_equipItem, py::arg(), py::arg(), py::arg() = -1);
+	m.def("getPlayerAmulet",	    &py_getPlayerAmulet);
+	m.def("getPlayerAngle",	        &py_getPlayerAngle);
+	m.def("getPlayerAni",	        &py_getPlayerAni);
+	m.def("getPlayerArmor",	        &py_getPlayerArmor);
+	m.def("getPlayerAtVector",	    &py_getPlayerAtVector);
+	m.def("getPlayerBelt",	        &py_getPlayerBelt);
+	m.def("getPlayerCameraPosition",&py_getPlayerCameraPosition);
+	m.def("getPlayerCollision",	    &py_getPlayerCollision);
+	m.def("getPlayerColor",	        &py_getPlayerColor);
+	m.def("getPlayerContext",	    &py_getPlayerContext);
+	m.def("getPlayerDexterity",	    &py_getPlayerDexterity);
+	m.def("getPlayerFaceAnis",	    &py_getPlayerFaceAnis);
+	m.def("getPlayerFatness",	    &py_getPlayerFatness);
+	m.def("getPlayerFocus",	        &py_getPlayerFocus);
+	m.def("getPlayerHealth",	    &py_getPlayerHealth);
+	m.def("getPlayerHelmet",	    &py_getPlayerHelmet);
+	m.def("getPlayerIP",	        &py_getPlayerIP);
+	m.def("getPlayerInstance",	    &py_getPlayerInstance);
+	m.def("getPlayerMacAddr",	    &py_getPlayerMacAddr);
+	m.def("getPlayerMana",	        &py_getPlayerMana);
+	m.def("getPlayerMaxHealth", 	&py_getPlayerMaxHealth);
+	m.def("getPlayerMaxMana",	    &py_getPlayerMaxMana);
+	m.def("getPlayerMeleeWeapon",	&py_getPlayerMeleeWeapon);
+	m.def("getPlayerName",	        &py_getPlayerName);
+	m.def("getPlayerPing",	        &py_getPlayerPing);
+	m.def("getPlayerPosition",	    &py_getPlayerPosition);
+	m.def("getPlayerRangedWeapon",	&py_getPlayerRangedWeapon);
+	m.def("getPlayerRespawnTime",	&py_getPlayerRespawnTime);
+	m.def("getPlayerRing",	        &py_getPlayerRing);
+	m.def("getPlayerScale",	        &py_getPlayerScale);
+	m.def("getPlayerSerial",	    &py_getPlayerSerial);
+	m.def("getPlayerShield",	    &py_getPlayerShield);
+	m.def("getPlayerSkillWeapon",	&py_getPlayerSkillWeapon);
+	m.def("getPlayerSpell",	        &py_getPlayerSpell);
+	m.def("getPlayerStrength",	    &py_getPlayerStrength);
+	m.def("getPlayerTalent",	    &py_getPlayerTalent);
+	m.def("getPlayerVirtualWorld",	&py_getPlayerVirtualWorld);
+	m.def("getPlayerVisual",	    &py_getPlayerVisual);
+	m.def("getPlayerWeaponMode",	&py_getPlayerWeaponMode);
+	m.def("getPlayerWorld",	        &py_getPlayerWorld);
+	m.def("giveItem",	            &py_giveItem);
+	m.def("hitPlayer",	            &py_hitPlayer);
+	m.def("isPlayerConnected",	    &py_isPlayerConnected);
+	m.def("isPlayerDead",	        &py_isPlayerDead);
+	m.def("isPlayerUnconscious",	&py_isPlayerUnconscious);
+	m.def("kick",	                &py_kick);
+	m.def("playAni",	            &py_playAni);
+	m.def("playFaceAni",	        &py_playFaceAni);
+	m.def("readySpell",         	&py_readySpell);
+	m.def("removeItem",	            &py_removeItem);
+	m.def("removePlayerOverlay",	&py_removePlayerOverlay);
+	m.def("removeWeapon",	        &py_removeWeapon);
+	m.def("respawnPlayer",	        &py_respawnPlayer);
+	m.def("setPlayerAngle",	        &py_setPlayerAngle);
+	m.def("setPlayerCollision",	    &py_setPlayerCollision);
+	m.def("setPlayerColor",	        &py_setPlayerColor);
+	m.def("setPlayerContext",	    &py_setPlayerContext);
+	m.def("setPlayerDexterity", 	&py_setPlayerDexterity);
+	m.def("setPlayerFatness",	    &py_setPlayerFatness);
+	m.def("setPlayerHealth",	    &py_setPlayerHealth);
+	m.def("setPlayerInstance",	    &py_setPlayerInstance);
+	m.def("setPlayerInvisible",	    &py_setPlayerInvisible);
+	m.def("setPlayerMana",	        &py_setPlayerMana);
+	m.def("setPlayerMaxHealth",	    &py_setPlayerMaxHealth);
+	m.def("setPlayerMaxMana",	    &py_setPlayerMaxMana);
+	m.def("setPlayerName",	        &py_setPlayerName);
+	m.def("setPlayerPosition",	    &py_setPlayerPosition);
+	m.def("setPlayerRespawnTime",	&py_setPlayerRespawnTime);
+	m.def("setPlayerScale",	        &py_setPlayerScale);
+	m.def("setPlayerSkillWeapon",	&py_setPlayerSkillWeapon);
+	m.def("setPlayerStrength",	    &py_setPlayerStrength);
+	m.def("setPlayerTalent",	    &py_setPlayerTalent);
+	m.def("setPlayerVirtualWorld",	&py_setPlayerVirtualWorld);
+	m.def("setPlayerVisual",	    &py_setPlayerVisual);
+	m.def("setPlayerWeaponMode",	&py_setPlayerWeaponMode);
+	m.def("setPlayerWorld",	        &py_setPlayerWorld);
+	m.def("spawnPlayer",	        &py_spawnPlayer);
+	m.def("stopAni",	            &py_stopAni, py::arg(), py::arg() = "");
+	m.def("stopFaceAni",	        &py_stopFaceAni, py::arg(), py::arg() = "");
+	m.def("unequipItem",	        &py_unequipItem);
+	m.def("unreadySpell",	        &py_unreadySpell);
+	m.def("unspawnPlayer",	        &py_unspawnPlayer);
+	m.def("useItem",	            &py_useItem);
+	m.def("useItemToState",	        &py_useItemToState);
+    
+    m.def("findNearbyPlayers",          &py_findNearbyPlayers);
+    m.def("getSpawnedPlayersForPlayer", &py_getSpawnedPlayersForPlayer);
+    m.def("getStreamedPlayersByPlayer", &py_getStreamedPlayersByPlayer);
+    
+    m.def("getNearestWaypoint",         &py_getNearestWaypoint);
+    m.def("getWaypoint",                &py_getWaypoint);
 }

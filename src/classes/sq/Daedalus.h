@@ -14,7 +14,7 @@ namespace nonut
     
         Function<Int, String> index;
         Function<SqDict, String> symbol;
-		Function<SqDict, String> instance;
+		    Function<SqDict, String> instance;
         
     private:
     
