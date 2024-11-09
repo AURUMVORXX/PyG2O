@@ -159,7 +159,7 @@ void registerSquirrelConstants()
     cts.attr("DAMAGE_CTX")                      = GET_CONST("DAMAGE_CTX", int);
     cts.attr("EQUIPMENT_CTX")                   = GET_CONST("EQUIPMENT_CTX", int);
     
-    cts.attr("DAMAGE_UNKNOW")                   = GET_CONST("DAMAGE_UNKNOW", int);
+    cts.attr("DAMAGE_UNKNOWN")                  = GET_CONST("DAMAGE_UNKNOWN", int);
     cts.attr("DAMAGE_BARRIER")                  = GET_CONST("DAMAGE_BARRIER", int);
     cts.attr("DAMAGE_BLUNT")                    = GET_CONST("DAMAGE_BLUNT", int);
     cts.attr("DAMAGE_EDGE")                     = GET_CONST("DAMAGE_EDGE", int);
