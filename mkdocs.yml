@@ -102,7 +102,6 @@ nav:
       - removeEvent: events/removeEvent.md
       - removeEventHandler: events/removeEventHandler.md
       - toggleEvent: events/toggleEvent.md
-  - How to build: howtobuild.md
 
 theme:
   name: material
