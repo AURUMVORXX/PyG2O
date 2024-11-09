@@ -25,8 +25,11 @@ nav:
       - DamageDescription: classes/game/DamageDescription.md
     - Item:
       - ItemGround: classes/item/ItemGround.md
+      - ItemsGround: classes/item/ItemsGround.md
     - Network:
       - Packet: classes/network/Packet.md
+    - Mds:
+      - Mds: classes/mds/mds.md
   - Constants:
     - AntiCheat: constants/anticheat.md
     - Context: constants/context.md
@@ -95,13 +98,146 @@ nav:
       - onPlayerTeleport: defaultEvents/player/onPlayerTeleport.md
       - onPlayerToggleFaceAni: defaultEvents/player/onPlayerToggleFaceAni.md
   - Functions:
-    - Events:
-      - addEvent: events/addEvent.md
-      - event: events/event.md
-      - callEvent: events/callEvent.md
-      - removeEvent: events/removeEvent.md
-      - removeEventHandler: events/removeEventHandler.md
-      - toggleEvent: events/toggleEvent.md
+    - Chat:
+      - sendMessageToAll: functions/chat/sendMessageToAll.md
+      - sendMessageToPlayer: functions/chat/sendMessageToPlayer.md
+      - sendPlayerMessageToAll: functions/chat/sendPlayerMessageToAll.md
+      - sendPlayerMessageToPlayer: functions/chat/sendPlayerMessageToPlayer.md
+    - Game:
+      - getHostname: functions/game/getHostname.md
+      - getMaxSlots: functions/game/getMaxSlots.md
+      - getPlayersCount: functions/game/getPlayersCount.md
+      - exit: functions/game/exit.md
+      - getDayLength: functions/game/getDayLength.md
+      - getServerDescription: functions/game/getServerDescription.md
+      - getServerWorld: functions/game/getServerWorld.md
+      - getTime: functions/game/getTime.md
+      - serverLog: functions/game/serverLog.md
+      - setDayLength: functions/game/setDayLength.md
+      - setServerDescription: functions/game/setServerDescription.md
+      - setServerWorld: functions/game/setServerWorld.md
+      - setTime: functions/game/setTime.md
+    - Npc:
+      - clearNpcActions: functions/npc/clearNpcActions.md
+      - createNpc: functions/npc/createNpc.md
+      - destroyNpc: functions/npc/destroyNpc.md
+      - getNpcAction: functions/npc/getNpcAction.md
+      - getNpcActions: functions/npc/getNpcActions.md
+      - getNpcActionsCount: functions/npc/getNpcActionsCount.md
+      - getNpcHostPlayer: functions/npc/getNpcHostPlayer.md
+      - getNpcLastActionId: functions/npc/getNpcLastActionId.md
+      - isNpc: functions/npc/isNpc.md
+      - isNpcActionFinished: functions/npc/isNpcActionFinished.md
+      - npcAttackMelee: functions/npc/npcAttackMelee.md
+      - npcAttackRanged: functions/npc/npcAttackRanged.md
+      - npcSpellCast: functions/npc/npcSpellCast.md
+      - npcUseClosestMob: functions/npc/npcUseClosestMob.md
+      - setNpcHostPlayer: functions/npc/setNpcHostPlayer.md
+    - Player:
+      - addBan: functions/player/addBan.md
+      - applyPlayerOverlay: functions/player/applyPlayerOverlay.md
+      - ban: functions/player/ban.md
+      - drawWeapon: functions/player/drawWeapon.md
+      - equipItem: functions/player/equipItem.md
+      - getPlayerAmulet: functions/player/getPlayerAmulet.md
+      - getPlayerAngle: functions/player/getPlayerAngle.md
+      - getPlayerAni: functions/player/getPlayerAni.md
+      - getPlayerArmor: functions/player/getPlayerArmor.md
+      - getPlayerAtVector: functions/player/getPlayerAtVector.md
+      - getPlayerBelt: functions/player/getPlayerBelt.md
+      - getPlayerCameraPosition: functions/player/getPlayerCameraPosition.md
+      - getPlayerCollision: functions/player/getPlayerCollision.md
+      - getPlayerColor: functions/player/getPlayerColor.md
+      - getPlayerContext: functions/player/getPlayerContext.md
+      - getPlayerDexterity: functions/player/getPlayerDexterity.md
+      - getPlayerFaceAnis: functions/player/getPlayerFaceAnis.md
+      - getPlayerFatness: functions/player/getPlayerFatness.md
+      - getPlayerFocus: functions/player/getPlayerFocus.md
+      - getPlayerHealth: functions/player/getPlayerHealth.md
+      - getPlayerHelmet: functions/player/getPlayerHelmet.md
+      - getPlayerIP: functions/player/getPlayerIP.md
+      - getPlayerInstance: functions/player/getPlayerInstance.md
+      - getPlayerInvisible: functions/player/getPlayerInvisible.md
+      - getPlayerMacAddr: functions/player/getPlayerMacAddr.md
+      - getPlayerMana: functions/player/getPlayerMana.md
+      - getPlayerMaxHealth: functions/player/getPlayerMaxHealth.md
+      - getPlayerMaxMana: functions/player/getPlayerMaxMana.md
+      - getPlayerMeleeWeapon: functions/player/getPlayerMeleeWeapon.md
+      - getPlayerName: functions/player/getPlayerName.md
+      - getPlayerPing: functions/player/getPlayerPing.md
+      - getPlayerPosition: functions/player/getPlayerPosition.md
+      - getPlayerRangedWeapon: functions/player/getPlayerRangedWeapon.md
+      - getPlayerRespawnTime: functions/player/getPlayerRespawnTime.md
+      - getPlayerRing: functions/player/getPlayerRing.md
+      - getPlayerScale: functions/player/getPlayerScale.md
+      - getPlayerSerial: functions/player/getPlayerSerial.md
+      - getPlayerShield: functions/player/getPlayerShield.md
+      - getPlayerSkillWeapon: functions/player/getPlayerSkillWeapon.md
+      - getPlayerSpell: functions/player/getPlayerSpell.md
+      - getPlayerStrength: functions/player/getPlayerStrength.md
+      - getPlayerTalent: functions/player/getPlayerTalent.md
+      - getPlayerVirtualWorld: functions/player/getPlayerVirtualWorld.md
+      - getPlayerVisual: functions/player/getPlayerVisual.md
+      - getPlayerWeaponMode: functions/player/getPlayerWeaponMode.md
+      - getPlayerWorld: functions/player/getPlayerWorld.md
+      - giveItem: functions/player/giveItem.md
+      - hitPlayer: functions/player/hitPlayer.md
+      - isPlayerConnected: functions/player/isPlayerConnected.md
+      - isPlayerDead: functions/player/isPlayerDead.md
+      - isPlayerSpawned: functions/player/isPlayerSpawned.md
+      - isPlayerUnconscious: functions/player/isPlayerUnconscious.md
+      - kick: functions/player/kick.md
+      - playAni: functions/player/playAni.md
+      - playFaceAni: functions/player/playFaceAni.md
+      - readySpell: functions/player/readySpell.md
+      - removeItem: functions/player/removeItem.md
+      - removePlayerOverlay: functions/player/removePlayerOverlay.md
+      - removeWeapon: functions/player/removeWeapon.md
+      - setPlayerAngle: functions/player/setPlayerAngle.md
+      - setPlayerCollision: functions/player/setPlayerCollision.md
+      - setPlayerColor: functions/player/setPlayerColor.md
+      - setPlayerDexterity: functions/player/setPlayerDexterity.md
+      - setPlayerDexterity: functions/player/setPlayerDexterity.md
+      - setPlayerFatness: functions/player/setPlayerFatness.md
+      - setPlayerHealth: functions/player/setPlayerHealth.md
+      - setPlayerInstance: functions/player/setPlayerInstance.md
+      - setPlayerInvisible: functions/player/setPlayerInvisible.md
+      - setPlayerMana: functions/player/setPlayerMana.md
+      - setPlayerMaxHealth: functions/player/setPlayerMaxHealth.md
+      - setPlayerMaxMana: functions/player/setPlayerMaxMana.md
+      - setPlayerName: functions/player/setPlayerName.md
+      - setPlayerScale: functions/player/setPlayerScale.md
+      - setPlayerRespawnTime: functions/player/setPlayerRespawnTime.md
+      - setPlayerScale: functions/player/setPlayerScale.md
+      - setPlayerSkillWeapon: functions/player/setPlayerSkillWeapon.md
+      - setPlayerStrength: functions/player/setPlayerStrength.md
+      - setPlayerTalent: functions/player/setPlayerTalent.md
+      - setPlayerVirtualWorld: functions/player/setPlayerVirtualWorld.md
+      - setPlayerVisual: functions/player/setPlayerVisual.md
+      - setPlayerWeaponMode: functions/player/setPlayerWeaponMode.md
+      - setPlayerWorld: functions/player/setPlayerWorld.md
+      - spawnPlayer: functions/player/spawnPlayer.md
+      - stopAni: functions/player/stopAni.md
+      - stopFaceAni: functions/player/stopFaceAni.md
+      - unequipItem: functions/player/unequipItem.md
+      - unreadySpell: functions/player/unreadySpell.md
+      - unspawnPlayer: functions/player/unspawnPlayer.md
+      - useItem: functions/player/useItem.md
+      - useItemToState: functions/player/useItemToState.md
+    - Event:
+      - addEvent: functions/event/addEvent.md
+      - event: functions/event/event.md
+      - callEvent: functions/event/callEvent.md
+      - removeEvent: functions/event/removeEvent.md
+      - removeEventHandler: functions/event/removeEventHandler.md
+      - toggleEvent: functions/event/toggleEvent.md
+    - Streamer:
+      - findNearbyPlayers: functions/streamer/findNearbyPlayers.md
+      - getSpawnedPlayersForPlayer: functions/streamer/getSpawnedPlayersForPlayer.md
+      - getStreamedPlayersByPlayer: functions/streamer/getStreamedPlayersByPlayer.md
+    - Waypoint:
+      - getNearestWaypoint: functions/waypoint/getNearestWaypoint.md
+      - getWaypoint: functions/waypoint/getWaypoint.md
 
 theme:
   name: material

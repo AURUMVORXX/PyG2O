@@ -1,5 +1,5 @@
 # `event` onPlayerEquipRing
-This event is triggered when player equips or unequips ring. When item is unequiped, `null` item id is returned instead.
+This event is triggered when player equips or unequips ring. When item is unequiped, empty `str` is returned instead.
 
 Original: [onPlayerEquipRing](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-events/player/onPlayerEquipRing/)
 
@@ -7,7 +7,7 @@ Original: [onPlayerEquipRing](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0
 * `dict` **kwargs**:
     * `int` **playerid**: the id of the player who equips a ring.
     * `int` **hand**: the hand id that the player is putting the ring on. For more information see [Hand](../../constants/hand.md).
-    * `str` **str | null**: instance: the item instance from Daedalus scripts.
+    * `str` **instance**: the item instance from Daedalus scripts.
     
 ## Usage
 ```python

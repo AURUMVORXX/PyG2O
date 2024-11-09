@@ -1,12 +1,12 @@
 # `event` onPlayerEquipRangedWeapon
-This event is triggered when player equips or unequips ranged weapon. When item is unequiped, `null` is returned instead.
+This event is triggered when player equips or unequips ranged weapon. When item is unequiped, empty `str` is returned instead.
 
 Original: [onPlayerEquipRangedWeapon](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-events/player/onPlayerEquipRangedWeapon/)
 
 ## Parameters
 * `dict` **kwargs**:
     * `int` **playerid**: the id of the player who equips an ranged weapon.
-    * `str` **str | null**: instance: the item instance from Daedalus scripts.
+    * `str` **instance**: the item instance from Daedalus scripts.
     
 ## Usage
 ```python
