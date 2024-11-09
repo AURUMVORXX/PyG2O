@@ -6,6 +6,7 @@
 #include "classes/py/Daedalus.h"
 #include "classes/py/Sky.h"
 #include "classes/py/ItemsGround.h"
+#include "classes/py/Mds.h"
 
 #include "functions/pyfunctions.h"
 
@@ -100,6 +101,13 @@ PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
         .def_static("create",                       [](py::dict value){ return PyItemsGround::create(value); })
         .def_static("destroy",                      [](int value){ return PyItemsGround::destroy(value); });
         
+// -------------------------------------------------------------------------
+
+    py::class_<PyMds>(m, "Mds")
+    
+        .def_static("id",                           [](std::string value){ return PyMds::id(value); })
+        .def_static("name",                         [](int value){ return PyMds::name(value); });
+
 // -------------------------------------------------------------------------
 
     m.def("getHostname",            &py_getHostname);

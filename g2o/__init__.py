@@ -12,5 +12,6 @@ from g2o.classes.items      import ItemGround
 from g2o.classes.items      import ItemsGround
 from g2o.classes.daedalus   import Daedalus
 from g2o.classes.sky        import Sky
+from g2o.classes.mds        import Mds
 
-from sqg2oconst     import *
+from sqg2oconst              import *

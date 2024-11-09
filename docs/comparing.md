@@ -1,4 +1,3 @@
-## Events
 
 * `addEventHandler` replaced with decorator [event](events/event.md)
 ```python
@@ -72,3 +71,25 @@ def evtDrop(**kwargs):
     * `eventValue`
     * `getPlayerMagicLevel`
     * `setPlayerMagicLevel`
+
+--- 
+* All functions and events that returned/passed a `null` in the Squirrel, now passes an empty string. Most notable in this list are all equipment related functions and events
+    * `onPlayerEquipAmulet`
+    * `onPlayerEquipArmor`
+    * `onPlayerEquipBelt`
+    * `onPlayerEquipHandItem`
+    * `onPlayerEquipHelmet`
+    * `onPlayerEquipMeleeWeapon`
+    * `onPlayerEquipRangedWeapon`
+    * `onPlayerEquipRing`
+    * `onPlayerEquipShield`
+    * `onPlayerEquipSpell`
+    * `getPlayerAmulet`
+    * `getPlayerArmor`
+    * `getPlayerBelt`
+    * `getPlayerHelmet`
+    * `getPlayerMeleeWeapon`
+    * `getPlayerRangedWeapon`
+    * `getPlayerRing`
+    * `getPlayerShield`
+    * `getPlayerSpell`
