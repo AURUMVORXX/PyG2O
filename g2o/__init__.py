@@ -111,7 +111,7 @@ from g2o.functions.player   import removeWeapon
 from g2o.functions.player   import setPlayerAngle
 from g2o.functions.player   import setPlayerCollision
 from g2o.functions.player   import setPlayerColor
-from g2o.functions.player   import setPlayerDexterity
+from g2o.functions.player   import setPlayerContext
 from g2o.functions.player   import setPlayerDexterity
 from g2o.functions.player   import setPlayerFatness
 from g2o.functions.player   import setPlayerHealth
@@ -121,7 +121,7 @@ from g2o.functions.player   import setPlayerMana
 from g2o.functions.player   import setPlayerMaxHealth
 from g2o.functions.player   import setPlayerMaxMana
 from g2o.functions.player   import setPlayerName
-from g2o.functions.player   import setPlayerScale
+from g2o.functions.player   import setPlayerPosition
 from g2o.functions.player   import setPlayerRespawnTime
 from g2o.functions.player   import setPlayerScale
 from g2o.functions.player   import setPlayerSkillWeapon

@@ -81,7 +81,7 @@ def exit(exitCode : int = 0):
     ## Parameters
     * `int` **exitCode**: exit status for g2o server.
     """
-    return sqg2o.exit(*locals())
+    return sqg2o.exit(exitCode)
 
 def getDayLength() -> float:
     """
@@ -151,7 +151,7 @@ def serverLog(text : str):
     ## Parameters
     `str` **text**: the text message that you want to append to server.log file.
     """
-    return sqg2o.serverLog(*locals())
+    return sqg2o.serverLog(text)
 
 def setDayLength(miliseconds : float):
     """
@@ -168,7 +168,7 @@ def setDayLength(miliseconds : float):
     ## Parameters
     `float` **miliseconds**: day length in miliseconds.
     """
-    return sqg2o.setDayLength(*locals())
+    return sqg2o.setDayLength(miliseconds)
 
 def setServerDescription(description : str):
     """
@@ -184,7 +184,7 @@ def setServerDescription(description : str):
     ## Returns
     `bool`: `true` if server description was set successfully, otherwise `false`.
     """
-    return sqg2o.setServerDescription(*locals())
+    return sqg2o.setServerDescription(description)
 
 def setServerWorld(world : str):
     """
@@ -204,7 +204,7 @@ def setServerWorld(world : str):
     ## Parameters
     `str` **world**: the path to the target world.
     """
-    return sqg2o.setServerWorld(*locals())
+    return sqg2o.setServerWorld(world)
 
 def setTime(hour : int, min : int, day : int = 0):
     """
@@ -220,4 +220,4 @@ def setTime(hour : int, min : int, day : int = 0):
     `int` **min**: the minute of new time (in the range between 0-59).
     `int` **day**: the day of new time.
     """
-    return sqg2o.setTime(*locals())
+    return sqg2o.setTime(hour, min, day)

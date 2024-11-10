@@ -17,7 +17,7 @@ def findNearbyPlayers(position : dict, radius : int, world : str, virtual_world 
     ## Returns
     `list [int]`: ids of nearby players.
     """
-    return sqg2o.findNearbyPlayers(*locals())
+    return sqg2o.findNearbyPlayers(position, radius, world, virtual_world)
 
 def getSpawnedPlayersForPlayer(id : int) -> list:
     """
@@ -33,7 +33,7 @@ def getSpawnedPlayersForPlayer(id : int) -> list:
     ## Returns
     `list [int]`: ids of spawned players.
     """
-    return sqg2o.getSpawnedPlayersForPlayer(*locals())
+    return sqg2o.getSpawnedPlayersForPlayer(id)
 
 def getStreamedPlayersByPlayer(id : int) -> list:
     """
@@ -49,4 +49,4 @@ def getStreamedPlayersByPlayer(id : int) -> list:
     ## Returns
     `list [int]`: ids of streamed players.
     """
-    return sqg2o.getStreamedPlayersByPlayer(*locals())
+    return sqg2o.getStreamedPlayersByPlayer(id)

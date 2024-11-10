@@ -147,6 +147,11 @@ PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
     // m.def("pushNpcAction",       &py_pushNpcAction);
     m.def("setNpcHostPlayer",       &py_setNpcHostPlayer);
     
+    m.def("sendMessageToAll",       &py_sendMessageToAll);
+    m.def("sendMessageToPlayer",    &py_sendMessageToPlayer);
+    m.def("sendPlayerMessageToAll", &py_sendPlayerMessageToAll);
+    m.def("sendPlayerMessageToPlayer", &py_sendPlayerMessageToPlayer);
+    
 	m.def("addBan",	                &py_addBan);
 	m.def("applyPlayerOverlay",	    &py_applyPlayerOverlay);
 	m.def("ban",	                &py_ban, py::arg(), py::arg() = 0, py::arg());

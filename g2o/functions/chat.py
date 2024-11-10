@@ -17,7 +17,7 @@ def sendMessageToAll(r : int, g : int, b : int, text : str):
     * `int` **b**: the blue color component in RGB model.
     * `str` **text**: that will be send.
     """
-    return sqg2o.sendMessageToAll(*locals())
+    return sqg2o.sendMessageToAll(r, g, b, text)
 
 def sendMessageToPlayer(playerid : int, r : int, g : int, b : int, text : str):
     """
@@ -37,7 +37,7 @@ def sendMessageToPlayer(playerid : int, r : int, g : int, b : int, text : str):
     * `int` **b**: the blue color component in RGB model.
     * `str` **text**: that will be send.
     """
-    return sqg2o.sendMessageToPlayer(*locals())
+    return sqg2o.sendMessageToPlayer(playerid, r, g, b, text)
 
 def sendPlayerMessageToAll(senderid : int, r : int, g : int, b : int, text : str):
     """
@@ -57,7 +57,7 @@ def sendPlayerMessageToAll(senderid : int, r : int, g : int, b : int, text : str
     * `int` **b**: the blue color component in RGB model.
     * `str` **text**: that will be send.
     """
-    return sqg2o.sendPlayerMessageToAll(*locals())
+    return sqg2o.sendPlayerMessageToAll(senderid, r, g, b, text)
 
 def sendPlayerMessageToPlayer(senderid : int, receiverid : int, r : int, g : int, b : int, text : str):
     """
@@ -78,4 +78,4 @@ def sendPlayerMessageToPlayer(senderid : int, receiverid : int, r : int, g : int
     * `int` **b**: the blue color component in RGB model.
     * `str` **text**: that will be send.
     """
-    return sqg2o.sendPlayerMessageToAll(*locals())
+    return sqg2o.sendPlayerMessageToAll(senderid, receiverid, r, g, b, text)

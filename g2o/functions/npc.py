@@ -12,7 +12,7 @@ def clearNpcActions(npc_id : int):
     ## Parameters
     `int` **npc_id**: the npc identifier.
     """
-    return sqg2o.clearNpcActions(*locals())
+    return sqg2o.clearNpcActions(npc_id)
 
 def createNpc(name : str, instance : str = 'PC_HERO') -> int:
     """
@@ -31,7 +31,7 @@ def createNpc(name : str, instance : str = 'PC_HERO') -> int:
     `str` **name**: the displayed name of the npc.
     `str` **instance**: the instance name of for the npc.
     """
-    return sqg2o.createNpc(*locals())
+    return sqg2o.createNpc(name, instance)
 
 def destroyNpc(npc_id : int) -> bool:
     """
@@ -47,7 +47,7 @@ def destroyNpc(npc_id : int) -> bool:
     ## Returns
     `bool`: `true` when npc was successfully destroyed, otherwise false`.
     """
-    return sqg2o.destroyNpc(*locals())
+    return sqg2o.destroyNpc(npc_id)
 
 def getNpcAction(npc_id : int, index : int) -> dict:
     """
@@ -64,7 +64,7 @@ def getNpcAction(npc_id : int, index : int) -> dict:
     ## Returns
     `dict {type, id, status}`: The table containing information about selected element.
     """
-    return sqg2o.getNpcAction(*locals())
+    return sqg2o.getNpcAction(npc_id, index)
 
 def getNpcActions(npc_id : int) -> list:
     """
@@ -80,7 +80,7 @@ def getNpcActions(npc_id : int) -> list:
     ## Returns
     `list [{type, id}]`: The array containing information about queue elements.
     """
-    return sqg2o.getNpcActions(*locals())
+    return sqg2o.getNpcActions(npc_id)
 
 def getNpcActionsCount(npc_id : int) -> int:
     """
@@ -96,7 +96,7 @@ def getNpcActionsCount(npc_id : int) -> int:
     ## Returns
     `int`: The count of elements inside queue, otherwise `-1`.
     """
-    return sqg2o.getNpcActionsCount(*locals())
+    return sqg2o.getNpcActionsCount(npc_id)
 
 def getNpcHostPlayer(npc_id : int) -> int:
     """
@@ -112,7 +112,7 @@ def getNpcHostPlayer(npc_id : int) -> int:
     ## Returns
     `int`: the host player identifier. If there is no host player `-1` is returned instead.
     """
-    return sqg2o.getNpcHostPlayer(*locals())
+    return sqg2o.getNpcHostPlayer(npc_id)
 
 def getNpcLastActionId(npc_id : int) -> int:
     """
@@ -128,7 +128,7 @@ def getNpcLastActionId(npc_id : int) -> int:
     ## Returns
     `int`: The last finished action identifier, otherwise `-1`.
     """
-    return sqg2o.getNpcLastActionId(*locals())
+    return sqg2o.getNpcLastActionId(npc_id)
 
 def isNpc(npc_id : int) -> bool:
     """
@@ -144,7 +144,7 @@ def isNpc(npc_id : int) -> bool:
     ## Returns
     `bool`: `true` when object is NPC, otherwise `false`.
     """
-    return sqg2o.isNpc(*locals())
+    return sqg2o.isNpc(npc_id)
 
 def isNpcActionFinished(npc_id : int, action_id : int) -> bool:
     """
@@ -161,7 +161,7 @@ def isNpcActionFinished(npc_id : int, action_id : int) -> bool:
     ## Returns
     `bool`: `true` if specified action identifier was already finished, otherwise `false`.
     """
-    return sqg2o.isNpcActionFinished(*locals())
+    return sqg2o.isNpcActionFinished(npc_id, action_id)
 
 def npcAttackMelee(attacker_id : int, enemy_id : int, attack_type : int, combo : int):
     """
@@ -181,7 +181,7 @@ def npcAttackMelee(attacker_id : int, enemy_id : int, attack_type : int, combo :
     `int` **attack_type**: the type of attack.
     `int` **combol**: the combo sequence. For `-1` execute next command immediately.
     """
-    return sqg2o.npcAttackMelee(*locals())
+    return sqg2o.npcAttackMelee(attacker_id, enemy_id, attack_type, combo)
 
 def npcAttackRanged(attacker_id : int, enemy_id : int):
     """
@@ -196,7 +196,7 @@ def npcAttackRanged(attacker_id : int, enemy_id : int):
     `int` **attacker_id**: the remote npc id.
     `int` **enemy_id**: the remote npc or player id.
     """
-    return sqg2o.npcAttackRanged(*locals())
+    return sqg2o.npcAttackRanged(attacker_id, enemy_id)
 
 def npcSpellCast(attacker_id : int, enemy_id : int):
     """
@@ -211,7 +211,7 @@ def npcSpellCast(attacker_id : int, enemy_id : int):
     `int` **attacker_id**: the remote npc id.
     `int` **enemy_id**: the remote npc or player id.
     """
-    return sqg2o.npcSpellCast(*locals())
+    return sqg2o.npcSpellCast(attacker_id, enemy_id)
 
 def npcUseClosestMob(npc_id : int, sceme : str, target_state : int):
     """
@@ -227,7 +227,7 @@ def npcUseClosestMob(npc_id : int, sceme : str, target_state : int):
     `str` **sceme**: the animation sceme name, e.g: `"BENCH"` when you want to interact with bench.
     `int` **target_state**: the target state, use `1` if you want to start interaction and `-1` to end it.
     """
-    return sqg2o.npcUseClosestMob(*locals())
+    return sqg2o.npcUseClosestMob(npc_id, sceme, target_state)
 
 def setNpcHostPlayer(npc_id : int, host_id : int) -> bool:
     """
@@ -244,4 +244,4 @@ def setNpcHostPlayer(npc_id : int, host_id : int) -> bool:
     ## Returns
     `bool`: `true` if host was successfully changed, otherwise `false`.
     """
-    return sqg2o.setNpcHostPlayer(*locals())
+    return sqg2o.setNpcHostPlayer(npc_id, host_id)

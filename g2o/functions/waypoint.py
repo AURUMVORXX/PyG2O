@@ -17,7 +17,7 @@ def getNearestWaypoint(world : str, x : int, y : int, z : int) -> dict:
     ## Returns
     `dict {name, x, y, z}`: Waypoint information.
     """
-    return sqg2o.getNearestWaypoint(*locals())
+    return sqg2o.getNearestWaypoint(world, x, y, z)
 
 def getWaypoint(world : str, name : str) -> dict:
     """
@@ -34,4 +34,4 @@ def getWaypoint(world : str, name : str) -> dict:
     ## Returns
     `dict {x, y, z}`: The position of waypoint.
     """
-    return sqg2o.getWaypoint(*locals())
+    return sqg2o.getWaypoint(world, name)

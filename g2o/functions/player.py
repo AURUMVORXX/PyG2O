@@ -21,7 +21,7 @@ def addBan(info : dict) -> bool:
     ## Returns
     `bool`: `true` if ban was added, otherwise `false`.
     """
-    return sqg2o.addBan(*locals())
+    return sqg2o.addBan(info)
 
 def applyPlayerOverlay(id : int, overlayId : int) -> bool:
     """
@@ -38,7 +38,7 @@ def applyPlayerOverlay(id : int, overlayId : int) -> bool:
     ## Returns
     `bool`: `true` if animation overlay was successfully applied on player, otherwise `false`.
     """
-    return sqg2o.applyPlayerOverlay(*locals())
+    return sqg2o.applyPlayerOverlay(id, overlayId)
 
 def ban(id : int, minutes : int, reason : str):
     """
@@ -56,7 +56,7 @@ def ban(id : int, minutes : int, reason : str):
     `int` **minutes**: the time how long ban will take in minutes. Passing `0` will cause the player to have permanent ban.
     `str` **reason**: the reason why player was banned.
     """
-    return sqg2o.ban(*locals())
+    return sqg2o.ban(id, minutes, reason)
 
 def drawWeapon(id : int, weaponMode : int):
     """
@@ -71,7 +71,7 @@ def drawWeapon(id : int, weaponMode : int):
     `int` **id**: the player id.
     `int` **weaponMode**: the preffered weapon mode. For more information see [Weapon mode constants](../../constants/weapon-mode.md).
     """
-    return sqg2o.drawWeapon(*locals())
+    return sqg2o.drawWeapon(id, weaponMode)
 
 
 def equipItem(id : int, instance : str, slotId : int = -1):
@@ -90,7 +90,7 @@ def equipItem(id : int, instance : str, slotId : int = -1):
     `str` **instance**: the item instance from Daedalus scripts.
     `int` **slotId**: the slot id in which you want to equip item on player, e.g scrolls, runes, rings, by default the item will be equipped on the first free slot.
     """
-    return sqg2o.equipItem(*locals())
+    return sqg2o.equipItem(id, instance, slotId)
 
 def getPlayerAmulet(id : int) -> str:
     """
@@ -106,7 +106,7 @@ def getPlayerAmulet(id : int) -> str:
     ## Returns
     `str`: the item instance from Daedalus scripts.
     """
-    return sqg2o.getPlayerAmulet(*locals())
+    return sqg2o.getPlayerAmulet(id)
 
 def getPlayerAngle(id : int) -> float:
     """
@@ -122,7 +122,7 @@ def getPlayerAngle(id : int) -> float:
     ## Returns
     `float`: the facing rotation on y axis.
     """
-    return sqg2o.getPlayerAngle(*locals())
+    return sqg2o.getPlayerAngle(id)
 
 def getPlayerAni(id : int) -> str:
     """
@@ -138,7 +138,7 @@ def getPlayerAni(id : int) -> str:
     ## Returns
     `str`: the ani name, e.g: `"S_RUN"`.
     """
-    return sqg2o.getPlayerAni(*locals())
+    return sqg2o.getPlayerAni(id)
 
 def getPlayerArmor(id : int) -> str:
     """
@@ -154,7 +154,7 @@ def getPlayerArmor(id : int) -> str:
     ## Returns
     `str`: the item instance from Daedalus scripts.
     """
-    return sqg2o.getPlayerArmor(*locals())
+    return sqg2o.getPlayerArmor(id)
 
 def getPlayerAtVector(id : int) -> dict:
     """
@@ -170,7 +170,7 @@ def getPlayerAtVector(id : int) -> dict:
     ## Returns
     `dict {x, y, z}`: the player at vector.
     """
-    return sqg2o.getPlayerAtVector(*locals())
+    return sqg2o.getPlayerAtVector(id)
 
 def getPlayerBelt(id : int) -> str:
     """
@@ -186,7 +186,7 @@ def getPlayerBelt(id : int) -> str:
     ## Returns
     `str`: the item instance from Daedalus scripts.
     """
-    return sqg2o.getPlayerBelt(*locals())
+    return sqg2o.getPlayerBelt(id)
 
 def getPlayerCameraPosition(id : int) -> dict:
     """
@@ -202,7 +202,7 @@ def getPlayerCameraPosition(id : int) -> dict:
     ## Returns
     `dict {x, y, z}`: the dictionary that represents camera position.
     """
-    return sqg2o.getPlayerCameraPosition(*locals())
+    return sqg2o.getPlayerCameraPosition(id)
 
 def getPlayerCollision(id : int) -> bool:
     """
@@ -218,7 +218,7 @@ def getPlayerCollision(id : int) -> bool:
     ## Returns
     `bool`: `true` if collision is enabled, otherwise `false`.
     """
-    return sqg2o.getPlayerCollision(*locals())
+    return sqg2o.getPlayerCollision(id)
 
 def getPlayerColor(id : int) -> dict:
     """
@@ -234,7 +234,7 @@ def getPlayerColor(id : int) -> dict:
     ## Returns
     `dict {r, g, b}`: the player nickname color.
     """
-    return sqg2o.getPlayerColor(*locals())
+    return sqg2o.getPlayerColor(id)
 
 def getPlayerContext(id : int, type : int) -> int:
     """
@@ -250,7 +250,7 @@ def getPlayerContext(id : int, type : int) -> int:
     ## Returns
     `int`: the value stored within selected context.
     """
-    return sqg2o.getPlayerContext(*locals())
+    return sqg2o.getPlayerContext(id, type)
 
 def getPlayerDexterity(id : int) -> int:
     """
@@ -266,7 +266,7 @@ def getPlayerDexterity(id : int) -> int:
     ## Returns
     `int`: the dexterity points amount.
     """
-    return sqg2o.getPlayerDexterity(*locals())
+    return sqg2o.getPlayerDexterity(id)
 
 def getPlayerFaceAnis(id : int) -> list:
     """
@@ -282,7 +282,7 @@ def getPlayerFaceAnis(id : int) -> list:
     ## Returns
     `list [{aniName, layer}]`: the list of objects describing face animation.
     """
-    return sqg2o.getPlayerFaceAnis(*locals())
+    return sqg2o.getPlayerFaceAnis(id)
 
 def getPlayerFatness(id : int) -> float:
     """
@@ -298,7 +298,7 @@ def getPlayerFatness(id : int) -> float:
     ## Returns
     `float`: the fatness ratio.
     """
-    return sqg2o.getPlayerFatness(*locals())
+    return sqg2o.getPlayerFatness(id)
 
 def getPlayerFocus(id : int) -> int:
     """
@@ -314,7 +314,7 @@ def getPlayerFocus(id : int) -> int:
     ## Returns
     `int`: the current focused player id. In case were there is no focus returns `-1`.
     """
-    return sqg2o.getPlayerFocus(*locals())
+    return sqg2o.getPlayerFocus(id)
 
 def getPlayerHealth(id : int) -> int:
     """
@@ -330,7 +330,7 @@ def getPlayerHealth(id : int) -> int:
     ## Returns
     `int`: the health points amount.
     """
-    return sqg2o.getPlayerHealth(*locals())
+    return sqg2o.getPlayerHealth(id)
 
 def getPlayerHelmet(id : int) -> str:
     """
@@ -346,7 +346,7 @@ def getPlayerHelmet(id : int) -> str:
     ## Returns
     `str`: the item instance from Daedalus scripts.
     """
-    return sqg2o.getPlayerHelmet(*locals())
+    return sqg2o.getPlayerHelmet(id)
 
 def getPlayerIP(id : int) -> str:
     """
@@ -362,7 +362,7 @@ def getPlayerIP(id : int) -> str:
     ## Returns
     `str`: the player ip address, e.g `"127.0.0.1"`.
     """
-    return sqg2o.getPlayerIP(*locals())
+    return sqg2o.getPlayerIP(id)
 
 def getPlayerInstance(id : int) -> str:
     """
@@ -378,7 +378,7 @@ def getPlayerInstance(id : int) -> str:
     ## Returns
     `str`: the player instance.
     """
-    return sqg2o.getPlayerInstance(*locals())
+    return sqg2o.getPlayerInstance(id)
 
 def getPlayerInvisible(id : int) -> bool:
     """
@@ -394,7 +394,7 @@ def getPlayerInvisible(id : int) -> bool:
     ## Returns
     `bool`: `true` when player is invisible for all players, otherwise `false`.
     """
-    return sqg2o.getPlayerInvisible(*locals())
+    return sqg2o.getPlayerInvisible(id)
 
 def getPlayerMacAddr(id : int) -> str:
     """
@@ -414,7 +414,7 @@ def getPlayerMacAddr(id : int) -> str:
     ## Returns
     `str`: the player mac address, e.g `"00-1b-44-11-3a-b7"`.
     """
-    return sqg2o.getPlayerMacAddr(*locals())
+    return sqg2o.getPlayerMacAddr(id)
 
 def getPlayerMana(id : int) -> int:
     """
@@ -430,7 +430,7 @@ def getPlayerMana(id : int) -> int:
     ## Returns
     `int`: the mana points amount.
     """
-    return sqg2o.getPlayerMana(*locals())
+    return sqg2o.getPlayerMana(id)
 
 def getPlayerMaxHealth(id : int) -> int:
     """
@@ -446,7 +446,7 @@ def getPlayerMaxHealth(id : int) -> int:
     ## Returns
     `int`: the max health points amount.
     """
-    return sqg2o.getPlayerMaxHealth(*locals())
+    return sqg2o.getPlayerMaxHealth(id)
 
 def getPlayerMaxMana(id : int) -> int:
     """
@@ -462,7 +462,7 @@ def getPlayerMaxMana(id : int) -> int:
     ## Returns
     `int`: the max mana points amount.
     """
-    return sqg2o.getPlayerMaxMana(*locals())
+    return sqg2o.getPlayerMaxMana(id)
 
 def getPlayerMeleeWeapon(id : int) -> str:
     """
@@ -478,7 +478,7 @@ def getPlayerMeleeWeapon(id : int) -> str:
     ## Returns
     `str`: the item instance from Daedalus scripts.
     """
-    return sqg2o.getPlayerMeleeWeapon(*locals())
+    return sqg2o.getPlayerMeleeWeapon(id)
 
 def getPlayerName(id : int) -> str:
     """
@@ -494,7 +494,7 @@ def getPlayerName(id : int) -> str:
     ## Returns
     `str`: the player nickname.
     """
-    return sqg2o.getPlayerName(*locals())
+    return sqg2o.getPlayerName(id)
 
 def getPlayerPing(id : int) -> int:
     """
@@ -512,7 +512,7 @@ def getPlayerPing(id : int) -> int:
     ## Returns
     `str`: the current player ping.
     """
-    return sqg2o.getPlayerPing(*locals())
+    return sqg2o.getPlayerPing(id)
 
 def getPlayerPosition(id : int) -> dict:
     """
@@ -528,7 +528,7 @@ def getPlayerPosition(id : int) -> dict:
     ## Returns
     `dict {x, y, z}`: the player world position.
     """
-    return sqg2o.getPlayerPosition(*locals())
+    return sqg2o.getPlayerPosition(id)
 
 def getPlayerRangedWeapon(id : int) -> str:
     """
@@ -544,7 +544,7 @@ def getPlayerRangedWeapon(id : int) -> str:
     ## Returns
     `str`: the item instance from Daedalus scripts.
     """
-    return sqg2o.getPlayerRangedWeapon(*locals())
+    return sqg2o.getPlayerRangedWeapon(id)
 
 def getPlayerRespawnTime(id : int) -> int:
     """
@@ -560,7 +560,7 @@ def getPlayerRespawnTime(id : int) -> int:
     ## Returns
     `str`: the player respawn time.
     """
-    return sqg2o.getPlayerRespawnTime(*locals())
+    return sqg2o.getPlayerRespawnTime(id)
 
 def getPlayerRing(id : int, handId : int) -> str:
     """
@@ -577,7 +577,7 @@ def getPlayerRing(id : int, handId : int) -> str:
     ## Returns
     `str`: the item instance from Daedalus scripts.
     """
-    return sqg2o.getPlayerRing(*locals())
+    return sqg2o.getPlayerRing(id, handId)
 
 def getPlayerScale(id : int) -> dict:
     """
@@ -593,7 +593,7 @@ def getPlayerScale(id : int) -> dict:
     ## Returns
     `dict {x, y, z}`: the player scale.
     """
-    return sqg2o.getPlayerScale(*locals())
+    return sqg2o.getPlayerScale(id)
 
 def getPlayerSerial(id : int) -> str:
     """
@@ -614,7 +614,7 @@ def getPlayerSerial(id : int) -> str:
     ## Returns
     `str`: the player serial.
     """
-    return sqg2o.getPlayerSerial(*locals())
+    return sqg2o.getPlayerSerial(id)
 
 def getPlayerShield(id : int) -> str:
     """
@@ -630,7 +630,7 @@ def getPlayerShield(id : int) -> str:
     ## Returns
     `str`: the item instance from Daedalus scripts.
     """
-    return sqg2o.getPlayerShield(*locals())
+    return sqg2o.getPlayerShield(id)
 
 def getPlayerSkillWeapon(id : int, skillId : int) -> int:
     """
@@ -647,7 +647,7 @@ def getPlayerSkillWeapon(id : int, skillId : int) -> int:
     ## Returns
     `int`: the percentage value in range <0, 100>.
     """
-    return sqg2o.getPlayerSkillWeapon(*locals())
+    return sqg2o.getPlayerSkillWeapon(id, skillId)
 
 def getPlayerSpell(id : int, slotId : int) -> str:
     """
@@ -664,7 +664,7 @@ def getPlayerSpell(id : int, slotId : int) -> str:
     ## Returns
     `str`: the item instance from Daedalus scripts.
     """
-    return sqg2o.getPlayerSpell(*locals())
+    return sqg2o.getPlayerSpell(id, slotId)
 
 def getPlayerStrength(id : int) -> int:
     """
@@ -680,7 +680,7 @@ def getPlayerStrength(id : int) -> int:
     ## Returns
     `int`: the strength points amount.
     """
-    return sqg2o.getPlayerStrength(*locals())
+    return sqg2o.getPlayerStrength(id)
 
 def getPlayerTalent(id : int, talentId : int) -> int:
     """
@@ -697,7 +697,7 @@ def getPlayerTalent(id : int, talentId : int) -> int:
     ## Returns
     `int`: the current talent value for specific talent id.
     """
-    return sqg2o.getPlayerTalent(*locals())
+    return sqg2o.getPlayerTalent(id, talentId)
 
 def getPlayerVirtualWorld(id : int) -> int:
     """
@@ -713,7 +713,7 @@ def getPlayerVirtualWorld(id : int) -> int:
     ## Returns
     `int`: the player virtual world id.
     """
-    return sqg2o.getPlayerVirtualWorld(*locals())
+    return sqg2o.getPlayerVirtualWorld(id)
 
 def getPlayerVisual(id : int) -> dict:
     """
@@ -729,7 +729,7 @@ def getPlayerVisual(id : int) -> dict:
     ## Returns
     `dict {bodyModel, bodyTxt, headModel, headTxt}`: player visual.
     """
-    return sqg2o.getPlayerVisual(*locals())
+    return sqg2o.getPlayerVisual(id)
 
 def getPlayerWeaponMode(id : int) -> int:
     """
@@ -745,7 +745,7 @@ def getPlayerWeaponMode(id : int) -> int:
     ## Returns
     `int`: the player weaponMode, for more information see [Weapon mode constants](../../constants/weapon-mode.md).
     """
-    return sqg2o.getPlayerWeaponMode(*locals())
+    return sqg2o.getPlayerWeaponMode(id)
 
 def getPlayerWorld(id : int) -> str:
     """
@@ -761,7 +761,7 @@ def getPlayerWorld(id : int) -> str:
     ## Returns
     `str`: the player world.
     """
-    return sqg2o.getPlayerWorld(*locals())
+    return sqg2o.getPlayerWorld(id)
 
 def giveItem(id : int, instance : str, amount : int):
     """
@@ -777,7 +777,7 @@ def giveItem(id : int, instance : str, amount : int):
     `str` **instance**: the item instance from Daedalus scripts.
     `int` **amount**: the amount of item, e.g: `1000` gold coins.
     """
-    return sqg2o.giveItem(*locals())
+    return sqg2o.giveItem(id, instance, amount)
 
 def hitPlayer(id : int, target_id : int) -> bool:
     """
@@ -794,7 +794,7 @@ def hitPlayer(id : int, target_id : int) -> bool:
     ## Returns
     `bool`: `true` if hit was successfully simulated, otherwise `false`.
     """
-    return sqg2o.hitPlayer(*locals())
+    return sqg2o.hitPlayer(id, target_id)
 
 def isPlayerConnected(id : int) -> bool:
     """
@@ -810,7 +810,7 @@ def isPlayerConnected(id : int) -> bool:
     ## Returns
     `bool`: `true` when player is connected, otherwise `false`.
     """
-    return sqg2o.isPlayerConnected(*locals())
+    return sqg2o.isPlayerConnected(id)
 
 def isPlayerDead(id : int) -> bool:
     """
@@ -826,7 +826,7 @@ def isPlayerDead(id : int) -> bool:
     ## Returns
     `bool`: `true` when player is dead, otherwise `false`.
     """
-    return sqg2o.isPlayerDead(*locals())
+    return sqg2o.isPlayerDead(id)
 
 def isPlayerSpawned(id : int) -> bool:
     """
@@ -842,7 +842,7 @@ def isPlayerSpawned(id : int) -> bool:
     ## Returns
     `bool`: `true` when player is spawned, otherwise `false`.
     """
-    return sqg2o.isPlayerSpawned(*locals())
+    return sqg2o.isPlayerSpawned(id)
 
 def isPlayerUnconscious(id : int) -> bool:
     """
@@ -858,7 +858,7 @@ def isPlayerUnconscious(id : int) -> bool:
     ## Returns
     `bool`: `true` when player is unconscious, otherwise `false`.
     """
-    return sqg2o.isPlayerUnconscious(*locals())
+    return sqg2o.isPlayerUnconscious(id)
 
 def kick(id : int, reason : str):
     """
@@ -875,7 +875,7 @@ def kick(id : int, reason : str):
     `int` **id**: the reason why player was kicked.
     `str` **reason**: the reason why player was kicked.
     """
-    return sqg2o.kick(*locals())
+    return sqg2o.kick(id, reason)
 
 def playAni(id : int, aniName : str):
     """
@@ -890,7 +890,7 @@ def playAni(id : int, aniName : str):
     `int` **id**: the player id.
     `str` **aniName**: the name of the animation, e.g: `"T_STAND_2_SIT"`.
     """
-    return sqg2o.playAni(*locals())
+    return sqg2o.playAni(id, aniName)
 
 def playFaceAni(id : int, aniName : str):
     """
@@ -905,7 +905,7 @@ def playFaceAni(id : int, aniName : str):
     `int` **id**: the player id.
     `str` **aniName**: the name of the animation, e.g: `"S_FRIENDLY"`.
     """
-    return sqg2o.playFaceAni(*locals())
+    return sqg2o.playFaceAni(id, aniName)
 
 def readySpell(id : int, slotId : int, manaInvested : int):
     """
@@ -921,7 +921,7 @@ def readySpell(id : int, slotId : int, manaInvested : int):
     `int` **slotId**: the equipped spell slotId in range <0, 6>.
     `int` **manaInvested**: the spell cast cost in mana points.
     """
-    return sqg2o.readySpell(*locals())
+    return sqg2o.readySpell(id, slotId, manaInvested)
 
 def removeItem(id : int, instance : str, amount : int):
     """
@@ -937,7 +937,7 @@ def removeItem(id : int, instance : str, amount : int):
     `str` **instance**: the item instance from Daedalus scripts.
     `int` **amount**: the amount of item, e.g: `1000` gold coins.
     """
-    return sqg2o.removeItem(*locals())
+    return sqg2o.removeItem(id, instance, amount)
 
 def removePlayerOverlay(id : int, overlayId : int) -> bool:
     """
@@ -954,7 +954,7 @@ def removePlayerOverlay(id : int, overlayId : int) -> bool:
     ## Returns
     `bool`: `true` if animation overlay was successfully removed from player, otherwise `false`.
     """
-    return sqg2o.removePlayerOverlay(*locals())
+    return sqg2o.removePlayerOverlay(id, overlayId)
 
 def removeWeapon(id : int):
     """
@@ -968,7 +968,7 @@ def removeWeapon(id : int):
     ## Parameters
     `int` **id**: the player id.
     """
-    return sqg2o.removeWeapon(*locals())
+    return sqg2o.removeWeapon(id)
 
 def setPlayerAngle(id : int, angle : float):
     """
@@ -983,7 +983,7 @@ def setPlayerAngle(id : int, angle : float):
     `int` **id**: the player id.
     `float` **angle**: the facing rotation on y axis.
     """
-    return sqg2o.setPlayerAngle(*locals())
+    return sqg2o.setPlayerAngle(id, angle)
 
 def setPlayerCollision(id : int, collision : bool):
     """
@@ -998,7 +998,7 @@ def setPlayerCollision(id : int, collision : bool):
     `int` **id**: the player id.
     `bool` **collision**: `true` if want to enable collision, otherwise `false`.
     """
-    return sqg2o.setPlayerCollision(*locals())
+    return sqg2o.setPlayerCollision(id, collision)
 
 def setPlayerColor(id : int, r : int, g : int, b : int):
     """
@@ -1015,23 +1015,23 @@ def setPlayerColor(id : int, r : int, g : int, b : int):
     `int` **g**: the green color component in RGB model.
     `int` **b**: the blue color component in RGB model.
     """
-    return sqg2o.setPlayerColor(*locals())
+    return sqg2o.setPlayerColor(id, r, g, b)
 
-def setPlayerDexterity(id : int, type : int, value : int):
+def setPlayerContext(id : int, type : int, value : int):
     """
     This function is used to set player script context. For more information see [this article](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/multiplayer/script-context/).
-    Original: [setPlayerDexterity](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/setPlayerDexterity/)
+    Original: [setPlayerContext](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/setPlayerContext/)
     
     ## Declaration
     ```python
-    def setPlayerDexterity(id : int, type : int, value : int)
+    def setPlayerContext(id : int, type : int, value : int)
     ```
     ## Parameters
     `int` **id**: the player id.
     `int` **type**: the type of modified context.
     `int` **value**: the new value written into context.
     """
-    return sqg2o.setPlayerDexterity(*locals())
+    return sqg2o.setPlayerContext(id, type, value)
 
 def setPlayerDexterity(id : int, dexterity : int):
     """
@@ -1046,7 +1046,7 @@ def setPlayerDexterity(id : int, dexterity : int):
     `int` **id**: the player id.
     `int` **dexterity**: the dexterity points amount.
     """
-    return sqg2o.setPlayerDexterity(*locals())
+    return sqg2o.setPlayerDexterity(id, dexterity)
 
 def setPlayerFatness(id : int, fatness : float):
     """
@@ -1061,7 +1061,7 @@ def setPlayerFatness(id : int, fatness : float):
     `int` **id**: the player id.
     `float` **fatness**: ratio of how much you want to make player fatter, `0.0` is default fatness (none).
     """
-    return sqg2o.setPlayerFatness(*locals())
+    return sqg2o.setPlayerFatness(id, fatness)
 
 def setPlayerHealth(id : int, health : int):
     """
@@ -1076,7 +1076,7 @@ def setPlayerHealth(id : int, health : int):
     `int` **id**: the player id.
     `int` **health**: health points amount.
     """
-    return sqg2o.setPlayerHealth(*locals())
+    return sqg2o.setPlayerHealth(id, health)
 
 def setPlayerInstance(id : int, instance : str):
     """
@@ -1091,7 +1091,7 @@ def setPlayerInstance(id : int, instance : str):
     `int` **id**: the player id.
     `str` **instance**: the new player instance.
     """
-    return sqg2o.setPlayerInstance(*locals())
+    return sqg2o.setPlayerInstance(id, instance)
 
 def setPlayerInvisible(id : int, toggle : bool):
     """
@@ -1107,7 +1107,7 @@ def setPlayerInvisible(id : int, toggle : bool):
     `int` **id**: the player id.
     `bool` **toggle**: `true` if the player should be invisible for all players, otherwise `false`.
     """
-    return sqg2o.setPlayerInvisible(*locals())
+    return sqg2o.setPlayerInvisible(id, toggle)
 
 def setPlayerMana(id : int, mana : int):
     """
@@ -1122,7 +1122,7 @@ def setPlayerMana(id : int, mana : int):
     `int` **id**: the player id.
     `int` **mana**: mana points amount.
     """
-    return sqg2o.setPlayerMana(*locals())
+    return sqg2o.setPlayerMana(id, mana)
 
 def setPlayerMaxHealth(id : int, maxHealth : int):
     """
@@ -1137,7 +1137,7 @@ def setPlayerMaxHealth(id : int, maxHealth : int):
     `int` **id**: the player id.
     `int` **maxHealth**: max health points amount.
     """
-    return sqg2o.setPlayerMaxHealth(*locals())
+    return sqg2o.setPlayerMaxHealth(id, maxHealth)
 
 def setPlayerMaxMana(id : int, maxMana : int):
     """
@@ -1152,7 +1152,7 @@ def setPlayerMaxMana(id : int, maxMana : int):
     `int` **id**: the player id.
     `int` **maxMana**: max mana points amount.
     """
-    return sqg2o.setPlayerMaxMana(*locals())
+    return sqg2o.setPlayerMaxMana(id, maxMana)
 
 def setPlayerName(id : int, name : str) -> bool:
     """
@@ -1171,16 +1171,16 @@ def setPlayerName(id : int, name : str) -> bool:
     ## Returns
     `bool`: `true` when unique player name was set, otherwise `false`.
     """
-    return sqg2o.setPlayerName(*locals())
+    return sqg2o.setPlayerName(id, name)
 
-def setPlayerScale(id : int, x : float, y : float, z : float):
+def setPlayerPosition(id : int, x : float, y : float, z : float):
     """
     This function will set the player world position for all players.
-    Original: [setPlayerScale](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/setPlayerScale/)
+    Original: [setPlayerPosition](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/setPlayerPosition/)
     
     ## Declaration
     ```python
-    def setPlayerScale(id : int, x : float, y : float, z : float)
+    def setPlayerPosition(id : int, x : float, y : float, z : float)
     ```
     ## Parameters
     `int` **id**: the player id.
@@ -1188,7 +1188,7 @@ def setPlayerScale(id : int, x : float, y : float, z : float):
     `float` **y**: the position in the world on the y axis.
     `float` **z**: the position in the world on the z axis.
     """
-    return sqg2o.setPlayerScale(*locals())
+    return sqg2o.setPlayerPosition(id, x, y, z)
 
 def setPlayerRespawnTime(id : int, respawnTime : int):
     """
@@ -1205,7 +1205,7 @@ def setPlayerRespawnTime(id : int, respawnTime : int):
     `int` **id**: the player id.
     `int` **respawnTime**: the new respawn time in miliseconds.
     """
-    return sqg2o.setPlayerRespawnTime(*locals())
+    return sqg2o.setPlayerRespawnTime(id, respawnTime)
 
 def setPlayerScale(id : int, x : float, y : float, z : float):
     """
@@ -1222,7 +1222,7 @@ def setPlayerScale(id : int, x : float, y : float, z : float):
     `float` **y**: the scale factor on y axis.
     `float` **z**: the scale factor on z axis.
     """
-    return sqg2o.setPlayerScale(*locals())
+    return sqg2o.setPlayerScale(id, x, y, z)
 
 def setPlayerSkillWeapon(id : int, skillId : int, percentage : int):
     """
@@ -1238,7 +1238,7 @@ def setPlayerSkillWeapon(id : int, skillId : int, percentage : int):
     `int` **skillId**: For more information see [Skill weapon constants](../../constants/skill-weapon.md).
     `int` **percentage**: the percentage in range <0, 100>.
     """
-    return sqg2o.setPlayerSkillWeapon(*locals())
+    return sqg2o.setPlayerSkillWeapon(id, skillId, percentage)
 
 def setPlayerStrength(id : int, strength : int):
     """
@@ -1253,7 +1253,7 @@ def setPlayerStrength(id : int, strength : int):
     `int` **id**: the player id.
     `int` **strength**: strength points amount.
     """
-    return sqg2o.setPlayerStrength(*locals())
+    return sqg2o.setPlayerStrength(id, strength)
 
 def setPlayerTalent(id : int, talentId : int, talentValue : int):
     """
@@ -1269,7 +1269,7 @@ def setPlayerTalent(id : int, talentId : int, talentValue : int):
     `int` **talentId**: the talent id. For more information see [Talent constants](../../constants/talent.md).
     `int` **talentValue**: the new talent value.
     """
-    return sqg2o.setPlayerTalent(*locals())
+    return sqg2o.setPlayerTalent(id, talentId, talentValue)
 
 def setPlayerVirtualWorld(id : int, virtualWorld : int):
     """
@@ -1285,7 +1285,7 @@ def setPlayerVirtualWorld(id : int, virtualWorld : int):
     `int` **id**: the player id.
     `int` **virtualWorld**: the virtual world id in range <0, 65535>.
     """
-    return sqg2o.setPlayerVirtualWorld(*locals())
+    return sqg2o.setPlayerVirtualWorld(id, virtualWorld)
 
 def setPlayerVisual(id : int, bodyModel : str, bodyTxt : int, headModel : str, headTxt : int):
     """
@@ -1303,7 +1303,7 @@ def setPlayerVisual(id : int, bodyModel : str, bodyTxt : int, headModel : str, h
     `str` **headModel**: the name of the head model (MMS), e.g: `HUM_HEAD_PONY`.
     `int` **headTxt**: the numeric id of head texture file. Texture id can be read from V(number) filename part, for example, in this file: `HUM_HEAD_V18_C0-C.TEX` id is 18.
     """
-    return sqg2o.setPlayerVisual(*locals())
+    return sqg2o.setPlayerVisual(id, bodyModel, bodyTxt, headModel, headTxt)
 
 def setPlayerWeaponMode(id : int, weaponMode : int):
     """
@@ -1318,9 +1318,9 @@ def setPlayerWeaponMode(id : int, weaponMode : int):
     `int` **id**: the player id.
     `int` **weaponMode**: For more information see [Weapon mode constants](../../constants/weapon-mode.md).
     """
-    return sqg2o.setPlayerWeaponMode(*locals())
+    return sqg2o.setPlayerWeaponMode(id, weaponMode)
 
-def setPlayerWorld(id : int, world : str, startPointName : str):
+def setPlayerWorld(id : int, world : str, startPointName : str = ""):
     """
     This function will set the player world for all players.
     Original: [setPlayerWorld](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/setPlayerWorld/)
@@ -1334,7 +1334,7 @@ def setPlayerWorld(id : int, world : str, startPointName : str):
     `str` **world**: the path to the target world (.ZEN). World path is relative to directory `_Work/Data/Worlds`.
     `str` **startPointName**: the name of the vob to which the player will be moved. If passed empty string, player will be placed at world start point. If vob with specified name doesn't exists or world doesn't have start point, player will be placed at {0, 150, 0} coordinates.
     """
-    return sqg2o.setPlayerWorld(*locals())
+    return sqg2o.setPlayerWorld(id, world, startPointName)
 
 def spawnPlayer(id : int):
     """
@@ -1351,7 +1351,7 @@ def spawnPlayer(id : int):
     ## Parameters
     `int` **id**: the player id.
     """
-    return sqg2o.spawnPlayer(*locals())
+    return sqg2o.spawnPlayer(id)
 
 def stopAni(id : int, aniName : str = ""):
     """
@@ -1366,7 +1366,7 @@ def stopAni(id : int, aniName : str = ""):
     `int` **id**: the player id.
     `str` **aniName**: the name of the animation that you want to stop. The default value is \"\" which means that the first active ani will be stopped.
     """
-    return sqg2o.stopAni(*locals())
+    return sqg2o.stopAni(id, aniName)
 
 def stopFaceAni(id : int, aniName : str = ""):
     """
@@ -1381,7 +1381,7 @@ def stopFaceAni(id : int, aniName : str = ""):
     `int` **id**: the player id.
     `str` **aniName**: the name of the animation that you want to stop. The default value is \"\" which means that the first active ani will be stopped.
     """
-    return sqg2o.stopFaceAni(*locals())
+    return sqg2o.stopFaceAni(id, aniName)
 
 def unequipItem(id : int, instance : str):
     """
@@ -1398,7 +1398,7 @@ def unequipItem(id : int, instance : str):
     `int` **id**: the player id.
     `str` **instance**: the item instance from Daedalus scripts.
     """
-    return sqg2o.unequipItem(*locals())
+    return sqg2o.unequipItem(id, instance)
 
 def unreadySpell(id : int):
     """
@@ -1412,7 +1412,7 @@ def unreadySpell(id : int):
     ## Parameters
     `int` **id**: the player id.
     """
-    return sqg2o.unreadySpell(*locals())
+    return sqg2o.unreadySpell(id)
 
 def unspawnPlayer(id : int):
     """
@@ -1428,7 +1428,7 @@ def unspawnPlayer(id : int):
     ## Parameters
     `int` **id**: the player id.
     """
-    return sqg2o.unspawnPlayer(*locals())
+    return sqg2o.unspawnPlayer(id)
 
 def useItem(id : int, instance : str):
     """
@@ -1443,7 +1443,7 @@ def useItem(id : int, instance : str):
     `int` **id**: the player id.
     `str` **instance**: the item instance from Daedalus scripts.
     """
-    return sqg2o.useItem(*locals())
+    return sqg2o.useItem(id, instance)
 
 def useItemToState(id : int, instance : str, state : int):
     """
@@ -1459,4 +1459,4 @@ def useItemToState(id : int, instance : str, state : int):
     `str` **instance**: the item instance from Daedalus scripts.
     `int` **state**: the state that you'll start from interacting with item.
     """
-    return sqg2o.useItemToState(*locals())
+    return sqg2o.useItemToState(id, instance, state)
