@@ -80,10 +80,11 @@ jobs:
         run: |
           mv out/build/Linux-x64-Release/lib ./
           mv out/build/Linux-x64-Release/PyG2O.x64.so ./
+          mv out/build/Linux-x64-Release/libpython3.12.so ./
       - name: Archive files
         uses: montudor/action-zip@v1
         with:
-          args: zip -r Linux-x64-Release.zip g2o lib PyG2O.x64.so
+          args: zip -r Linux-x64-Release.zip g2o lib PyG2O.x64.so libpython3.12.so
       - name: Upload release
         uses: actions/upload-release-asset@v1
         env:
