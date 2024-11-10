@@ -57,8 +57,8 @@ if(MSVC)
 else()
   set(CPYTHON_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/dependencies/cpython/Include ${CMAKE_SOURCE_DIR}/dependencies/cpython)
   set(CPYTHON_LIBRARY_DIR ${CMAKE_SOURCE_DIR}/dependencies/cpython)
-  set(CPYTHON_LIBRARY python3.12m)
-  set(CPYTHON_BIN ${CMAKE_SOURCE_DIR}/dependencies/dependencies/libpython3.12m.so)
+  set(CPYTHON_LIBRARY python3.12)
+  set(CPYTHON_BIN /opt/hostedtoolcache/Python/3.12.7/x64/lib/libpython3.12.so)
 endif()
 
 file(GLOB_RECURSE SOURCE
@@ -111,7 +111,7 @@ if(DEFINED OUT_FILE_SUFFIX)
 endif()
 
 add_subdirectory(dependencies)
-target_link_libraries(${PROJECT_NAME} ${CPYTHON_LIBRARY})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${CPYTHON_LIBRARY})
 target_link_libraries(${PROJECT_NAME} PRIVATE pybind11::embed)
 
 # Copy Python DLL to the build folder if different
