@@ -1,6 +1,6 @@
 ## How to use
 1. Download latest module version from the **Release** page
-2. Unzip downloaded archive into your server directory (you should now have **PyG2O.xYY.dll**, **python312.dll**, **libs/** and **g2o/** in your root server directory)
+2. Unzip downloaded archive into your server directory (you should now have **PyG2O.xYY.dll**, **python312.dll**, **libs/** and **g2o/** in your root server directory, or similar `.so` files if you're using linux)
 3. Place .DLL module in the place you want and connect it with **config.xml**
 ```xml
 <module  src="PyG2O.x64.dll"  type="server"  />
@@ -15,3 +15,6 @@ import g2o
 # your code
 ```
 If you make package that uses PyG2O functions, then this package also should also contain import.
+
+## Examples
+You can find default (example) scripts in [this repository](https://github.com/AURUMVORXX/PyG2O-DefaultScripts)
