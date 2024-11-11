@@ -19,6 +19,10 @@ from g2o.functions.chat     import sendMessageToPlayer
 from g2o.functions.chat     import sendPlayerMessageToAll
 from g2o.functions.chat     import sendPlayerMessageToPlayer
 
+from g2o.functions.math     import getDistance2d
+from g2o.functions.math     import getDistance3d
+from g2o.functions.math     import getVectorAngle
+
 from g2o.functions.game     import getHostname
 from g2o.functions.game     import getMaxSlots
 from g2o.functions.game     import getPlayersCount
