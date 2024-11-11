@@ -13,6 +13,7 @@ from g2o.classes.items      import ItemsGround
 from g2o.classes.daedalus   import Daedalus
 from g2o.classes.sky        import Sky
 from g2o.classes.mds        import Mds
+from g2o.classes.way        import Way
 
 from g2o.functions.chat     import sendMessageToAll
 from g2o.functions.chat     import sendMessageToPlayer

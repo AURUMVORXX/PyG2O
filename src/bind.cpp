@@ -7,6 +7,7 @@
 #include "classes/py/Sky.h"
 #include "classes/py/ItemsGround.h"
 #include "classes/py/Mds.h"
+#include "classes/py/Way.h"
 
 #include "functions/pyfunctions.h"
 
@@ -108,6 +109,18 @@ PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
         .def_static("id",                           [](std::string value){ return PyMds::id(value); })
         .def_static("name",                         [](int value){ return PyMds::name(value); });
 
+// -------------------------------------------------------------------------
+
+    py::class_<PyWay>(m, "Way")
+        
+        .def(py::init<std::string, std::string, std::string>())
+        .def("getWaypoints",                        &PyWay::getWaypoints)
+        .def("getCountWaypoints",                   &PyWay::getCountWaypoints)
+        .def("__del__",                             &PyWay::del)
+        
+        .def_property_readonly("start",             &PyWay::getStart)
+        .def_property_readonly("end",               &PyWay::getEnd);
+    
 // -------------------------------------------------------------------------
 
     m.def("getHostname",            &py_getHostname);

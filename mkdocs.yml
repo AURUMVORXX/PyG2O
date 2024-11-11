@@ -29,7 +29,9 @@ nav:
     - Network:
       - Packet: classes/network/Packet.md
     - Mds:
-      - Mds: classes/mds/mds.md
+      - Mds: classes/mds/Mds.md
+    - Waypoint:
+      - Way: classes/waypoint/Way.md
   - Constants:
     - AntiCheat: constants/anticheat.md
     - Context: constants/context.md
