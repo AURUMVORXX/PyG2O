@@ -6,7 +6,7 @@ Original: [onPacket](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-r
 ## Parameters
 * `dict` **kwargs**:
     * `int` **playerid**: the id of the player who sent the packet.
-    * `Packet` **packet**: data sended over network from client side.
+    * `Packet` **data**: data sended over network from client side.
 
 ## Usage
 ```python
