@@ -145,5 +145,11 @@ from g2o.functions.player   import unspawnPlayer
 from g2o.functions.player   import useItem
 from g2o.functions.player   import useItemToState
 
+from g2o.functions.streamer import findNearbyPlayers
+from g2o.functions.streamer import getStreamedPlayersByPlayer
+from g2o.functions.streamer import getSpawnedPlayersForPlayer
+
+from g2o.functions.waypoint import getNearestWaypoint
+from g2o.functions.waypoint import getWaypoint
 
 from sqg2oconst             import *
