@@ -89,11 +89,11 @@ bool        py_getPlayerCollision(int id)                                       
 py::dict    py_getPlayerColor(int id)
 { 
     py::dict result;
-    nonut::Color pos = SERVERFUNC->getPlayerColor(id);
+    nonut::Color color = SERVERFUNC->getPlayerColor(id);
     
-    result["r"] = pos.r;
-    result["g"] = pos.g;
-    result["b"] = pos.b;
+    result["r"] = color.r;
+    result["g"] = color.g;
+    result["b"] = color.b;
     return result;
 }
 int         py_getPlayerContext(int id, int type)                                                { return SERVERFUNC->getPlayerContext(id, type); }
@@ -112,7 +112,17 @@ int         py_getPlayerMaxMana(int id)                                         
 std::string py_getPlayerMeleeWeapon(int id)                                                      { return SERVERFUNC->getPlayerMeleeWeapon(id); }
 std::string py_getPlayerName(int id)                                                             { return SERVERFUNC->getPlayerName(id); }
 int         py_getPlayerPing(int id)                                                             { return SERVERFUNC->getPlayerPing(id); }
-py::dict    py_getPlayerPosition(int id)                                                         { return SERVERFUNC->getPlayerPosition(id).data; }
+py::dict    py_getPlayerPosition(int id)                                                         
+{ 
+    py::dict result;
+    
+    nonut::Position3d pos = SERVERFUNC->getPlayerPosition(id);
+    
+    result["x"] = pos.x;
+    result["y"] = pos.y;
+    result["z"] = pos.z;
+    return result;
+}
 std::string py_getPlayerRangedWeapon(int id)                                                     { return SERVERFUNC->getPlayerRangedWeapon(id); }
 int         py_getPlayerRespawnTime(int id)                                                      { return SERVERFUNC->getPlayerRespawnTime(id); }
 std::string py_getPlayerRing(int id, int handId)                                                 { return SERVERFUNC->getPlayerRing(id, handId); }
