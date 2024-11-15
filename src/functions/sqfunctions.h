@@ -88,7 +88,7 @@ namespace nonut
 		Function<String, Int>										getPlayerMeleeWeapon;
 		Function<String, Int>										getPlayerName;
 		Function<Int, Int>											getPlayerPing;
-		Function<SqDict, Int>										getPlayerPosition;
+		Function<Position3d, Int>									getPlayerPosition;
 		Function<String, Int>										getPlayerRangedWeapon;
 		Function<Int, Int>											getPlayerRespawnTime;
 		Function<String, Int, Int>									getPlayerRing;
