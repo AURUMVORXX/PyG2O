@@ -6,7 +6,3 @@
 	path = dependencies/pybind11
 	url = https://github.com/pybind/pybind11.git
 	branch = master
-[submodule "dependencies/cpython"]
-	path = dependencies/cpython
-	url = https://github.com/python/cpython
-	branch = 3.12

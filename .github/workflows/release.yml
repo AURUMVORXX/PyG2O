@@ -34,7 +34,7 @@ jobs:
       - name: Install Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
       - name: Install CMake
         uses: lukka/get-cmake@latest
       - name: Init submodules
@@ -46,7 +46,7 @@ jobs:
       - name: CMake - Build
         run: cmake --build --preset Windows-x64-Release
       - name: Archive output files
-        run: Compress-Archive -Path "out/build/Windows-x64-Release/lib", "g2o", "out/build/Windows-x64-Release/PyG2O.x64.dll", "out/build/Windows-x64-Release/python312.dll" -Destination Windows-x64-Release.zip
+        run: Compress-Archive -Path "g2o", "out/build/Windows-x64-Release/PyG2O.x64.dll" -Destination Windows-x64-Release.zip
       - name: Upload release
         uses: actions/upload-release-asset@v1
         env:
@@ -67,7 +67,7 @@ jobs:
       - name: Install Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12-dev'
+          python-version: '3.13'
       - name: Install CMake
         uses: lukka/get-cmake@latest
       - name: Init submodules
@@ -76,15 +76,10 @@ jobs:
         run: cmake . --preset Linux-x64-Release -DCMAKE_BUILD_TYPE="Release" -DCOUT_FILE_SUFFIX="x64"
       - name: CMake - Build
         run: cmake --build --preset Linux-x64-Release
-      - name: Move release files
-        run: |
-          mv out/build/Linux-x64-Release/lib ./
-          mv out/build/Linux-x64-Release/PyG2O.x64.so ./
-          mv out/build/Linux-x64-Release/libpython3.12.so ./
       - name: Archive files
         uses: montudor/action-zip@v1
         with:
-          args: zip -r Linux-x64-Release.zip g2o lib PyG2O.x64.so libpython3.12.so
+          args: zip -r Linux-x64-Release.zip g2o out/build/Linux-x64-Release/PyG2O.x64.so
       - name: Upload release
         uses: actions/upload-release-asset@v1
         env:
