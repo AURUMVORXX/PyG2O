@@ -6,11 +6,15 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - sane_lists
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
 
 plugins:
   - mkdocstrings
   - search
   - callouts
+  - glightbox
   
 repo_url: https://github.com/AURUMVORXX/PyG2O.git
   
@@ -18,6 +22,8 @@ nav:
   - How to use: index.md
   - Comparing with Squirrel: comparing.md
   - QnA: qna.md
+  - How To...:
+    - ...debug?: howto/localdebug.md
   - Classes:
     - Game:
       - Daedalus: classes/game/Daedalus.md
