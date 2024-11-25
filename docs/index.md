@@ -1,6 +1,8 @@
 ## How to use
+1. Install [Python 3.13](https://www.python.org/downloads/release/python-3130/)
+*Optionally, for Windows instead of installing Python, you can download Windows embeddable package from Python download page, and extract ZIP into your server folder*
 1. Download latest module version from the **Release** page
-2. Unzip downloaded archive into your server directory (you should now have **PyG2O.xYY.dll**, **python312.dll**, **libs/** and **g2o/** in your root server directory, or similar `.so` files if you're using linux)
+2. Unzip downloaded archive into your server directory (you should now have **PyG2O.xYY.dll** and **g2o/** in your root server directory, or similar `.so` file if you're using linux)
 3. Place .DLL module in the place you want and connect it with **config.xml**
 ```xml
 <module  src="PyG2O.x64.dll"  type="server"  />
