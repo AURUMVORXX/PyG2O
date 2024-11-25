@@ -152,4 +152,4 @@ from g2o.functions.streamer import getSpawnedPlayersForPlayer
 from g2o.functions.waypoint import getNearestWaypoint
 from g2o.functions.waypoint import getWaypoint
 
-from sqg2oconst             import *
+from g2o.constants          import *
