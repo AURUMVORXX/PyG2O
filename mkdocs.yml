@@ -184,6 +184,7 @@ nav:
       - getPlayerSpell: functions/player/getPlayerSpell.md
       - getPlayerStrength: functions/player/getPlayerStrength.md
       - getPlayerTalent: functions/player/getPlayerTalent.md
+      - getPlayerUID: functions/player/getPlayerUID.md
       - getPlayerVirtualWorld: functions/player/getPlayerVirtualWorld.md
       - getPlayerVisual: functions/player/getPlayerVisual.md
       - getPlayerWeaponMode: functions/player/getPlayerWeaponMode.md
