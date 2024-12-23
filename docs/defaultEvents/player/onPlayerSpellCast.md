@@ -11,6 +11,7 @@ Original: [onPlayerSpellCast](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0
 * `dict` **kwargs**:
     * `int` **playerid**: the id of the player who casts the spell.
     * `str | null` **instance**: the item instance from Daedalus scripts.
+    * `int` **spellLevel**: the level of charged spell.
     
 ## Usage
 ```python

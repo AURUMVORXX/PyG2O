@@ -86,6 +86,7 @@ namespace nonut
 		FUNCTION_CTOR(getPlayerSpell),
 		FUNCTION_CTOR(getPlayerStrength),
 		FUNCTION_CTOR(getPlayerTalent),
+		FUNCTION_CTOR(getPlayerUID),
 		FUNCTION_CTOR(getPlayerVirtualWorld),
 		FUNCTION_CTOR(getPlayerVisual),
 		FUNCTION_CTOR(getPlayerWeaponMode),

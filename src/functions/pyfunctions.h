@@ -88,6 +88,7 @@ int py_getPlayerSkillWeapon(int, int);
 std::string py_getPlayerSpell(int, int);
 int py_getPlayerStrength(int);
 int py_getPlayerTalent(int, int);
+std::string py_getPlayerUID(int);
 int py_getPlayerVirtualWorld(int);
 py::dict py_getPlayerVisual(int);
 int py_getPlayerWeaponMode(int);

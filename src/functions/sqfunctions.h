@@ -99,6 +99,7 @@ namespace nonut
 		Function<String, Int, Int>									getPlayerSpell;
 		Function<Int, Int>											getPlayerStrength;
 		Function<Int, Int, Int>										getPlayerTalent;
+		Function<String, Int>										getPlayerUID;
 		Function<Int, Int>											getPlayerVirtualWorld;
 		Function<SqDict, Int>										getPlayerVisual;
 		Function<Int, Int>											getPlayerWeaponMode;
