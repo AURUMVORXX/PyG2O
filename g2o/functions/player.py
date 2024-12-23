@@ -698,6 +698,22 @@ def getPlayerTalent(id : int, talentId : int) -> int:
     `int`: the current talent value for specific talent id.
     """
     return sqg2o.getPlayerTalent(id, talentId)
+    
+def getPlayerUID(id : int) -> str:
+    """
+    This function will get the player pc unique identifier.
+    Original: [getPlayerUID](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/getPlayerUID/)
+    
+    ## Declaration
+    ```python
+    def getPlayerUID(id : int) -> str
+    ```
+    ## Parameters
+    `int` **id**: the player id.
+    ## Returns
+    `str`: the player UID.
+    """
+    return sqg2o.getPlayerUID(id)
 
 def getPlayerVirtualWorld(id : int) -> int:
     """

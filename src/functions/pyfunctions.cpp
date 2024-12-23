@@ -133,6 +133,7 @@ int         py_getPlayerSkillWeapon(int id, int skillId)                        
 std::string py_getPlayerSpell(int id, int slotId)                                                { return SERVERFUNC->getPlayerSpell(id, slotId); }
 int         py_getPlayerStrength(int id)                                                         { return SERVERFUNC->getPlayerStrength(id); }
 int         py_getPlayerTalent(int id, int talentId)                                             { return SERVERFUNC->getPlayerTalent(id, talentId); }
+std::string py_getPlayerUID(int id)                                                              { return SERVERFUNC->getPlayerUID(id); }
 int         py_getPlayerVirtualWorld(int id)                                                     { return SERVERFUNC->getPlayerVirtualWorld(id); }
 py::dict    py_getPlayerVisual(int id)                                                           { return SERVERFUNC->getPlayerVisual(id).data; }
 int         py_getPlayerWeaponMode(int id)                                                       { return SERVERFUNC->getPlayerWeaponMode(id); }

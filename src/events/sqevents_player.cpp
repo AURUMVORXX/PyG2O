@@ -284,12 +284,14 @@ SQInteger sq_onPlayerSpellCast(HSQUIRRELVM vm)
 {
     SQInteger playerid;
     const SQChar* instance;
+    SQInteger spellLevel;
     
     nonut::sqGetValue(vm, 2, &playerid);
     if (sq_gettype(vm, 3) != OT_NULL)
         nonut::sqGetValue(vm, 3, &instance);
+    nonut::sqGetValue(vm, 4, &spellLevel);
     
-    py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance);
+    py::dict kwargs = py::dict("playerid"_a=playerid, "instance"_a=instance, "spellLevel"_a=spellLevel);
     callEvent("onPlayerSpellCast", kwargs);
     
     return 0;
