@@ -17,7 +17,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.run_number }}
-          release_name: Release 1
+          release_name: Release Title
+          body_path: CHANGELOG.md
           draft: true
   release-win64:
     runs-on: windows-latest
@@ -44,7 +45,7 @@ jobs:
       - name: CMake - Build
         run: cmake --build --preset Windows-x64-Release
       - name: Archive output files
-        run: Compress-Archive -Path "g2o", "out/build/Windows-x64-Release/PyG2O.x64.dll" -Destination Windows-x64-Release.zip
+        run: Compress-Archive -Path "python/g2o", "build/Windows-x64-Release/PyG2O.x64.dll" -Destination Windows-x64-Release.zip
       - name: Upload release
         uses: actions/upload-release-asset@v1
         env:
@@ -77,7 +78,7 @@ jobs:
       - name: Archive files
         uses: montudor/action-zip@v1
         with:
-          args: zip -r Linux-x64-Release.zip g2o out/build/Linux-x64-Release/PyG2O.x64.so
+          args: zip -r Linux-x64-Release.zip python/g2o build/Linux-x64-Release/PyG2O.x64.so
       - name: Upload release
         uses: actions/upload-release-asset@v1
         env:

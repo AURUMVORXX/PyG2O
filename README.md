@@ -4,6 +4,17 @@ Python support for server-side scripts in [Gothic 2 Online](https://gothic-onlin
  
 **Documentation:** https://aurumvorxx.github.io/PyG2O/
 
+## How to build
+
+Requirements:
+- Python 3.13
+- CMake
+
+Steps:
+1. Copy this repo to your local machine
+2. Initialize all submodules
+3. Build with CMake, selecting your desired preset (Release/Debug) and target PyG2O
+4. (Optional) Uncomment and edit block of code at ``source/CMakeLists.txt`` for auto copy testing files
 
 ## Credits
 

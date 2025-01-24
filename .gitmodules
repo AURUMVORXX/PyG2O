@@ -1,8 +1,6 @@
-[submodule "sqapi"]
+[submodule "source/dependencies/sqapi"]
 	path = source/dependencies/sqapi
 	url = https://gitlab.com/GothicMultiplayerTeam/dependencies/sqapi.git
-	branch = main
-[submodule "pybind11"]
+[submodule "source/dependencies/pybind11"]
 	path = source/dependencies/pybind11
 	url = https://github.com/pybind/pybind11.git
-	branch = master
