@@ -6,7 +6,6 @@ namespace py = pybind11;
 using namespace pybind11::literals;
 
 extern py::module_ g2o;
-extern py::module_ pysys;
 
 void addEventHandler(const char* eventName, SQFUNCTION closure, unsigned int priority = 9999)
 {
@@ -40,7 +39,7 @@ void callEvent(const char* eventName, py::dict kwargs)
 	}
 	catch (py::error_already_set &e)
 	{
-        pysys.attr("stderr").attr("write")(e.what());
+        py::print(e.what());
 	}
 }
 

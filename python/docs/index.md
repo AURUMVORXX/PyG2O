@@ -7,9 +7,9 @@
 ```xml
 <module  src="PyG2O.x64.dll"  type="server"  />
 ```
-4. Create **scripts/** folder in your server root directory, and put an empty ``__init__.py`` file inside it
+4. Create **pyg2o_entry/** folder in your server root directory, and put an empty ``__init__.py`` file inside it
 
-Now, your **scripts/** folder is a Python package and serves as an entry point. You can't rename it (at least for now), but inside this folder you can use any file structure you want.
+Now, your **pyg2o_entry/** folder is a Python package and serves as an entry point. You can't rename it (at least for now), but inside this folder you can use any file structure you want.
 
 Your entry point should import PyG2O library:
 ```python
@@ -17,6 +17,18 @@ import g2o
 # your code
 ```
 If you make package that uses PyG2O functions, then this package also should also contain import.
+
+## How to change entry point name
+1. Create ``pyg2o.json`` in your root server folder
+2. Place this content in it and change entry point name
+```json
+{
+    "entry": "your_entry_name"
+}
+```
+
+## How to add additional packages folder (use virtual environment)
+You can create ``.pth`` file in your root server folder and it will be added to your ``sys.path`` before entry point
 
 ## Examples
 You can find default (example) scripts in [this repository](https://github.com/AURUMVORXX/PyG2O-DefaultScripts)
