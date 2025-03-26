@@ -35,7 +35,7 @@ class Packet(sqg2o.Packet):
         **Parameters:**
         * `int` **reliability**: the reliability type, for more information see [Reliability](../../constants/reliability.md).
         """
-        return super().send(playerid, reliability)
+        return super().send(reliability)
     
     def writeInt8(self, value : int):
         """

@@ -27,8 +27,16 @@ If you make package that uses PyG2O functions, then this package also should als
 }
 ```
 
-## How to add additional packages folder (use virtual environment)
+## How to add additional packages folder
 You can create ``.pth`` file in your root server folder and it will be added to your ``sys.path`` before entry point
+
+## How to launch under venv
+Create and launch ``.bat`` file with the following content
+```
+@echo off
+CALL <path_to_your_venv>/scripts/activate.bat
+G2O_Server.x64.exe
+```
 
 ## Examples
 You can find default (example) scripts in [this repository](https://github.com/AURUMVORXX/PyG2O-DefaultScripts)

@@ -15,7 +15,9 @@
 
 namespace py = pybind11;
 
-PYBIND11_EMBEDDED_MODULE(sqg2o, m) {
+void registerSquirrelObjects()
+{
+    py::module_ m = py::module_::import("sqg2o");
     
     py::class_<PyPacket>(m, "Packet")
         .def(py::init<>())

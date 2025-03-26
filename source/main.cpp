@@ -3,6 +3,7 @@
 #include "sqevents.h"
 #include "sqconstants.h"
 #include "squirrel/functions.h"
+#include "bind.h"
 
 namespace py = pybind11;
 py::scoped_interpreter guard{};
@@ -16,16 +17,20 @@ extern "C" SQRESULT SQRAT_API sqmodule_load(HSQUIRRELVM vm, HSQAPI api)
 	
 	try
 	{
-		registerSquirrelConstants();
-		
+		py::dict locals = py::dict();
 		py::exec(R"(
 			import site
 			import json
+			import sys
 			import importlib
-			
-			venv_path = 'test_venv/Lib/site-packages'
+			import importlib.util
 			site.addsitedir('.')
-			
+
+			spec = importlib.util.find_spec("g2o")
+			if spec is not None:
+				if spec.submodule_search_locations:
+					sys.path.append(spec.submodule_search_locations[0])
+					
 			entry_point = 'pyg2o_entry'
 			
 			try:
@@ -36,12 +41,20 @@ extern "C" SQRESULT SQRAT_API sqmodule_load(HSQUIRRELVM vm, HSQAPI api)
 				pass
 				
 			try:
-				importlib.import_module(entry_point)
+				spec = importlib.util.find_spec(entry_point)
+				if spec is not None:
+					if spec.submodule_search_locations:
+						sys.path.append(spec.submodule_search_locations[0])
 			except Exception as e:
 				print(e)
-		)");
+		)", py::globals(), locals);
 		
+		registerSquirrelConstants();
+		registerSquirrelObjects();
 		g2o 		= py::module_::import("g2o");
+		
+		py::module_ importlib = py::module_::import("importlib");
+		importlib.attr("import_module")(locals["entry_point"]);
 	}
 	catch (py::error_already_set &e)
 	{

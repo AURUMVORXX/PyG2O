@@ -1,6 +1,6 @@
 ## Changelog
 
-- Renamed entry point module to ``pyg2o_entry``
-- Added option to change entry point name (read more: <link>)
-- Added ability to connect additional package folders (read: use virtual environments), read more: <link>
-- Added proper exception handling on the module loading time
+- Creating new embedded modules changed for using existing ones (needed for proper launch under venv; reverse compatible change)
+- Entry point module now will be added to ``sys.path`` on the server launch
+- Server will now throw an exception if entry point module doesn't exist
+- Fix for ``Packet.sendToAll`` had incorrect argument list
