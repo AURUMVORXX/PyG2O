@@ -25,14 +25,13 @@ extern "C" SQRESULT SQRAT_API sqmodule_load(HSQUIRRELVM vm, HSQAPI api)
 			import importlib
 			import importlib.util
 			site.addsitedir('.')
-
-			spec = importlib.util.find_spec("g2o")
-			if spec is not None:
-				if spec.submodule_search_locations:
-					sys.path.append(spec.submodule_search_locations[0])
-					
-			entry_point = 'pyg2o_entry'
+			import os
 			
+			if 'VIRTUAL_ENV' in os.environ:
+				packages_path = os.path.join(os.environ['VIRTUAL_ENV'], 'Lib', 'site-packages')
+				sys.path.append(packages_path)
+			
+			entry_point = 'pyg2o_entry'
 			try:
 				with open('pyg2o.json', 'r') as f:
 					json = json.loads(f.read())
@@ -47,6 +46,12 @@ extern "C" SQRESULT SQRAT_API sqmodule_load(HSQUIRRELVM vm, HSQAPI api)
 						sys.path.append(spec.submodule_search_locations[0])
 			except Exception as e:
 				print(e)
+
+			spec = importlib.util.find_spec('g2o')
+			if spec is not None:
+				if spec.submodule_search_locations:
+					sys.path.append(spec.submodule_search_locations[0])
+					
 		)", py::globals(), locals);
 		
 		registerSquirrelConstants();
