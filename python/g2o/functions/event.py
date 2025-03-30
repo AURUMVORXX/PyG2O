@@ -1,9 +1,13 @@
+from g2o.exception import handle_exception
 
 eventList           = {}
 disabledEventList   = []
 
+@handle_exception
 def callEvent(evtName : str, **kwargs : dict):
     """
+    !!! note
+        This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
     This function will notify (call) every handler bound to specified event.
     Original: [callEvent](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/event/callEvent/)
     
@@ -43,9 +47,12 @@ def callEvent(evtName : str, **kwargs : dict):
                 isEventCancelled = not result
                 
     return isEventCancelled
-        
+ 
+@handle_exception       
 def addEvent(name : str):
     """
+    !!! note
+        This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
     This function will register a new event with specified name.
     Events can be used to notify function(s) when something will happen, like player joins the server, etc.
     Original: [addEvent](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/event/addEvent/)
@@ -67,9 +74,12 @@ def addEvent(name : str):
     """
     if not name in eventList:
         eventList[name] = []
-        
+
+@handle_exception        
 def event(name : str, priority : int = 9999):
     """
+    !!! note
+        This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
     This function will bind function to specified event.
     Original: [addEventHandler](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/event/addEventHandler/)
     
@@ -99,9 +109,12 @@ def event(name : str, priority : int = 9999):
         eventList[name].sort(key = lambda x: x['priority'])
         return func
     return inlineEvt
-    
+
+@handle_exception    
 def removeEventHandler(name : str, func : object):
     """
+    !!! note
+        This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
     This function will unbind function from specified event.
     Original: [removeEventHandler](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/event/removeEventHandler/)
     
@@ -130,11 +143,14 @@ def removeEventHandler(name : str, func : object):
     for index, item in enumerate(eventList[name]):
         if item['function'] == func:
             del eventList[name][index]
-            
+
+@handle_exception            
 def toggleEvent(name : str, toggle : bool):
     '''
     !!! note
         By default every event is toggled `on` (enabled).
+    !!! note
+        This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
         
     This function will toggle event (enable or disable it globally). By toggling event off, you can completely disable certain event from calling it's handlers.
     Original: [toggleEvent](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/event/toggleEvent/)
@@ -162,11 +178,14 @@ def toggleEvent(name : str, toggle : bool):
         disabledEventList.append(name)
     elif toggle and name in disabledEventList:
         disabledEventList.remove(name)
-        
+
+@handle_exception        
 def removeEvent(name : str):
     '''
     !!! warning
         Removing an event also cause all event handlers to unregister.
+    !!! note
+        This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
     This function will unregister an event with specified name.
     Original: [removeEvent](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/event/removeEvent/)
     

@@ -1,4 +1,5 @@
 import sqg2o
+from g2o.exception import handle_exception
 
 def getHostname() -> str:
     """
@@ -206,18 +207,33 @@ def setServerWorld(world : str):
     """
     return sqg2o.setServerWorld(world)
 
-def setTime(hour : int, min : int, day : int = 0):
+@handle_exception
+def setTime(hour : int = None, mins : int = None, day : int = None):
     """
+    !!! note
+        This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
     This function will set the current time in the game to the given time, for all the players.
     Original: [setTime](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/game/setTime/)
     
     ## Declaration
     ```python
-    def setTime(hour : int, min : int, day : int = 0)
+    def setTime(hour : int = None, mins : int = None, day : int = None)
     ```
     ## Parameters
-    `int` **hour**: the hour of new time (in the range between 0-23).
-    `int` **min**: the minute of new time (in the range between 0-59).
-    `int` **day**: the day of new time.
+    `int` **hour**: the hour of new time (in the range between 0-23) or subtract value from hour (hour < 0).
+    `int` **mins**: the minute of new time (in the range between 0-59) or subtract value from mins (mins < 0).
+    `int` **day**: the day of new time or subtract value from day (day < 0).
     """
-    return sqg2o.setTime(hour, min, day)
+    current_time = getTime()
+    
+    # Check for provided arguments
+    hour = current_time['hour'] if hour is None else hour
+    mins = current_time['min'] if mins is None else mins
+    day = current_time['day'] if day is None else day
+    
+    # Check for negative arguments
+    hour = current_time['hour'] + hour if hour < 0 else hour
+    mins = current_time['min'] + mins if mins < 0 else mins
+    day = current_time['day'] + day if day < 0 else day
+        
+    return sqg2o.setTime(hour, mins, day)

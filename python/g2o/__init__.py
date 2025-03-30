@@ -144,6 +144,8 @@ from g2o.functions.player   import unreadySpell
 from g2o.functions.player   import unspawnPlayer
 from g2o.functions.player   import useItem
 from g2o.functions.player   import useItemToState
+from g2o.functions.player   import setPlayerAttributes
+from g2o.functions.player   import setPlayerTalents
 
 from g2o.functions.streamer import findNearbyPlayers
 from g2o.functions.streamer import getStreamedPlayersByPlayer
@@ -151,5 +153,8 @@ from g2o.functions.streamer import getSpawnedPlayersForPlayer
 
 from g2o.functions.waypoint import getNearestWaypoint
 from g2o.functions.waypoint import getWaypoint
+
+from g2o.exception          import set_default_logger
+from g2o.exception          import handle_exception
 
 from g2o.constants          import *
