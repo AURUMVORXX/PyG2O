@@ -1,0 +1,15 @@
+[build-systems]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PyG2O"
+version = "2.0.0"
+description = "Python support for Gothic 2 Online"
+authors = [{name = "AURUMVORAX", email = "aurumvorax.enthroned@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.13"
+license = {text = "MIT"}
+
+[project.urls]
+Homepage = "https://github.com/AURUMVORXX/PyG2O"

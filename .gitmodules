@@ -1,6 +1,0 @@
-[submodule "source/dependencies/sqapi"]
-	path = source/dependencies/sqapi
-	url = https://gitlab.com/GothicMultiplayerTeam/dependencies/sqapi.git
-[submodule "source/dependencies/pybind11"]
-	path = source/dependencies/pybind11
-	url = https://github.com/pybind/pybind11.git
