@@ -16,7 +16,7 @@ Steps:
 ## Credits
 
 #### Marcin - [NoNut](https://gitlab.com/g2o/modules/dependencies/nonut.git)
-*Used as part of PyG2O module*
+*Used as part of PyG2O module (for 1.3.4 legacy version)*
 
 #### Patrix9999, Martinus-1453 - [Squirrel Module Template](https://gitlab.com/GothicMultiplayerTeam/modules/squirrel-template)
-*PyG2O is based on this template*
+*PyG2O is based on this template (for 1.3.4 legacy version)*
