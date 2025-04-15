@@ -19,5 +19,4 @@ jobs:
           pip install mkdocs-material
           pip install mkdocs-callouts
           pip install mkdocs-glightbox
-          cd python/
           mkdocs gh-deploy --force
