@@ -154,6 +154,3 @@ from .classes.items      import ItemGround
 from .classes.items      import ItemsGround
 from .classes.mds        import Mds
 from .classes.sky        import Sky
-
-# from exception          import set_default_logger
-# from exception          import handle_exception
