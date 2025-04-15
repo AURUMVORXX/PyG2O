@@ -98,9 +98,6 @@ nav:
       - onPlayerTeleport: defaultEvents/player/onPlayerTeleport.md
       - onPlayerToggleFaceAni: defaultEvents/player/onPlayerToggleFaceAni.md
   - Functions:
-    - Exception:
-      - set_default_logger: functions/exception/set_default_logger.md
-      - handle_exception: functions/exception/handle_exception.md
     - Chat:
       - sendMessageToAll: functions/chat/sendMessageToAll.md
       - sendMessageToPlayer: functions/chat/sendMessageToPlayer.md
@@ -220,8 +217,6 @@ nav:
       - setPlayerVisual: functions/player/setPlayerVisual.md
       - setPlayerWeaponMode: functions/player/setPlayerWeaponMode.md
       - setPlayerWorld: functions/player/setPlayerWorld.md
-      - setPlayerAttributes: functions/player/setPlayerAttributes.md
-      - setPlayerTalents: functions/player/setPlayerTalents.md
       - spawnPlayer: functions/player/spawnPlayer.md
       - stopAni: functions/player/stopAni.md
       - stopFaceAni: functions/player/stopFaceAni.md
