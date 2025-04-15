@@ -6,6 +6,8 @@ desktop.ini
 
 /build/
 /out/
+__pycache__/
+*.pyc
 
 # Visual Studio
 
