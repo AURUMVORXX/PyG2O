@@ -1,0 +1,4 @@
+<server>
+    <script src="main.nut" type="server" />
+    <script src="events.nut" type="server" />
+</server>
