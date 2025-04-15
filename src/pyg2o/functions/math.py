@@ -1,22 +1,7 @@
-<<<<<<< HEAD:python/g2o/functions/math.py
-import sqg2o
-from g2o.exception import handle_exception
-
-@handle_exception
-def getDistance2d(
-    x1: float = 0, 
-    y1: float = 0, 
-    x2: float = 0, 
-    y2 : float = 0, 
-    first: dict[str, float] = None, 
-    second: dict[str, float] = None
-) -> float:
-=======
 from ..server import PythonWebsocketServer
 from ..call_repr import get_call_repr
 
 async def getDistance2d(x1 : float, y1: float, x2 : float, y2 : float) -> float:
->>>>>>> dev:src/pyg2o/functions/math.py
     """
     !!! note
         This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
@@ -39,24 +24,6 @@ async def getDistance2d(x1 : float, y1: float, x2 : float, y2 : float) -> float:
     ## Returns
     `float`: Returns the calculated 2d distance between two points as floating point number.
     """
-<<<<<<< HEAD:python/g2o/functions/math.py
-    if first is not None and second is not None:
-        return sqg2o.getDistance2d(first['x'], first['y'], second['x'], second['y'])
-    else:
-        return sqg2o.getDistance2d(x1, y1, x2, y2)
-
-@handle_exception
-def getDistance3d(
-    x1 : float = 0, 
-    y1: float = 0, 
-    z1 : float = 0, 
-    x2 : float = 0, 
-    y2 : float = 0, 
-    z2 : float = 0, 
-    first: dict[str, float] = None, 
-    second: dict[str, float] = None
-) -> float:
-=======
     data = f'return {get_call_repr()}'
     
     server = await PythonWebsocketServer.get_server()
@@ -64,7 +31,6 @@ def getDistance3d(
     return result
 
 async def getDistance3d(x1 : float, y1: float, z1 : float, x2 : float, y2 : float, z2 : float) -> float:
->>>>>>> dev:src/pyg2o/functions/math.py
     """
     !!! note
         This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
@@ -89,22 +55,6 @@ async def getDistance3d(x1 : float, y1: float, z1 : float, x2 : float, y2 : floa
     ## Returns
     `float`: Returns the calculated 3d distance between two points as floating point number.
     """
-<<<<<<< HEAD:python/g2o/functions/math.py
-    if first is not None and second is not None:
-        return sqg2o.getDistance3d(first['x'], first['y'], first['z'], second['x'], second['y'], second['z'])
-    else:
-        return sqg2o.getDistance3d(x1, y1, z1, x2, y2, z2)
-
-@handle_exception
-def getVectorAngle(
-    x1: float = 0, 
-    y1: float = 0, 
-    x2: float = 0, 
-    y2 : float = 0, 
-    first: dict[str, float] = None, 
-    second: dict[str, float] = None
-) -> float:
-=======
     data = f'return {get_call_repr()}'
     
     server = await PythonWebsocketServer.get_server()
@@ -112,7 +62,6 @@ def getVectorAngle(
     return result
 
 async def getVectorAngle(x1 : float, y1: float, x2 : float, y2 : float) -> float:
->>>>>>> dev:src/pyg2o/functions/math.py
     """
     !!! note
         This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
@@ -135,15 +84,8 @@ async def getVectorAngle(x1 : float, y1: float, x2 : float, y2 : float) -> float
     ## Returns
     `float`: Returns the angle on Y axis directed towards the second point.
     """
-<<<<<<< HEAD:python/g2o/functions/math.py
-    if first is not None and second is not None:
-        return sqg2o.getVectorAngle(first['x'], first['y'], second['x'], second['y'])
-    else:
-        return sqg2o.getVectorAngle(x1, y1, x2, y2)
-=======
     data = f'return {get_call_repr()}'
     
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
     return result
->>>>>>> dev:src/pyg2o/functions/math.py

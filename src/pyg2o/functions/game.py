@@ -1,10 +1,5 @@
-<<<<<<< HEAD:python/g2o/functions/game.py
-import sqg2o
-from g2o.exception import handle_exception
-=======
 from ..server import PythonWebsocketServer
 from ..call_repr import get_call_repr
->>>>>>> dev:src/pyg2o/functions/game.py
 
 async def getHostname() -> str:
     """
@@ -263,13 +258,8 @@ async def setServerWorld(world : str):
     result = await server.make_request(data)
     return result
 
-<<<<<<< HEAD:python/g2o/functions/game.py
-@handle_exception
-def setTime(hour : int = None, mins : int = None, day : int = None):
-=======
 
 async def setTime(hour : int, min : int, day : int = 0):
->>>>>>> dev:src/pyg2o/functions/game.py
     """
     !!! note
         This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
@@ -278,35 +268,15 @@ async def setTime(hour : int, min : int, day : int = 0):
     
     ## Declaration
     ```python
-<<<<<<< HEAD:python/g2o/functions/game.py
-    def setTime(hour : int = None, mins : int = None, day : int = None)
-=======
     async def setTime(hour : int, min : int, day : int = 0)
->>>>>>> dev:src/pyg2o/functions/game.py
     ```
     ## Parameters
     `int` **hour**: the hour of new time (in the range between 0-23) or subtract value from hour (hour < 0).
     `int` **mins**: the minute of new time (in the range between 0-59) or subtract value from mins (mins < 0).
     `int` **day**: the day of new time or subtract value from day (day < 0).
     """
-<<<<<<< HEAD:python/g2o/functions/game.py
-    current_time = getTime()
-    
-    # Check for provided arguments
-    hour = current_time['hour'] if hour is None else hour
-    mins = current_time['min'] if mins is None else mins
-    day = current_time['day'] if day is None else day
-    
-    # Check for negative arguments
-    hour = current_time['hour'] + hour if hour < 0 else hour
-    mins = current_time['min'] + mins if mins < 0 else mins
-    day = current_time['day'] + day if day < 0 else day
-        
-    return sqg2o.setTime(hour, mins, day)
-=======
     data = f'return {get_call_repr()}'
     
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
     return result
->>>>>>> dev:src/pyg2o/functions/game.py

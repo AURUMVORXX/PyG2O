@@ -1,11 +1,5 @@
-<<<<<<< HEAD:python/g2o/functions/player.py
-import sqg2o
-from g2o.exception import handle_exception
-from g2o.constants import *
-=======
 from ..server import PythonWebsocketServer
 from ..call_repr import get_call_repr
->>>>>>> dev:src/pyg2o/functions/player.py
 
 async def addBan(info : dict) -> bool:
     """
@@ -1483,16 +1477,11 @@ async def setPlayerName(id : int, name : str) -> bool:
     """
     data = f'return {get_call_repr()}'
 
-<<<<<<< HEAD:python/g2o/functions/player.py
-@handle_exception
-def setPlayerPosition(id : int, x : float = 0, y : float = 0, z : float = 0, pos: dict[str, float] = None):
-=======
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
     return result
 
 async def setPlayerPosition(id : int, x : float, y : float, z : float):
->>>>>>> dev:src/pyg2o/functions/player.py
     """
     !!! note
         This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
@@ -1511,14 +1500,7 @@ async def setPlayerPosition(id : int, x : float, y : float, z : float):
     OR
     `dict[str, float]` **pos**: the position in the world on the XYZ axis.
     """
-<<<<<<< HEAD:python/g2o/functions/player.py
-    if pos is not None:
-        return sqg2o.setPlayerPosition(id, pos['x'], pos['y'], pos['z'])
-    else:
-        return sqg2o.setPlayerPosition(id, x, y, z)
-=======
     data = f'return {get_call_repr()}'
->>>>>>> dev:src/pyg2o/functions/player.py
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
@@ -1541,16 +1523,11 @@ async def setPlayerRespawnTime(id : int, respawnTime : int):
     """
     data = f'return {get_call_repr()}'
 
-<<<<<<< HEAD:python/g2o/functions/player.py
-@handle_exception
-def setPlayerScale(id : int, x : float = 0, y : float = 0, z : float = 0, scale: dict[str, float] = None):
-=======
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
     return result
 
 async def setPlayerScale(id : int, x : float, y : float, z : float):
->>>>>>> dev:src/pyg2o/functions/player.py
     """
     !!! note
         This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
@@ -1569,14 +1546,7 @@ async def setPlayerScale(id : int, x : float, y : float, z : float):
     OR
     `dict[str, float]` **pos**: the scale factor on the XYZ axis.
     """
-<<<<<<< HEAD:python/g2o/functions/player.py
-    if scale is not None:
-        return sqg2o.setPlayerScale(id, scale['x'], scale['y'], scale['z'])
-    else:
-        return sqg2o.setPlayerScale(id, x, y, z)
-=======
     data = f'return {get_call_repr()}'
->>>>>>> dev:src/pyg2o/functions/player.py
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
@@ -1873,274 +1843,8 @@ async def useItemToState(id : int, instance : str, state : int):
     `str` **instance**: the item instance from Daedalus scripts.
     `int` **state**: the state that you'll start from interacting with item.
     """
-<<<<<<< HEAD:python/g2o/functions/player.py
-    return sqg2o.useItemToState(id, instance, state)
-
-@handle_exception
-def setPlayerAttributes(
-    id: int,
-    health: int = None,
-    max_health: int = None,
-    mana: int = None,
-    max_mana: int = None,
-    strength: int = None,
-    dexterity: int = None,
-    one_handed: int = None,
-    two_handed: int = None,
-    bow: int = None,
-    crossbow: int = None,
-):
-    """
-    !!! note
-        This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
-    This function will modify player attributes for all players.
-    
-    ## Declaration
-    ```python
-    def setPlayerAttributes(
-        id: int,
-        health: int = None,
-        max_health: int = None,
-        mana: int = None,
-        max_mana: int = None,
-        strength: int = None,
-        dexterity: int = None,
-        two_handed: int = None,
-        two_handned: int = None,
-        bow: int = None,
-        crossbow: int = None,
-    ):
-    ```
-    ## Parameters
-    `int` **id**: the player id.
-    `int` **health**: health points amount.
-    `int` **max_health**: maximum health points amount.
-    `int` **mana**: mana points amount.
-    `int` **max_mana**: maximum mana points amount.
-    `int` **strength**: strength points amount.
-    `int` **dexterity**: dexterity points amount.
-    `int` **one_handed**: one-handed weapon skill value.
-    `int` **two_handed**: two-handed weapon skill value.
-    `int` **bow**: bow weapon skill value.
-    `int` **crossbow**: crossbow skill value.
-    
-    ## Usage
-    ```python
-    import g2o
-    
-    @g2o.event('onPlayerJoin')
-    def evt_join(**kwargs):
-        pid = kwargs['playerid']
-        g2o.setPlayerAttributes(
-            id=pid,
-            health=500,
-            max_health=500,
-            strength=1000,
-            dexterity=1000,
-            one_handed=90,
-            two_handed=90,
-            bow=90,
-            crossbow=90
-        )
-    ```
-    """
-    health = sqg2o.getPlayerHealth(id) if health is None else str(health)
-    max_health = sqg2o.getPlayerMaxHealth(id) if max_health is None else str(max_health)
-    mana = sqg2o.getPlayerMana(id) if mana is None else str(mana)
-    max_mana = sqg2o.getPlayerMaxMana(id) if max_mana is None else str(max_mana)
-    strength = sqg2o.getPlayerStrength(id) if strength is None else str(strength)
-    dexterity = sqg2o.getPlayerDexterity(id) if dexterity is None else str(dexterity)
-    one_handed = sqg2o.getPlayerSkillWeapon(id, 0) if one_handed is None else str(one_handed)
-    two_handed = sqg2o.getPlayerSkillWeapon(id, 1) if two_handed is None else str(two_handed)
-    bow = sqg2o.getPlayerSkillWeapon(id, 2) if bow is None else str(bow)
-    crossbow = sqg2o.getPlayerSkillWeapon(id, 3) if crossbow is None else str(crossbow)
-    
-    health = sqg2o.getPlayerHealth(id) + int(health) if type(health) is str and (health.startswith('+') or health.startswith('-')) else int(health)
-    max_health = sqg2o.getPlayerMaxHealth(id) + int(max_health) if type(max_health) is str and (max_health.startswith('+') or max_health.startswith('-')) else int(max_health)
-    mana = sqg2o.getPlayerMana(id) + int(mana) if type(mana) is str and (mana.startswith('+') or mana.startswith('-')) else int(mana)
-    max_mana = sqg2o.getPlayerMaxMana(id) + int(max_mana) if type(max_mana) is str and (max_mana.startswith('+') or max_mana.startswith('-')) else int(max_mana)
-    strength = sqg2o.getPlayerStrength(id) + int(strength) if type(strength) is str and (strength.startswith('+') or strength.startswith('-')) else int(strength)
-    dexterity = sqg2o.getPlayerDexterity(id) + int(dexterity) if type(dexterity) is str and (dexterity.startswith('+') or dexterity.startswith('-')) else int(dexterity)
-    one_handed = sqg2o.getPlayerSkillWeapon(id, 0) + int(one_handed) if type(one_handed) is str and (one_handed.startswith('+') or one_handed.startswith('-')) else int(one_handed)
-    two_handed = sqg2o.getPlayerSkillWeapon(id, 1) + int(two_handed) if type(two_handed) is str and (two_handed.startswith('+') or two_handed.startswith('-')) else int(two_handed)
-    bow = sqg2o.getPlayerSkillWeapon(id, 2) + int(two_handed) if type(bow) is str and (bow.startswith('+') or bow.startswith('-')) else int(bow)
-    crossbow = sqg2o.getPlayerSkillWeapon(id, 3) + int(crossbow) if type(crossbow) is str and (crossbow.startswith('+') or crossbow.startswith('-')) else int(crossbow)
-    
-    sqg2o.setPlayerMaxHealth(id, max_health)
-    sqg2o.setPlayerHealth(id, health)
-    sqg2o.setPlayerMaxMana(id, max_mana)
-    sqg2o.setPlayerMana(id, mana)
-    sqg2o.setPlayerStrength(id, strength)
-    sqg2o.setPlayerDexterity(id, dexterity)
-    sqg2o.setPlayerSkillWeapon(id, 0, one_handed)
-    sqg2o.setPlayerSkillWeapon(id, 1, two_handed)
-    sqg2o.setPlayerSkillWeapon(id, 2, bow)
-    sqg2o.setPlayerSkillWeapon(id, 3, crossbow)
-
-@handle_exception   
-def setPlayerTalents(
-    id: int,
-    one_handed: int = None,
-    two_handed: int = None,
-    bow: int = None,
-    crossbow: int = None,
-    pick_locks: int = None,
-    pickpocket: int = None,
-    mage: int = None,
-    sneak: int = None,
-    regenerate: int = None,
-    firemaster: int = None,
-    acrobatics: int = None,
-    pickpocket_unused: int = None,
-    smith: int = None,
-    runes: int = None,
-    alchemy: int = None,
-    throphy: int = None,
-    talent_a: int = None,
-    talent_b: int = None,
-    talent_c: int = None,
-    talent_d: int = None,
-    talent_e: int = None,
-):
-    """
-    !!! note
-        This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
-    This function will modify player talents for all players.
-    
-    ## Declaration
-    ```python
-    def setPlayerTalents(
-        id: int,
-        one_handed: int = None,
-        two_handed: int = None,
-        bow: int = None,
-        crossbow: int = None,
-        pick_locks: int = None,
-        pickpocket: int = None,
-        mage: int = None,
-        sneak: int = None,
-        regenerate: int = None,
-        firemaster: int = None,
-        acrobatics: int = None,
-        pickpocket_unused: int = None,
-        smith: int = None,
-        runes: int = None,
-        alchemy: int = None,
-        throphy: int = None,
-        talent_a: int = None,
-        talent_b: int = None,
-        talent_c: int = None,
-        talent_d: int = None,
-        talent_e: int = None,
-    ):
-    ```
-    ## Parameters
-    `int` **one_handed**: npc one handed weapon skill talent.
-    `int` **two_handed**: npc two handed weapon skill talent.
-    `int` **bow**: npc bow weapon skill talent.
-    `int` **crossbow**: npc crossbow weapon skill talent.
-    `int` **pick_locks**: npc picklock talent.
-    `int` **pickpocket**: npc pickpocket talent.
-    `int` **mage**: npc magic circle talent.
-    `int` **sneak**: npc sneak talent.
-    `int` **regenerate**: npc health regeneration talent.
-    `int` **firemaster**: npc firemaster talent (unused by the game).
-    `int` **acrobatics**: npc acrobatic talent.
-    `int` **pickpocket_unused**: npc old pickpocket talent (unused by the game).
-    `int` **smith**: npc smith talent.
-    `int` **runes**: npc runes creation talent.
-    `int` **alchemy**: npc potion creation talent.
-    `int` **throphy**: npc trophy gathering talent.
-    `int` **talent_a**: npc talent A (unused by the game).
-    `int` **talent_b**: npc talent B (unused by the game).
-    `int` **talent_c**: npc talent C (unused by the game).
-    `int` **talent_d**: npc talent D (unused by the game).
-    `int` **talent_e**: npc talent E (unused by the game).
-    
-    ## Usage
-    ```python
-    import g2o
-    
-    @g2o.event('onPlayerJoin')
-    def evt_join(**kwargs):
-        pid = kwargs['playerid']
-        g2o.setPlayerTalents(
-            id=pid,
-            pick_locks=1,
-            mage=6,
-            smith=1
-        )
-    ```
-    """
-    one_handed = sqg2o.getPlayerTalent(id, TALENT_1H) if one_handed is None else str(one_handed)
-    two_handed = sqg2o.getPlayerTalent(id, TALENT_2H) if two_handed is None else str(two_handed)
-    bow = sqg2o.getPlayerTalent(id, TALENT_BOW) if bow is None else str(bow)
-    crossbow = sqg2o.getPlayerTalent(id, TALENT_CROSSBOW) if crossbow is None else str(crossbow)
-    pick_locks = sqg2o.getPlayerTalent(id, TALENT_PICK_LOCKS) if pick_locks is None else str(pick_locks)
-    pickpocket = sqg2o.getPlayerTalent(id, TALENT_PICKPOCKET) if pickpocket is None else str(pickpocket)
-    mage = sqg2o.getPlayerTalent(id, TALENT_MAGE) if mage is None else str(mage)
-    sneak = sqg2o.getPlayerTalent(id, TALENT_SNEAK) if sneak is None else str(sneak)
-    regenerate = sqg2o.getPlayerTalent(id, TALENT_REGENERATE) if regenerate is None else str(regenerate)
-    firemaster = sqg2o.getPlayerTalent(id, TALENT_FIREMASTER) if firemaster is None else str(firemaster)
-    acrobatics = sqg2o.getPlayerTalent(id, TALENT_ACROBATIC) if acrobatics is None else str(acrobatics)
-    pickpocket_unused = sqg2o.getPlayerTalent(id, TALENT_PICKPOCKET_UNUSED) if pickpocket_unused is None else str(pickpocket_unused)
-    smith = sqg2o.getPlayerTalent(id, TALENT_SMITH) if smith is None else str(smith)
-    runes = sqg2o.getPlayerTalent(id, TALENT_RUNES) if runes is None else str(runes)
-    alchemy = sqg2o.getPlayerTalent(id, TALENT_ALCHEMY) if alchemy is None else str(alchemy)
-    throphy = sqg2o.getPlayerTalent(id, TALENT_THROPHY) if throphy is None else str(throphy)
-    talent_a = sqg2o.getPlayerTalent(id, TALENT_A) if talent_a is None else str(talent_a)
-    talent_b = sqg2o.getPlayerTalent(id, TALENT_B) if talent_b is None else str(talent_b)
-    talent_c = sqg2o.getPlayerTalent(id, TALENT_C) if talent_c is None else str(talent_c)
-    talent_d = sqg2o.getPlayerTalent(id, TALENT_D) if talent_d is None else str(talent_d)
-    talent_e = sqg2o.getPlayerTalent(id, TALENT_E) if talent_e is None else str(talent_e)
-    
-    one_handed = sqg2o.getPlayerTalent(id, TALENT_1H) + int(one_handed) if type(one_handed) is str and (one_handed.startswith('+') or one_handed.startswith('-')) else int(one_handed)
-    two_handed = sqg2o.getPlayerTalent(id, TALENT_2H) + int(two_handed) if type(two_handed) is str and (two_handed.startswith('+') or two_handed.startswith('-')) else int(two_handed)
-    bow = sqg2o.getPlayerTalent(id, TALENT_BOW) + int(bow) if type(bow) is str and (bow.startswith('+') or bow.startswith('-')) else int(bow)
-    crossbow = sqg2o.getPlayerTalent(id, TALENT_CROSSBOW) + int(crossbow) if type(crossbow) is str and (crossbow.startswith('+') or crossbow.startswith('-')) else int(crossbow)
-    pick_locks = sqg2o.getPlayerTalent(id, TALENT_PICK_LOCKS) + int(pick_locks) if type(pick_locks) is str and (pick_locks.startswith('+') or pick_locks.startswith('-')) else int(pick_locks)
-    pickpocket = sqg2o.getPlayerTalent(id, TALENT_PICKPOCKET) + int(pickpocket) if type(pickpocket) is str and (pickpocket.startswith('+') or pickpocket.startswith('-')) else int(pickpocket)
-    mage = sqg2o.getPlayerTalent(id, TALENT_MAGE) + int(mage) if type(mage) is str and (mage.startswith('+') or mage.startswith('-')) else int(mage)
-    sneak = sqg2o.getPlayerTalent(id, TALENT_SNEAK) + int(sneak) if type(sneak) is str and (sneak.startswith('+') or sneak.startswith('-')) else int(sneak)
-    regenerate = sqg2o.getPlayerTalent(id, TALENT_REGENERATE) + int(regenerate) if type(regenerate) is str and (regenerate.startswith('+') or regenerate.startswith('-')) else int(regenerate)
-    firemaster = sqg2o.getPlayerTalent(id, TALENT_FIREMASTER) + int(firemaster) if type(firemaster) is str and (firemaster.startswith('+') or firemaster.startswith('-')) else int(firemaster)
-    acrobatics = sqg2o.getPlayerTalent(id, TALENT_ACROBATIC) + int(acrobatics) if type(acrobatics) is str and (acrobatics.startswith('+') or acrobatics.startswith('-')) else int(acrobatics)
-    pickpocket_unused = sqg2o.getPlayerTalent(id, TALENT_PICKPOCKET_UNUSED) + int(pickpocket_unused) if type(pickpocket_unused) is str and (pickpocket_unused.startswith('+') or pickpocket_unused.startswith('-')) else int(pickpocket_unused)
-    smith = sqg2o.getPlayerTalent(id, TALENT_SMITH) + int(smith) if type(smith) is str and (smith.startswith('+') or smith.startswith('-')) else int(smith)
-    runes = sqg2o.getPlayerTalent(id, TALENT_RUNES) + int(runes) if type(runes) is str and (runes.startswith('+') or runes.startswith('-')) else int(runes)
-    alchemy = sqg2o.getPlayerTalent(id, TALENT_ALCHEMY) + int(alchemy) if type(alchemy) is str and (alchemy.startswith('+') or alchemy.startswith('-')) else int(alchemy)
-    throphy = sqg2o.getPlayerTalent(id, TALENT_THROPHY) + int(throphy) if type(throphy) is str and (throphy.startswith('+') or throphy.startswith('-')) else int(throphy)
-    talent_a = sqg2o.getPlayerTalent(id, TALENT_A) + int(talent_a) if type(talent_a) is str and (talent_a.startswith('+') or talent_a.startswith('-')) else int(talent_a)
-    talent_b = sqg2o.getPlayerTalent(id, TALENT_B) + int(talent_b) if type(talent_b) is str and (talent_b.startswith('+') or talent_b.startswith('-')) else int(talent_b)
-    talent_c = sqg2o.getPlayerTalent(id, TALENT_C) + int(talent_c) if type(talent_c) is str and (talent_c.startswith('+') or talent_c.startswith('-')) else int(talent_c)
-    talent_d = sqg2o.getPlayerTalent(id, TALENT_D) + int(talent_d) if type(talent_d) is str and (talent_d.startswith('+') or talent_d.startswith('-')) else int(talent_d)
-    talent_e = sqg2o.getPlayerTalent(id, TALENT_E) + int(talent_e) if type(talent_e) is str and (talent_e.startswith('+') or talent_e.startswith('-')) else int(talent_e)
-    
-    sqg2o.setPlayerTalent(id, TALENT_1H, one_handed)
-    sqg2o.setPlayerTalent(id, TALENT_2H, two_handed)
-    sqg2o.setPlayerTalent(id, TALENT_BOW, bow)
-    sqg2o.setPlayerTalent(id, TALENT_CROSSBOW, crossbow)
-    sqg2o.setPlayerTalent(id, TALENT_PICK_LOCKS, pick_locks)
-    sqg2o.setPlayerTalent(id, TALENT_PICKPOCKET, pickpocket)
-    sqg2o.setPlayerTalent(id, TALENT_MAGE, mage)
-    sqg2o.setPlayerTalent(id, TALENT_SNEAK, sneak)
-    sqg2o.setPlayerTalent(id, TALENT_REGENERATE, regenerate)
-    sqg2o.setPlayerTalent(id, TALENT_FIREMASTER, firemaster)
-    sqg2o.setPlayerTalent(id, TALENT_ACROBATIC, acrobatics)
-    sqg2o.setPlayerTalent(id, TALENT_PICKPOCKET_UNUSED, pickpocket_unused)
-    sqg2o.setPlayerTalent(id, TALENT_SMITH, smith)
-    sqg2o.setPlayerTalent(id, TALENT_RUNES, runes)
-    sqg2o.setPlayerTalent(id, TALENT_ALCHEMY, alchemy)
-    sqg2o.setPlayerTalent(id, TALENT_THROPHY, throphy)
-    sqg2o.setPlayerTalent(id, TALENT_A, talent_a)
-    sqg2o.setPlayerTalent(id, TALENT_B, talent_b)
-    sqg2o.setPlayerTalent(id, TALENT_C, talent_c)
-    sqg2o.setPlayerTalent(id, TALENT_D, talent_d)
-    sqg2o.setPlayerTalent(id, TALENT_E, talent_e)
-=======
     data = f'return {get_call_repr()}'
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
     return result
->>>>>>> dev:src/pyg2o/functions/player.py
