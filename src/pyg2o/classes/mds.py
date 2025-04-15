@@ -1,4 +1,4 @@
-import sqg2o
+from ..server import PythonWebsocketServer
 
 class Mds:
     """
@@ -6,7 +6,7 @@ class Mds:
     Original: [Mds](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-classes/mds/Mds/)
     """
     @staticmethod
-    def id(mdsName : str) -> int:
+    async def id(mdsName : str) -> int:
         """
         This method will convert the mds name to mds id.
         **Parameters:**
@@ -15,10 +15,14 @@ class Mds:
         **Returns `int`:**
         the unique mds id.
         """
-        return sqg2o.Mds.id(mdsName)
+        data = f'return Mds.id({mdsName})'
+        
+        server = await PythonWebsocketServer.get_server()
+        result = await server.make_request(data)
+        return result
     
     @staticmethod
-    def name(mdsId : int) -> str:
+    async def name(mdsId : int) -> str:
         """
         This method will convert the mds id to mds name.
         **Parameters:**
@@ -27,4 +31,8 @@ class Mds:
         **Returns `str`:**
         the mds name, e.g: `"HumanS_Sprint.mds"`.
         """
-        return sqg2o.Mds.name(mdsId)
+        data = f'return Mds.id({mdsId})'
+        
+        server = await PythonWebsocketServer.get_server()
+        result = await server.make_request(data)
+        return result

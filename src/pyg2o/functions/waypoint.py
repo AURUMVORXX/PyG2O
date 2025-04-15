@@ -1,13 +1,14 @@
-import sqg2o
+from ..server import PythonWebsocketServer
+from ..call_repr import get_call_repr
 
-def getNearestWaypoint(world : str, x : int, y : int, z : int) -> dict:
+async def getNearestWaypoint(world : str, x : int, y : int, z : int) -> dict:
     """
     This function is used to retrieve the information about nearest waypoint from the specified position.
     Original: [getNearestWaypoint](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/waypoint/getNearestWaypoint/)
     
     ## Declaration
     ```python
-    def getNearestWaypoint(world : str, x : int, y : int, z : int) -> dict
+    async def getNearestWaypoint(world : str, x : int, y : int, z : int) -> dict
     ```
     ## Parameters
     `str` **world**: the world name in which the waypoint exists.
@@ -17,16 +18,20 @@ def getNearestWaypoint(world : str, x : int, y : int, z : int) -> dict:
     ## Returns
     `dict {name, x, y, z}`: Waypoint information.
     """
-    return sqg2o.getNearestWaypoint(world, x, y, z)
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result
 
-def getWaypoint(world : str, name : str) -> dict:
+async def getWaypoint(world : str, name : str) -> dict:
     """
     This function is used to retrieve the position of specified waypoint.
     Original: [getWaypoint](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/waypoint/getWaypoint/)
     
     ## Declaration
     ```python
-    def getWaypoint(world : str, name : str) -> dict
+    async def getWaypoint(world : str, name : str) -> dict
     ```
     ## Parameters
     `str` **world**: the world name in which the waypoint exists.
@@ -34,4 +39,8 @@ def getWaypoint(world : str, name : str) -> dict:
     ## Returns
     `dict {x, y, z}`: The position of waypoint.
     """
-    return sqg2o.getWaypoint(world, name)
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result

@@ -1,5 +1,5 @@
 [build-systems]
-requires = ["setuptools>=42"]
+requires = ["setuptools>=42", "websockets>=15"]
 build-backend = "setuptools.build_meta"
 
 [project]

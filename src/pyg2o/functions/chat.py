@@ -1,6 +1,7 @@
-import sqg2o
+from ..server import PythonWebsocketServer
+from ..call_repr import get_call_repr
 
-def sendMessageToAll(r : int, g : int, b : int, text : str):
+async def sendMessageToAll(r : int, g : int, b : int, text : str):
     """
     This function will send a chat message to every connected player.
     Sending a message triggers client side event [onPlayerMessage](../../defaultEvents/player/onPlayerMessage.md) with playerid set as `-1`.
@@ -8,7 +9,7 @@ def sendMessageToAll(r : int, g : int, b : int, text : str):
     
     ## Declaration
     ```python
-    def sendMessageToAll(r : int, g : int, b : int, text : str)
+    async def sendMessageToAll(r : int, g : int, b : int, text : str)
     ```
     
     ## Parameters
@@ -17,9 +18,13 @@ def sendMessageToAll(r : int, g : int, b : int, text : str):
     * `int` **b**: the blue color component in RGB model.
     * `str` **text**: that will be send.
     """
-    return sqg2o.sendMessageToAll(r, g, b, text)
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result
 
-def sendMessageToPlayer(playerid : int, r : int, g : int, b : int, text : str):
+async def sendMessageToPlayer(playerid : int, r : int, g : int, b : int, text : str):
     """
     This function will send a chat message to specific player.
     Sending a message triggers client side event [onPlayerMessage](../../defaultEvents/player/onPlayerMessage.md) with playerid set as `-1`.
@@ -27,7 +32,7 @@ def sendMessageToPlayer(playerid : int, r : int, g : int, b : int, text : str):
     
     ## Declaration
     ```python
-    def sendMessageToPlayer(playerid : int, r : int, g : int, b : int, text : str)
+    async def sendMessageToPlayer(playerid : int, r : int, g : int, b : int, text : str)
     ```
     
     ## Parameters
@@ -37,9 +42,13 @@ def sendMessageToPlayer(playerid : int, r : int, g : int, b : int, text : str):
     * `int` **b**: the blue color component in RGB model.
     * `str` **text**: that will be send.
     """
-    return sqg2o.sendMessageToPlayer(playerid, r, g, b, text)
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result
 
-def sendPlayerMessageToAll(senderid : int, r : int, g : int, b : int, text : str):
+async def sendPlayerMessageToAll(senderid : int, r : int, g : int, b : int, text : str):
     """
     This function will send a chat message from one player to every player. Sending a message
     Sending a message triggers client side event [onPlayerMessage](../../defaultEvents/player/onPlayerMessage.md) with playerid set as **senderid**.
@@ -47,7 +56,7 @@ def sendPlayerMessageToAll(senderid : int, r : int, g : int, b : int, text : str
     
     ## Declaration
     ```python
-    def sendPlayerMessageToAll(senderid : int, r : int, g : int, b : int, text : str)
+    async def sendPlayerMessageToAll(senderid : int, r : int, g : int, b : int, text : str)
     ```
     
     ## Parameters
@@ -57,9 +66,13 @@ def sendPlayerMessageToAll(senderid : int, r : int, g : int, b : int, text : str
     * `int` **b**: the blue color component in RGB model.
     * `str` **text**: that will be send.
     """
-    return sqg2o.sendPlayerMessageToAll(senderid, r, g, b, text)
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result
 
-def sendPlayerMessageToPlayer(senderid : int, receiverid : int, r : int, g : int, b : int, text : str):
+async def sendPlayerMessageToPlayer(senderid : int, receiverid : int, r : int, g : int, b : int, text : str):
     """
     This function will send a chat message from one player to another player.
     Sending a message triggers client side event [onPlayerMessage](../../defaultEvents/player/onPlayerMessage.md) with playerid set as **senderid**.
@@ -67,7 +80,7 @@ def sendPlayerMessageToPlayer(senderid : int, receiverid : int, r : int, g : int
     
     ## Declaration
     ```python
-    sendPlayerMessageToPlayer(senderid : int, receiverid : int, r : int, g : int, b : int, text : str)
+    async def sendPlayerMessageToPlayer(senderid : int, receiverid : int, r : int, g : int, b : int, text : str)
     ```
     
     ## Parameters
@@ -78,4 +91,8 @@ def sendPlayerMessageToPlayer(senderid : int, receiverid : int, r : int, g : int
     * `int` **b**: the blue color component in RGB model.
     * `str` **text**: that will be send.
     """
-    return sqg2o.sendPlayerMessageToAll(senderid, receiverid, r, g, b, text)
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result

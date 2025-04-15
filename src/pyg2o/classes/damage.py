@@ -1,6 +1,5 @@
-import sqg2o
 
-class DamageDescription(sqg2o.DamageDescription):
+class DamageDescription():
     """
     This class represents damage information.
     Original: [DamageDescription](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-classes/item/DamageDescription//)
@@ -31,56 +30,65 @@ class DamageDescription(sqg2o.DamageDescription):
     Represents the name of the node hit by a point projectile.
     """
     def __init__(self):
-        return super().__init__()
+        self._flags : int = 0
+        self._damage : int = 0
+        self._item_instance : str = ''
+        self._distance : int = 0
+        self._spell_id : int = 0
+        self._spell_level : int = 0
+        self._node : str = 0
     
+    def _initialize(self, **kwargs):
+        self.__dict__.update(kwargs)
+        
     @property
-    def item_instance(self):
-        return super().item_instance
-    
-    @property
-    def flags(self):
-        return super().flags
+    def flags(self) -> int:
+        return self._flags
     
     @flags.setter
     def flags(self, value):
-        super().flags = value
+        self._flags = value
         
     @property
-    def damage(self):
-        return super().damage
+    def damage(self) -> int:
+        return self._damage
     
     @damage.setter
     def damage(self, value):
-        super().damage = value
+        self._damage = value
         
     @property
-    def distance(self):
-        return super().distance
+    def item_instance(self) -> str:
+        return self._item_instance
+    
+    @property
+    def distance(self) -> int:
+        return self._distance
     
     @distance.setter
     def distance(self, value):
-        super().distance = value
+        self._distance = value
         
     @property
-    def spell_id(self):
-        return super().spell_id
+    def spell_id(self) -> int:
+        return self._spell_id
     
     @spell_id.setter
     def spell_id(self, value):
-        super().spell_id = value
+        self._spell_id = value
         
     @property
-    def spell_level(self):
-        return super().spell_level
+    def spell_level(self) -> int:
+        return self._spell_level
     
     @spell_level.setter
     def spell_level(self, value):
-        super().spell_level = value
+        self._spell_level = value
         
     @property
-    def node(self):
-        return super().node
+    def node(self) -> str:
+        return self._node
     
     @node.setter
     def node(self, value):
-        super().node = value
+        self._node = value

@@ -1,13 +1,14 @@
-import sqg2o
+from ..server import PythonWebsocketServer
+from ..call_repr import get_call_repr
 
-def getDistance2d(x1 : float, y1: float, x2 : float, y2 : float) -> float:
+async def getDistance2d(x1 : float, y1: float, x2 : float, y2 : float) -> float:
     """
     This function will get the 2d distance between two points.
     Original: [getDistance2d](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/math/getDistance2d/)
     
     ## Declaration
     ```python
-    def getDistance2d(x1 : float, y1: float, x2 : float, y2 : float) -> float
+    async def getDistance2d(x1 : float, y1: float, x2 : float, y2 : float) -> float
     ```
     
     ## Parameters
@@ -18,16 +19,20 @@ def getDistance2d(x1 : float, y1: float, x2 : float, y2 : float) -> float:
     ## Returns
     `float`: Returns the calculated 2d distance between two points as floating point number.
     """
-    return sqg2o.getDistance2d(x1, y1, x2, y2)
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result
 
-def getDistance3d(x1 : float, y1: float, z1 : float, x2 : float, y2 : float, z2 : float) -> float:
+async def getDistance3d(x1 : float, y1: float, z1 : float, x2 : float, y2 : float, z2 : float) -> float:
     """
     This function will get the 3d distance between two points.
     Original: [getDistance3d](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/math/getDistance3d/)
     
     ## Declaration
     ```python
-    def getDistance3d(x1 : float, y1: float, z1 : float, x2 : float, y2 : float, z2 : float) -> float
+    async def getDistance3d(x1 : float, y1: float, z1 : float, x2 : float, y2 : float, z2 : float) -> float
     ```
     
     ## Parameters
@@ -40,16 +45,20 @@ def getDistance3d(x1 : float, y1: float, z1 : float, x2 : float, y2 : float, z2 
     ## Returns
     `float`: Returns the calculated 3d distance between two points as floating point number.
     """
-    return sqg2o.getDistance3d(x1, y1, z1, x2, y2, z2)
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result
 
-def getVectorAngle(x1 : float, y1: float, x2 : float, y2 : float) -> float:
+async def getVectorAngle(x1 : float, y1: float, x2 : float, y2 : float) -> float:
     """
     This function will get angle on Y axis directed towards the second point.
     Original: [getVectorAngle](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/shared-functions/math/getVectorAngle/)
     
     ## Declaration
     ```python
-    def getVectorAngle(x1 : float, y1: float, x2 : float, y2 : float) -> float
+    async def getVectorAngle(x1 : float, y1: float, x2 : float, y2 : float) -> float
     ```
     
     ## Parameters
@@ -60,4 +69,8 @@ def getVectorAngle(x1 : float, y1: float, x2 : float, y2 : float) -> float:
     ## Returns
     `float`: Returns the angle on Y axis directed towards the second point.
     """
-    return sqg2o.getVectorAngle(x1, y1, x2, y2)
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result

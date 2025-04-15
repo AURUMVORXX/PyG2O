@@ -1,4 +1,4 @@
-import sqg2o
+from ..server import PythonWebsocketServer
 
 class ItemsGround:
     """
@@ -6,7 +6,7 @@ class ItemsGround:
     Original: [ItemsGround](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-classes/item/ItemsGround/)
     """
     @staticmethod
-    def getById(id : int):
+    async def getById(id : int):
         """
         This method will retrieve the item ground object by its unique id.
         
@@ -16,10 +16,15 @@ class ItemsGround:
         **Returns `ItemGround`:**
         the item ground object or `throws an exception` if the object cannot be found.
         """
-        return sqg2o.ItemsGround.getById(id)
+        data = f'return ItemsGround.getById({id})'
+        
+        # TODO: Добавить десериализацию ItemGround
+        server = await PythonWebsocketServer.get_server()
+        result = await server.make_request(data)
+        return result
     
     @staticmethod
-    def create(data : dict) -> int:
+    async def create(data : dict) -> int:
         """
         This method will create the item ground.
         
@@ -35,18 +40,26 @@ class ItemsGround:
         **Returns `int`:**
         the item ground id.
         """
-        return sqg2o.ItemsGround.create(data)
+        data = f'return ItemsGround.create({data})'
+        
+        server = await PythonWebsocketServer.get_server()
+        result = await server.make_request(data)
+        return result
     
     @staticmethod
-    def destroy(id : int):
+    async def destroy(id : int):
         """
         This method will destroy the item ground by it's unique id.
         **Parameters:**
         * `int` **itemGroundId**: the item ground unique id.
         """
-        sqg2o.ItemsGround.destroy(id)
+        data = f'return ItemsGround.destroy({id})'
+        
+        server = await PythonWebsocketServer.get_server()
+        result = await server.make_request(data)
+        return result
 
-class ItemGround(sqg2o.ItemGround):
+class ItemGround:
     """
     This class represents item on the ground.
     Original: [ItemGround](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-classes/item/ItemGround//)
@@ -67,44 +80,53 @@ class ItemGround(sqg2o.ItemGround):
     Represents the virtual world of item ground.
     """
     def __init__(self):
-        return super().__init__()
+        self._id = -1
+        self._instance = ''
+        self._amount = -1
+        self._world = -1
+        self._virtualWorld = -1
+        self._position = -1
+        self._rotation = -1
     
-    def getPosition() -> tuple:
+    def getPosition(self) -> dict:
         """
         This method will get the item ground position on the world.
         **Returns `tuple(float, float, float)`:**
         `X-Y-Z` item ground position on the world.
         """
-        return super().getPosition()
+        return self._position
     
-    def getRotation() -> tuple:
+    def getRotation(self) -> dict:
         """
         This method will get the item ground rotation on the world.
         **Returns `tuple(float, float, float)`:**
         `X-Y-Z` item ground roration on the world.
         """
-        return super().getRotation()
+        return self._rotation
     
     @property
-    def id(self):
-        return super().id
+    def id(self) -> int:
+        return self._id
     
     @property
-    def instance(self):
-        return super().instance
+    def instance(self) -> str:
+        return self._instance
     
     @property
-    def amount(self):
-        return super().amount
+    def amount(self) -> int:
+        return self._amount
     
     @property
-    def world(self):
-        return super().world
+    def world(self) -> str:
+        return self._world
     
     @property
-    def virtualWorld(self):
-        return super().virtualWorld
+    def virtualWorld(self) -> int:
+        return self._virtualWorld
     
     @virtualWorld.setter
     def virtualWorld(self, value):
-        super().virtualWorld = value
+        self._virtualWorld = value
+        
+    def _initialize(self, **kwargs):
+        self.__dict__.update(kwargs)
