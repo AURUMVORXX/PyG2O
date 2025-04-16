@@ -36,6 +36,7 @@ class PythonWebsocketServer:
         ):
             logging.info(f'[PyG2O] Server is started at ws://{self.host}:{self.port}')
             PythonWebsocketServer._current_server = self
+            asyncio.create_task(callEvent('onInit', **{}))
             await self._stop_event.wait()
             
     async def stop(self):

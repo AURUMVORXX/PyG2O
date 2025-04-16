@@ -30,16 +30,6 @@ addEventHandler("onBan", function(banInfo)
     _PyG2O_Send(data);
 });
 
-addEventHandler("onInit", function()
-{
-    local data = {
-        event = "onInit",
-        args = {}
-    }
-
-    _PyG2O_Send(data);
-});
-
 addEventHandler("onExit", function()
 {
     local data = {
