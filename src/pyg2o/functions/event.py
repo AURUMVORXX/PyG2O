@@ -575,7 +575,7 @@ def event(event_name: Literal['onPlayerToggleFaceAni'], priority: int = 9999) ->
 def event(event_name: str, priority: int = 9999) -> None:
     def inlineEvt(func):
         if event_name not in eventList:
-            return None
+            addEvent(event_name)
         
         @wraps(func)
         def wrapper(*args, **kwargs):
