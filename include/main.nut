@@ -86,7 +86,7 @@ addEventHandler("onWebsocketConnect", function(socket, url)
         print("[PyG2O] Successfully connected to " + url);
 });
 
-addEventHandler("onWebsocketDisconnect", function(socket, url)
+addEventHandler("onWebsocketClose", function(socket, url, message)
 {
     if (socket != _pyg2o_server_connection || _reconnect)
         return;
