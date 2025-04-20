@@ -11,7 +11,7 @@ function PyG2O_Start(url, reconnect = false, silent = false)
     _reconnect = reconnect;
 
     _pyg2o_server_connection = WebsocketClient();
-    _pyg2o_server_connection.silent = true;
+    _pyg2o_server_connection.silent = silent;
     _pyg2o_server_connection.setUrl(url);
     _pyg2o_server_connection.start();
 
