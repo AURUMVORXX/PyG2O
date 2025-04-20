@@ -12,12 +12,13 @@ class PythonWebsocketServer:
     
     _current_server = None
     
-    def __init__(self, host: str, port: int, whitelist: list[str], ping_interval: int = 30, silent: bool = False):    
+    def __init__(self, host: str, port: int, whitelist: list[str], ping_interval: int = 30, silent: bool = False, logger: logging.Logger = None):    
         self.host: str = host
         self.port: int = port
         self.ping_interval: int = ping_interval
         self.whitelist = whitelist
         self.silent = silent
+        self.logger = logger if logger is not None else logging.root
         
         self.requests_list: dict[str, asyncio.Future] = dict()
         self._stop_event: asyncio.Event = asyncio.Event()
@@ -34,7 +35,7 @@ class PythonWebsocketServer:
             port=self.port,
             ping_interval=self.ping_interval,
         ):
-            logging.info(f'[PyG2O] Server is started at ws://{self.host}:{self.port}')
+            self.logger.info(f'[PyG2O] Server is started at ws://{self.host}:{self.port}')
             PythonWebsocketServer._current_server = self
             asyncio.create_task(callEvent('onInit', **{}))
             await self._stop_event.wait()
@@ -77,7 +78,7 @@ class PythonWebsocketServer:
         self.connected_socket = websocket
         self.is_connected = websocket
         if (not self.silent):
-            logging.info(f'Client connected: {websocket.remote_address}')
+            self.logger.info(f'Client connected: {websocket.remote_address}')
             
         asyncio.create_task(callEvent('onWebsocketConnect', **{}))
         
@@ -116,12 +117,12 @@ class PythonWebsocketServer:
                         
                         
         except json.JSONDecodeError as e:
-            logging.exception(f'[PyG2O] JSON Exception: {e}')
+            self.logger.exception(f'[PyG2O] JSON Exception: {e}')
         except Exception as e:
-            logging.exception(f'[PyG2O] Exception: {e}')
+            self.logger.exception(f'[PyG2O] Exception: {e}')
         finally:
             if (not self.silent):
-                logging.info('Client disconnected')
+                self.logger.info('Client disconnected')
             self.is_connected = None
             self.connected_socket = None
             asyncio.create_task(callEvent('onWebsocketDisconnect', **{}))
