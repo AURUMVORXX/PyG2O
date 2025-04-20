@@ -34,6 +34,7 @@ async def main():
         ping_interval=30,
         silent=False,
         whitelist=['::1'],
+        # logger = YOUR_LOGGER,
     )
     try:
         await srv.start()
