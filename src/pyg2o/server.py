@@ -20,14 +20,31 @@ class PythonWebsocketServer:
         self.silent = silent
         self.logger = logger if logger is not None else logging.root
         
-        self.requests_list: dict[str, asyncio.Future] = dict()
+        self._messageHandlers: dict[str, callable] = dict()
+        self._requests_list: dict[str, asyncio.Future] = dict()
         self._stop_event: asyncio.Event = asyncio.Event()
-        self.connected_socket: Optional[websockets.ClientConnection] = None
+        self._connected_socket: Optional[websockets.ClientConnection] = None
+        
+        self._registerMessage('event', self._message_event)
+        self._registerMessage('init_constants', self._message_init_constants)
+        self._registerMessage('result', self._message_call_result)
         
     @classmethod
     async def get_server(cls):
         return cls._current_server
+    
+    def _registerMessage(self, type: str, handler: callable):
+        if type in self._messageHandlers:
+            return
         
+        self._messageHandlers[type] = handler
+        
+    async def _callMessage(self, type: str, data: dict):
+        if type not in self._messageHandlers:
+            return
+        
+        await self._messageHandlers[type](data)
+    
     async def start(self):
         async with websockets.serve(
             self.handle_connection,
@@ -42,40 +59,75 @@ class PythonWebsocketServer:
             
     async def stop(self):
         PythonWebsocketServer._current_server = None
-        self.connected_socket = None
+        self._connected_socket = None
         self._stop_event.set()
             
     async def make_request(self, data: str):
-        if (self.connected_socket is None):
+        if (self._connected_socket is None):
             return None
         
         request_id = str(uuid.uuid4())
-        self.requests_list[request_id] = asyncio.get_running_loop().create_future()
+        self._requests_list[request_id] = asyncio.get_running_loop().create_future()
         request = {
+            'type': 'call',
             'uuid': request_id,
-            'args': data,
+            'data': data,
         }
         request = json.dumps(request)
+        request = request.replace("'", '\\"')
         
-        formatted_request = request.replace("'", '\\"')
-        formatted_request = formatted_request.replace("False", 'false')
-        formatted_request = formatted_request.replace("True", 'true')
-        
-        await self.connected_socket.send(formatted_request)
+        await self._connected_socket.send(request)
         result = await asyncio.wait_for(
-            self.requests_list[request_id],
+            self._requests_list[request_id],
             timeout=30
         )
         return result
+    
+    async def _message_event(self, data: dict):
+        if (not isinstance(data['data'], dict) or
+            'event' not in data['data']):
+            return
         
+        eventName = data['data']['event']
+        del data['data']['event']
+        
+        if 'desc' in data['data']:
+            obj_name = data['data']['desc']['obj_name']
+            obj_data = data['data']['desc']['obj_data']
+            data['data']['desc'] = _deserialize(obj_name, obj_data)
+        elif 'itemGround' in data['data']:
+            obj_name = data['data']['itemGround']['obj_name']
+            obj_data = data['data']['itemGround']['obj_data']
+            data['data']['itemGround'] = _deserialize(obj_name, obj_data)
+        
+        asyncio.create_task(callEvent(eventName, **data['data']))
+        
+    async def _message_init_constants(self, data: dict):
+        if data['data'] is not dict:
+            return
+        
+        Constant._update(data['data'])
+        
+    async def _message_call_result(self, data: dict):
+        if data['uuid'] not in self._requests_list:
+            return
+        
+        result = data['data']
+        if (isinstance(data['data'], dict) and
+            'obj_name' in data['data'] and
+            'obj_data' in data['data']):
+            result = _deserialize(result['obj_name'], result['obj_data'])
+            
+        self._requests_list[data['uuid']].set_result(result)
+        del self._requests_list[data['uuid']]
     
     async def handle_connection(self, websocket: websockets.ClientConnection):
         
-        if (websocket.remote_address[0] not in self.whitelist or self.connected_socket is not None):
+        if (websocket.remote_address[0] not in self.whitelist or self._connected_socket is not None):
             await websocket.close(4000, 'Connection denied')
             return
         
-        self.connected_socket = websocket
+        self._connected_socket = websocket
         self.is_connected = websocket
         if (not self.silent):
             self.logger.info(f'Client connected: {websocket.remote_address}')
@@ -86,35 +138,12 @@ class PythonWebsocketServer:
             async for message in websocket:
                 
                 message_json = json.loads(message)
+                if ('type' not in message_json or
+                    'uuid' not in message_json or
+                    'data' not in message_json):
+                    return
                 
-                # Deserializing objects
-                if ('args' in message_json):
-                    formatted_args = dict()
-                    for key, value in message_json['args'].items():
-                        if not key.startswith('obj_'):
-                            formatted_args[key] = value
-                            continue
-                        
-                        formatted_args[value['name']] = _deserialize(key, value['data'])
-                    message_json['args'] = formatted_args
-                
-                # Processing events
-                if ('event' in message_json):
-                    asyncio.create_task(callEvent(message_json['event'], **formatted_args))
-                    continue
-                
-                # Processing requests from Squirrel side
-                if ('type' in message_json):
-                    Constant._update(message_json['args'])
-                    continue
-                
-                # Processing made requests
-                if (    
-                    'uuid' in message_json and
-                    message_json['uuid'] in self.requests_list.keys()
-                ):
-                    self.requests_list[message_json['uuid']].set_result(next(iter(message_json['args'].values())))
-                        
+                await self._callMessage(message_json['type'], message_json)
                         
         except json.JSONDecodeError as e:
             self.logger.exception(f'[PyG2O] JSON Exception: {e}')
@@ -124,5 +153,5 @@ class PythonWebsocketServer:
             if (not self.silent):
                 self.logger.info('Client disconnected')
             self.is_connected = None
-            self.connected_socket = None
+            self._connected_socket = None
             asyncio.create_task(callEvent('onWebsocketDisconnect', **{}))

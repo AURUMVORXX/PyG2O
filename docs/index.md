@@ -10,14 +10,15 @@ pip install git+https://github.com/AURUMVORXX/PyG2O.git
 ```
 3. Launch websocket client in your Squirrel scripts
 ```
-// PyG2O_Start(url, reconnect, silent)
-// reconnect - auto reconnect if server stopped
+// PyG2O(url, silent, max_reconnect_attempts)
 // silent - disable information prints
+// max_reconnect_attempts - maximum reconnect attempts if server will stop the connection (0 - infinite attempts). This value doesn't reset on connection
 
-// Start server before any events
-PyG2O_Start("ws://localhost:8080", true, false)
-
-addEventHandler("onInit"...
+// Start server
+local srv = PyG2O("ws://localhost:8080", true, 15)
+srv.start()
+// Stop server
+srv.stop()
 ```
 4. In your application, launch asyncio event loop and websocket server
 ```python
