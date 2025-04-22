@@ -75,6 +75,8 @@ class PythonWebsocketServer:
         }
         request = json.dumps(request)
         request = request.replace("'", '\\"')
+        request = request.replace('True', 'true')
+        request = request.replace('False', 'false')
         
         await self._connected_socket.send(request)
         result = await asyncio.wait_for(
