@@ -87,6 +87,7 @@ from .functions.player   import getPlayerVirtualWorld
 from .functions.player   import getPlayerVisual
 from .functions.player   import getPlayerWeaponMode
 from .functions.player   import getPlayerWorld
+from .functions.player   import getPlayerUID
 from .functions.player   import giveItem
 from .functions.player   import hitPlayer
 from .functions.player   import isPlayerConnected
