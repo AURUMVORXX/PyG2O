@@ -125,7 +125,7 @@ class PythonWebsocketServer:
     
     async def handle_connection(self, websocket: websockets.ClientConnection):
         
-        if (websocket.remote_address[0] not in self.whitelist or self._connected_socket is not None):
+        if ((len(self.whitelist) != 0 and websocket.remote_address[0] not in self.whitelist) or self._connected_socket is not None):
             await websocket.close(4000, 'Connection denied')
             return
         
