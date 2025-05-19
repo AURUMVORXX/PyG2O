@@ -88,6 +88,8 @@ class PyG2O
             return "DamageDescription";
         else if (object instanceof ItemGround)
             return "ItemGround";
+        else if (object instanceof Vec3)
+            return "Vec3";
 
         return null;
     }

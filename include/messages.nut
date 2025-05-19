@@ -3,7 +3,14 @@ function _message_call(data)
 {
     local result = compilestring(data["data"])();
     local className = _getClassName(result);
-    if (className != null)
+    if (className == "Vec3")
+    {
+        data["data"] = {};
+        data["data"]["x"] <- result.x;
+        data["data"]["y"] <- result.y;
+        data["data"]["z"] <- result.z;
+    }
+    else if (className != null)
     {
         data["data"] = {};
         data["data"]["obj_name"] <- className;
