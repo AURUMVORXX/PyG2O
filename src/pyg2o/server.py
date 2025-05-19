@@ -138,19 +138,22 @@ class PythonWebsocketServer:
         
         try:
             async for message in websocket:
-                
-                message_json = json.loads(message)
-                if ('type' not in message_json or
-                    'uuid' not in message_json or
-                    'data' not in message_json):
-                    return
-                
-                await self._callMessage(message_json['type'], message_json)
+                try:
+                    message_json = json.loads(message)
+                    if ('type' not in message_json or
+                        'uuid' not in message_json or
+                        'data' not in message_json):
+                        self.logger.error(f'[PyG2O] Expected message with (type, uuid, data) fields, got: {message_json}')
+                        continue
+                    
+                    await self._callMessage(message_json['type'], message_json)
                         
-        except json.JSONDecodeError as e:
-            self.logger.exception(f'[PyG2O] JSON Exception: {e}')
-        except Exception as e:
-            self.logger.exception(f'[PyG2O] Exception: {e}')
+                except json.JSONDecodeError as e:
+                    self.logger.exception(f'[PyG2O] JSON Exception: {e}')
+                    continue
+                except Exception as e:
+                    self.logger.exception(f'[PyG2O] Exception: {e}')
+                    continue
         finally:
             if (not self.silent):
                 self.logger.info('Client disconnected')
