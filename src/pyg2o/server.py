@@ -154,6 +154,12 @@ class PythonWebsocketServer:
                 except Exception as e:
                     self.logger.exception(f'[PyG2O] Exception: {e}')
                     continue
+        except websockets.exceptions.ConnectionClosedError:
+            if (not self.silent):
+                self.logger.info('Client disconnected')
+            self.is_connected = None
+            self._connected_socket = None
+            asyncio.create_task(callEvent('onWebsocketDisconnect', **{}))
         finally:
             if (not self.silent):
                 self.logger.info('Client disconnected')
