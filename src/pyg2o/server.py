@@ -1,24 +1,22 @@
 import websockets
 import asyncio
-import logging
 import json
 import uuid
 from typing import Optional
 from .constants import Constant
 from .functions.event import callEvent
 from .serialize import _deserialize
+from pyg2o import logger
 
 class PythonWebsocketServer:
     
     _current_server = None
     
-    def __init__(self, host: str, port: int, whitelist: list[str], ping_interval: int = 30, silent: bool = False, logger: logging.Logger = None):    
+    def __init__(self, host: str, port: int, whitelist: list[str], ping_interval: int = 30):    
         self.host: str = host
         self.port: int = port
         self.ping_interval: int = ping_interval
         self.whitelist = whitelist
-        self.silent = silent
-        self.logger = logger if logger is not None else logging.root
         
         self._messageHandlers: dict[str, callable] = dict()
         self._requests_list: dict[str, asyncio.Future] = dict()
@@ -52,7 +50,7 @@ class PythonWebsocketServer:
             port=self.port,
             ping_interval=self.ping_interval,
         ):
-            self.logger.info(f'[PyG2O] Server is started at ws://{self.host}:{self.port}')
+            logger.info(f'[PyG2O] Server is started at ws://{self.host}:{self.port}')
             PythonWebsocketServer._current_server = self
             asyncio.create_task(callEvent('onInit', **{}))
             await self._stop_event.wait()
@@ -125,14 +123,17 @@ class PythonWebsocketServer:
     
     async def handle_connection(self, websocket: websockets.ClientConnection):
         
-        if ((len(self.whitelist) != 0 and websocket.remote_address[0] not in self.whitelist) or self._connected_socket is not None):
-            await websocket.close(4000, 'Connection denied')
+        if len(self.whitelist) != 0 and websocket.remote_address[0] not in self.whitelist:
+            await websocket.close(4000, 'Connection denied (whitelist)')
+            return
+        
+        if self._connected_socket is not None:
+            await websocket.close(4000, 'Connection denied (already_connected)')
             return
         
         self._connected_socket = websocket
         self.is_connected = websocket
-        if (not self.silent):
-            self.logger.info(f'Client connected: {websocket.remote_address}')
+        logger.info(f'Client connected: {websocket.remote_address}')
             
         asyncio.create_task(callEvent('onWebsocketConnect', **{}))
         
@@ -140,29 +141,22 @@ class PythonWebsocketServer:
             async for message in websocket:
                 try:
                     message_json = json.loads(message)
-                    if ('type' not in message_json or
-                        'uuid' not in message_json or
-                        'data' not in message_json):
-                        self.logger.error(f'[PyG2O] Expected message with (type, uuid, data) fields, got: {message_json}')
+                    if not all(key in message_json for key in ('type', 'uuid', 'data')):
+                        logger.error(f'[PyG2O] Expected message with (type, uuid, data) fields, got: {message_json}')
                         continue
                     
                     await self._callMessage(message_json['type'], message_json)
                         
                 except json.JSONDecodeError as e:
-                    self.logger.exception(f'[PyG2O] JSON Exception: {e}')
+                    logger.exception(f'[PyG2O] JSON Exception: {e}')
                     continue
                 except Exception as e:
-                    self.logger.exception(f'[PyG2O] Exception: {e}')
+                    logger.exception(f'[PyG2O] Exception: {e}')
                     continue
         except websockets.exceptions.ConnectionClosedError:
-            if (not self.silent):
-                self.logger.info('Client disconnected')
-            self.is_connected = None
-            self._connected_socket = None
-            asyncio.create_task(callEvent('onWebsocketDisconnect', **{}))
+            pass
         finally:
-            if (not self.silent):
-                self.logger.info('Client disconnected')
+            logger.info('Client disconnected')
             self.is_connected = None
             self._connected_socket = None
             asyncio.create_task(callEvent('onWebsocketDisconnect', **{}))

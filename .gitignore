@@ -4,10 +4,10 @@ desktop.ini
 
 # Main directory
 
-/build/
-/out/
+/dist/
 __pycache__/
 *.pyc
+*.lock
 
 # Visual Studio
 
