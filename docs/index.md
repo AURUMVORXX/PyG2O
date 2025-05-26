@@ -1,12 +1,13 @@
 ## How to use
 1. Install [G2O WebSocket module](https://github.com/AURUMVORXX/G2O-WebSocket) to your server
-1. Download **include/** folder and import the Squirrel part of the library:
+2. Install [JSON module](https://gitlab.com/GothicMultiplayerTeam/modules/json) to your server
+3. Download **include/** folder and import the Squirrel part of the library:
 ```xml
-<import src="include/pyg2o.exml" />
+<import src="include/pyg2o.xml" />
 ```
 2. Install python library to your application
 ```
-pip install git+https://github.com/AURUMVORXX/PyG2O.git
+pip install pyg2o
 ```
 3. Launch websocket client in your Squirrel scripts
 ```
@@ -15,7 +16,7 @@ pip install git+https://github.com/AURUMVORXX/PyG2O.git
 // max_reconnect_attempts - maximum reconnect attempts if server will stop the connection (0 - infinite attempts). This value doesn't reset on connection
 
 // Start server
-local srv = PyG2O("ws://localhost:8080", true, 15)
+local srv = PyG2O("ws://localhost:8080", false, 15)
 srv.start()
 // Stop server
 srv.stop()
@@ -33,9 +34,7 @@ async def main():
         host='localhost',
         port=8080,
         ping_interval=30,
-        silent=False,
         whitelist=['::1'],
-        # logger = YOUR_LOGGER,
     )
     try:
         await srv.start()
