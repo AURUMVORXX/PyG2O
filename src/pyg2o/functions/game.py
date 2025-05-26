@@ -1,6 +1,5 @@
 from ..server import PythonWebsocketServer
 from ..call_repr import get_call_repr
-from typing import Optional
 
 async def getHostname() -> str:
     """

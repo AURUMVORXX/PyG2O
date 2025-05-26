@@ -6,7 +6,7 @@ from typing import Optional
 from .constants import Constant
 from .functions.event import callEvent
 from .serialize import _deserialize
-from pyg2o import logger
+from .logger import logger
 
 class PythonWebsocketServer:
     
@@ -50,7 +50,7 @@ class PythonWebsocketServer:
             port=self.port,
             ping_interval=self.ping_interval,
         ):
-            logger.info(f'[PyG2O] Server is started at ws://{self.host}:{self.port}')
+            logger.info(f'Server is started at ws://{self.host}:{self.port}')
             PythonWebsocketServer._current_server = self
             asyncio.create_task(callEvent('onInit', **{}))
             await self._stop_event.wait()
@@ -142,16 +142,16 @@ class PythonWebsocketServer:
                 try:
                     message_json = json.loads(message)
                     if not all(key in message_json for key in ('type', 'uuid', 'data')):
-                        logger.error(f'[PyG2O] Expected message with (type, uuid, data) fields, got: {message_json}')
+                        logger.error(f'Expected message with (type, uuid, data) fields, got: {message_json}')
                         continue
                     
                     await self._callMessage(message_json['type'], message_json)
                         
                 except json.JSONDecodeError as e:
-                    logger.exception(f'[PyG2O] JSON Exception: {e}')
+                    logger.exception(f'JSON Exception: {e}')
                     continue
                 except Exception as e:
-                    logger.exception(f'[PyG2O] Exception: {e}')
+                    logger.exception(f'Exception: {e}')
                     continue
         except websockets.exceptions.ConnectionClosedError:
             pass

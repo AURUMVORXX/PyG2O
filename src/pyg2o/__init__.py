@@ -146,6 +146,9 @@ from .functions.event    import removeEventHandler
 from .functions.event    import toggleEvent
 from .functions.event    import removeEvent
 
+from .functions.pyg2o    import call_squirrel_function
+from .functions.pyg2o    import execute_squirrel_code
+
 from .constants          import Constant
 
 from .classes.daedalus   import Daedalus
@@ -155,8 +158,7 @@ from .classes.items      import ItemsGround
 from .classes.mds        import Mds
 from .classes.sky        import Sky
 
-import logging
-logger = logging.getLogger(__name__)
+from .logger             import logger
 
 __all__ = [
     "PythonWebsocketServer",
@@ -306,6 +308,9 @@ __all__ = [
     "toggleEvent",
     "removeEvent",
     
+    "call_squirrel_function",
+    "execute_squirrel_code",
+    
     "Constant",
     
     "Daedalus",
@@ -314,4 +319,6 @@ __all__ = [
     "ItemsGround",
     "Mds",
     "Sky",
+    
+    "logger",
 ]

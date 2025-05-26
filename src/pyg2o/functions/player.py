@@ -211,7 +211,7 @@ async def getPlayerAtVector(id : int) -> Optional[tuple]:
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return (result['x'], result['y'], result['z']) if result is not None else None
+    return (result['x'], result['y'], result['z']) if result is not None else (None, None, None)
 
 async def getPlayerBelt(id : int) -> str:
     """
@@ -251,7 +251,7 @@ async def getPlayerCameraPosition(id : int) -> Optional[tuple]:
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return (result['x'], result['y'], result['z']) if result is not None else None
+    return (result['x'], result['y'], result['z']) if result is not None else (None, None, None)
 
 async def getPlayerCollision(id : int) -> bool:
     """
@@ -291,7 +291,7 @@ async def getPlayerColor(id : int) -> Optional[tuple]:
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return (result['r'], result['g'], result['b']) if result is not None else None
+    return (result['r'], result['g'], result['b']) if result is not None else (None, None, None)
 
 async def getPlayerContext(id : int, type : int) -> int:
     """
@@ -657,7 +657,7 @@ async def getPlayerPosition(id : int) -> Optional[tuple]:
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return (result['x'], result['y'], result['z']) if result is not None else None
+    return (result['x'], result['y'], result['z']) if result is not None else (None, None, None)
 
 async def getPlayerRangedWeapon(id : int) -> str:
     """
@@ -738,7 +738,7 @@ async def getPlayerScale(id : int) -> Optional[tuple]:
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return (result['x'], result['y'], result['z']) if result is not None else None
+    return (result['x'], result['y'], result['z']) if result is not None else (None, None, None)
 
 async def getPlayerSerial(id : int) -> str:
     """
@@ -926,7 +926,7 @@ async def getPlayerVisual(id : int) -> Optional[tuple]:
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return (result['bodyModel'], result['bodyTxt'], result['headModel'], result['headTxt']) if result is not None else None
+    return (result['bodyModel'], result['bodyTxt'], result['headModel'], result['headTxt']) if result is not None else (None, None, None, None)
 
 async def getPlayerWeaponMode(id : int) -> int:
     """
@@ -1505,7 +1505,7 @@ async def setPlayerPosition(id : int, x : float, y : float, z : float) -> Option
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return (result['x'], result['y'], result['z']) if result is not None else None
+    return (result['x'], result['y'], result['z']) if result is not None else (None, None, None)
 
 async def setPlayerRespawnTime(id : int, respawnTime : int):
     """
@@ -1551,7 +1551,7 @@ async def setPlayerScale(id : int, x : float, y : float, z : float) -> Optional[
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return (result['x'], result['y'], result['z']) if result is not None else None
+    return (result['x'], result['y'], result['z']) if result is not None else (None, None, None)
 
 async def setPlayerSkillWeapon(id : int, skillId : int, percentage : int):
     """

@@ -1,7 +1,8 @@
 
 function _message_call(data)
 {
-    local result = compilestring(data["data"])();
+    local compile_string = "try { " + data["data"] + " } catch(id) { print(\"[PyG2O] Error white executing the code: \" + id + \"\\nCode: " + data["data"] + "\"); return null; }";
+    local result = compilestring(compile_string)();
     local className = _getClassName(result);
     if (className == "Vec3")
     {

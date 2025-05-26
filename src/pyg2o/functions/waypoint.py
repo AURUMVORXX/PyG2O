@@ -23,7 +23,7 @@ async def getNearestWaypoint(world : str, x : int, y : int, z : int) -> Optional
     
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return (result['name'], result['x'], result['y'], result['z']) if result is not None else None
+    return (result['name'], result['x'], result['y'], result['z']) if result is not None else (None, None, None)
 
 async def getWaypoint(world : str, name : str) -> Optional[tuple]:
     """
@@ -44,4 +44,4 @@ async def getWaypoint(world : str, name : str) -> Optional[tuple]:
     
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return (result['x'], result['y'], result['z']) if result is not None else None
+    return (result['x'], result['y'], result['z']) if result is not None else (None, None, None)
