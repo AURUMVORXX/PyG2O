@@ -1,5 +1,6 @@
 from ..server import PythonWebsocketServer
 from ..call_repr import get_call_repr
+from typing import Optional
 
 async def getHostname() -> str:
     """
@@ -157,23 +158,23 @@ async def getServerWorld() -> str:
     result = await server.make_request(data)
     return result
 
-async def getTime() -> dict:
+async def getTime() -> tuple:
     """
     The function is used to get the path of the default world on the server.
     Original: [getTime](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/game/getTime/)
     
     ## Declaration
     ```python
-    async def getTime() -> dict
+    async def getTime() -> tuple
     ```
     ## Returns
-    `dict {day, hour, min}`: The current time in the game.
+    `tuple (day, hour, min)`: The current time in the game.
     """
     data = f'return {get_call_repr()}'
     
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return result
+    return (result['day'], result['hour'], result['min'])
 
 async def serverLog(text : str):
     """

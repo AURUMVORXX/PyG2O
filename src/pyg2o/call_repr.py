@@ -5,7 +5,6 @@ def get_call_repr():
     func_name = frame.f_code.co_name
     args_info = inspect.getargvalues(frame)
     
-    # Формируем аргументы в виде строки
     args_str = []
     for arg in args_info.args:
         val = args_info.locals[arg]

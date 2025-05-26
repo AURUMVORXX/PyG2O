@@ -1,5 +1,6 @@
 from ..server import PythonWebsocketServer
 from ..call_repr import get_call_repr
+from typing import Optional
 
 async def addBan(info : dict) -> bool:
     """
@@ -192,25 +193,25 @@ async def getPlayerArmor(id : int) -> str:
     result = await server.make_request(data)
     return result
 
-async def getPlayerAtVector(id : int) -> dict:
+async def getPlayerAtVector(id : int) -> Optional[tuple]:
     """
     This function will get player at vector.
     Original: [getPlayerAtVector](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/getPlayerAtVector/)
     
     ## Declaration
     ```python
-    getPlayerAtVector(id : int) -> dict
+    getPlayerAtVector(id : int) -> Optional[tuple]
     ```
     ## Parameters
     `int` **id**: the player id.
     ## Returns
-    `dict {x, y, z}`: the player at vector.
+    `tuple (x, y, z)`: the player at vector.
     """
     data = f'return {get_call_repr()}'
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return result
+    return (result['x'], result['y'], result['z']) if result is not None else None
 
 async def getPlayerBelt(id : int) -> str:
     """
@@ -232,25 +233,25 @@ async def getPlayerBelt(id : int) -> str:
     result = await server.make_request(data)
     return result
 
-async def getPlayerCameraPosition(id : int) -> dict:
+async def getPlayerCameraPosition(id : int) -> Optional[tuple]:
     """
     This function will get the player camera position in world.
     Original: [getPlayerCameraPosition](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/getPlayerCameraPosition/)
     
     ## Declaration
     ```python
-    getPlayerCameraPosition(id : int) -> dict
+    getPlayerCameraPosition(id : int) -> Optional[tuple]
     ```
     ## Parameters
     `int` **id**: the player id.
     ## Returns
-    `dict {x, y, z}`: the dictionary that represents camera position.
+    `tuple (x, y, z)`: the dictionary that represents camera position.
     """
     data = f'return {get_call_repr()}'
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return result
+    return (result['x'], result['y'], result['z']) if result is not None else None
 
 async def getPlayerCollision(id : int) -> bool:
     """
@@ -272,25 +273,25 @@ async def getPlayerCollision(id : int) -> bool:
     result = await server.make_request(data)
     return result
 
-async def getPlayerColor(id : int) -> dict:
+async def getPlayerColor(id : int) -> Optional[tuple]:
     """
     This function will get the player nickname color.
     Original: [getPlayerColor](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/getPlayerColor/)
     
     ## Declaration
     ```python
-    async def getPlayerColor(id : int) -> dict
+    async def getPlayerColor(id : int) -> Optional[tuple]
     ```
     ## Parameters
     `int` **id**: the player id.
     ## Returns
-    `dict {r, g, b}`: the player nickname color.
+    `tuple (r, g, b)`: the player nickname color.
     """
     data = f'return {get_call_repr()}'
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return result
+    return (result['r'], result['g'], result['b']) if result is not None else None
 
 async def getPlayerContext(id : int, type : int) -> int:
     """
@@ -638,25 +639,25 @@ async def getPlayerPing(id : int) -> int:
     result = await server.make_request(data)
     return result
 
-async def getPlayerPosition(id : int) -> dict:
+async def getPlayerPosition(id : int) -> Optional[tuple]:
     """
     This function will get the player world position.
     Original: [getPlayerPosition](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/getPlayerPosition/)
     
     ## Declaration
     ```python
-    async def getPlayerPosition(id : int) -> dict
+    async def getPlayerPosition(id : int) -> Optional[tuple]
     ```
     ## Parameters
     `int` **id**: the player id.
     ## Returns
-    `dict {x, y, z}`: the player world position.
+    `tuple (x, y, z)`: the player world position.
     """
     data = f'return {get_call_repr()}'
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return result
+    return (result['x'], result['y'], result['z']) if result is not None else None
 
 async def getPlayerRangedWeapon(id : int) -> str:
     """
@@ -719,25 +720,25 @@ async def getPlayerRing(id : int, handId : int) -> str:
     result = await server.make_request(data)
     return result
 
-async def getPlayerScale(id : int) -> dict:
+async def getPlayerScale(id : int) -> Optional[tuple]:
     """
     This function will get the player scale.
     Original: [getPlayerScale](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/getPlayerScale/)
     
     ## Declaration
     ```python
-    async def getPlayerScale(id : int) -> dict
+    async def getPlayerScale(id : int) -> Optional[tuple]
     ```
     ## Parameters
     `int` **id**: the player id.
     ## Returns
-    `dict {x, y, z}`: the player scale.
+    `tuple (x, y, z)`: the player scale.
     """
     data = f'return {get_call_repr()}'
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return result
+    return (result['x'], result['y'], result['z']) if result is not None else None
 
 async def getPlayerSerial(id : int) -> str:
     """
@@ -907,25 +908,25 @@ async def getPlayerVirtualWorld(id : int) -> int:
     result = await server.make_request(data)
     return result
 
-async def getPlayerVisual(id : int) -> dict:
+async def getPlayerVisual(id : int) -> Optional[tuple]:
     """
     This function will get the player visual.
     Original: [getPlayerVisual](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/getPlayerVisual/)
     
     ## Declaration
     ```python
-    async def getPlayerVisual(id : int) -> dict
+    async def getPlayerVisual(id : int) -> Optional[tuple]
     ```
     ## Parameters
     `int` **id**: the player id.
     ## Returns
-    `dict {bodyModel, bodyTxt, headModel, headTxt}`: player visual.
+    `tuple (bodyModel, bodyTxt, headModel, headTxt)`: player visual.
     """
     data = f'return {get_call_repr()}'
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return result
+    return (result['bodyModel'], result['bodyTxt'], result['headModel'], result['headTxt']) if result is not None else None
 
 async def getPlayerWeaponMode(id : int) -> int:
     """
@@ -1481,7 +1482,7 @@ async def setPlayerName(id : int, name : str) -> bool:
     result = await server.make_request(data)
     return result
 
-async def setPlayerPosition(id : int, x : float, y : float, z : float):
+async def setPlayerPosition(id : int, x : float, y : float, z : float) -> Optional[tuple]:
     """
     !!! note
         This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
@@ -1490,7 +1491,7 @@ async def setPlayerPosition(id : int, x : float, y : float, z : float):
     
     ## Declaration
     ```python
-    async def setPlayerPosition(id : int, x : float, y : float, z : float)
+    async def setPlayerPosition(id : int, x : float, y : float, z : float) -> Optional[tuple]
     ```
     ## Parameters
     `int` **id**: the player id.
@@ -1498,13 +1499,13 @@ async def setPlayerPosition(id : int, x : float, y : float, z : float):
     `float` **y**: the position in the world on the y axis.
     `float` **z**: the position in the world on the z axis.
     OR
-    `dict[str, float]` **pos**: the position in the world on the XYZ axis.
+    `tuple(x, y, z)` **pos**: the position in the world on the XYZ axis.
     """
     data = f'return {get_call_repr()}'
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return result
+    return (result['x'], result['y'], result['z']) if result is not None else None
 
 async def setPlayerRespawnTime(id : int, respawnTime : int):
     """
@@ -1527,7 +1528,7 @@ async def setPlayerRespawnTime(id : int, respawnTime : int):
     result = await server.make_request(data)
     return result
 
-async def setPlayerScale(id : int, x : float, y : float, z : float):
+async def setPlayerScale(id : int, x : float, y : float, z : float) -> Optional[tuple]:
     """
     !!! note
         This functions supports ``pass_exception: bool`` optional argument for manual handling exceptions.
@@ -1536,7 +1537,7 @@ async def setPlayerScale(id : int, x : float, y : float, z : float):
     
     ## Declaration
     ```python
-    async def setPlayerScale(id : int, x : float, y : float, z : float)
+    async def setPlayerScale(id : int, x : float, y : float, z : float) -> Optional[tuple]
     ```
     ## Parameters
     `int` **id**: the player id.
@@ -1544,13 +1545,13 @@ async def setPlayerScale(id : int, x : float, y : float, z : float):
     `float` **y**: the scale factor on y axis.
     `float` **z**: the scale factor on z axis.
     OR
-    `dict[str, float]` **pos**: the scale factor on the XYZ axis.
+    `tuple(x, y, z)` **pos**: the scale factor on the XYZ axis.
     """
     data = f'return {get_call_repr()}'
 
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
-    return result
+    return (result['x'], result['y'], result['z']) if result is not None else None
 
 async def setPlayerSkillWeapon(id : int, skillId : int, percentage : int):
     """
