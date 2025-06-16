@@ -12,6 +12,7 @@ from .functions.math     import getVectorAngle
 
 from .functions.game     import getHostname
 from .functions.game     import getMaxSlots
+from .functions.game     import getServerPublic
 from .functions.game     import getPlayersCount
 from .functions.game     import exit
 from .functions.game     import getDayLength
@@ -22,6 +23,7 @@ from .functions.game     import serverLog
 from .functions.game     import setDayLength
 from .functions.game     import setServerDescription
 from .functions.game     import setServerWorld
+from .functions.game     import setServerPublic
 from .functions.game     import setTime
 
 from .functions.npc      import clearNpcActions
@@ -48,6 +50,7 @@ from .functions.player   import equipItem
 from .functions.player   import getPlayerAmulet
 from .functions.player   import getPlayerAngle
 from .functions.player   import getPlayerAni
+from .functions.player   import getPlayerOverlays
 from .functions.player   import getPlayerArmor
 from .functions.player   import getPlayerAtVector
 from .functions.player   import getPlayerBelt
@@ -96,6 +99,7 @@ from .functions.player   import isPlayerUnconscious
 from .functions.player   import kick
 from .functions.player   import playAni
 from .functions.player   import playFaceAni
+from .functions.player   import fadeOutAni
 from .functions.player   import readySpell
 from .functions.player   import removeItem
 from .functions.player   import removePlayerOverlay
@@ -174,6 +178,7 @@ __all__ = [
     
     "getHostname",
     "getMaxSlots",
+    "getServerPublic",
     "getPlayersCount",
     "exit",
     "getDayLength",
@@ -184,6 +189,7 @@ __all__ = [
     "setDayLength",
     "setServerDescription",
     "setServerWorld",
+    "setServerPublic",
     "setTime",
     
     "clearNpcActions",
@@ -210,6 +216,7 @@ __all__ = [
     "getPlayerAmulet",
     "getPlayerAngle",
     "getPlayerAni",
+    "getPlayerOverlays",
     "getPlayerArmor",
     "getPlayerAtVector",
     "getPlayerBelt",
@@ -258,6 +265,7 @@ __all__ = [
     "kick",
     "playAni",
     "playFaceAni",
+    "fadeOutAni",
     "readySpell",
     "removeItem",
     "removePlayerOverlay",

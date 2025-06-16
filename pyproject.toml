@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PyG2O"
-version = "2.2.0"
+version = "2.3.0"
 description =  ""
 authors = ["AURUMVORAX <aurumvorax.enthroned@gmail.com>"]
 

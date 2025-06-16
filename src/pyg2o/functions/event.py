@@ -59,7 +59,7 @@ def addEvent(name : str):
     g2o.addEvent('testEvt')
     ```
     """
-    if not name in eventList:
+    if name not in eventList:
         eventList[name] = []
     
 def event(event_name: str, priority: int = 9999) -> None:
@@ -212,6 +212,9 @@ addEvent('onPlayerEquipRangedWeapon')
 addEvent('onPlayerEquipRing')
 addEvent('onPlayerEquipShield')
 addEvent('onPlayerEquipSpell')
+
+addEvent('onPlayerSpawnForPlayer')
+addEvent('onPlayerUnspawnForPlayer')
 
 addEvent('onPacket')
 

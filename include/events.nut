@@ -571,3 +571,27 @@ addEventHandler("onPlayerToggleFaceAni", function(playerid, aniName, toggle)
     if (_globalInstance != -1)
         _globalInstance._send("event", data);
 });
+
+addEventHandler("onPlayerSpawnForPlayer", function(playerid, spawnid)
+{
+    local data = {
+        event = "onPlayerSpawnForPlayer",
+        playerid = playerid,
+        spawnid = spawnid
+    }
+
+    if (_globalInstance != -1)
+        _globalInstance._send("event", data);
+});
+
+addEventHandler("onPlayerUnspawnForPlayer", function(playerid, spawnid)
+{
+    local data = {
+        event = "onPlayerUnspawnForPlayer",
+        playerid = playerid,
+        spawnid = spawnid
+    }
+
+    if (_globalInstance != -1)
+        _globalInstance._send("event", data);
+});

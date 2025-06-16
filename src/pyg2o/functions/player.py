@@ -29,18 +29,18 @@ async def addBan(info : dict) -> bool:
     result = await server.make_request(data)
     return result
 
-async def applyPlayerOverlay(id : int, overlayId : int) -> bool:
+async def applyPlayerOverlay(id : int, overlay : str) -> bool:
     """
     This function will apply animation overlay on player for all players.
     Original: [applyPlayerOverlay](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/applyPlayerOverlay/)
     
     ## Declaration
     ```python
-    async def applyPlayerOverlay(id : int, overlayId : int) -> bool
+    async def applyPlayerOverlay(id : int, overlay : str) -> bool
     ```
     ## Parameters
     `int` **id**: the player id.
-    `int` **overlayId**: the overlay id from `mds.xml` file, e.g: `Mds.id("HUMANS_MILITIA.MDS")`
+    `str` **overlay**: the overlay Mds name, e.g. 'HUMANS_MILITIA.MDS'
     ## Returns
     `bool`: `true` if animation overlay was successfully applied on player, otherwise `false`.
     """
@@ -166,6 +166,25 @@ async def getPlayerAni(id : int) -> str:
     `int` **id**: the player id.
     ## Returns
     `str`: the ani name, e.g: `"S_RUN"`.
+    """
+    data = f'return {get_call_repr()}'
+
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result
+
+async def getPlayerOverlays(id : int) -> list[str]:
+    """
+    This function will get the player/npc active animations overlays.
+    
+    ## Declaration
+    ```python
+    async def getPlayerAni(id : int) -> str
+    ```
+    ## Parameters
+    `int` **id**: the player id.
+    ## Returns
+    `list[str]`: the list of animation overlays as strings or ``None`` if player isn't created.
     """
     data = f'return {get_call_repr()}'
 
@@ -1148,6 +1167,24 @@ async def playFaceAni(id : int, aniName : str):
     result = await server.make_request(data)
     return result
 
+async def fadeOutAni(id : int, aniName : str):
+    """
+    This function is used to gracefully stop played animation on player/npc for all players.
+    
+    ## Declaration
+    ```python
+    async def playFaceAni(id : int, aniName : str)
+    ```
+    ## Parameters
+    `int` **id**: the player id.
+    `str` **aniName**: the name of the animation that you want to stop. The default value is empty string, which means that the first active ani will be stopped.
+    """
+    data = f'return {get_call_repr()}'
+
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result
+
 async def readySpell(id : int, slotId : int, manaInvested : int):
     """
     This function will cause player to ready equipped spell.
@@ -1188,18 +1225,18 @@ async def removeItem(id : int, instance : str, amount : int):
     result = await server.make_request(data)
     return result
 
-async def removePlayerOverlay(id : int, overlayId : int) -> bool:
+async def removePlayerOverlay(id : int, overlay : str) -> bool:
     """
     This function will remove animation overlay from player for all players.
     Original: [removePlayerOverlay](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/player/removePlayerOverlay/)
     
     ## Declaration
     ```python
-    async def removePlayerOverlay(id : int, overlayId : int) -> bool
+    async def removePlayerOverlay(id : int, overlay : str) -> bool:
     ```
     ## Parameters
     `int` **id**: the player id.
-    `int` **overlayId**: the overlay id from `mds.xml` file, e.g: `Mds.id("HUMANS_MILITIA.MDS")`
+    `str` **overlay**: the overlay Mds name, e.g. 'HUMANS_MILITIA.MDS'
     ## Returns
     `bool`: `true` if animation overlay was successfully removed from player, otherwise `false`.
     """

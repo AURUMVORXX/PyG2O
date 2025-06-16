@@ -104,6 +104,58 @@ class ItemGround:
         """
         return self._rotation
     
+    async def setPosition(self, x: float, y: float, z: float):
+        """
+        This method will set the item ground position in the world.
+        **Parameters:**
+        * `float` **x**: the position in the world on the x axis.
+        * `float` **y**: the position in the world on the y axis.
+        * `float` **z**: the position in the world on the z axis.
+        """
+        data = f'return ItemsGround.getById({self.id}).setPosition({x}, {y}, {z})'
+        
+        server = await PythonWebsocketServer.get_server()
+        result = await server.make_request(data)
+        return result
+    
+    async def setRotation(self, x: float, y: float, z: float):
+        """
+        This method will set the item ground rotation in the world.
+        **Parameters:**
+        * `float` **x**: the rotation in the world on the x axis.
+        * `float` **y**: the rotation in the world on the y axis.
+        * `float` **z**: the rotation in the world on the z axis.
+        """
+        data = f'return ItemsGround.getById({self.id}).setRotation({x}, {y}, {z})'
+        
+        server = await PythonWebsocketServer.get_server()
+        result = await server.make_request(data)
+        return result
+    
+    async def get_physicsEnabled(self) -> bool:
+        """
+        This method will get the item ground physicsEnabled flag.
+        **Returns:**
+        * `bool`: ``true`` if physics is enabled, otherwise ``false``
+        """
+        data = f'return ItemsGround.getById({self.id}).physicsEnabled'
+        
+        server = await PythonWebsocketServer.get_server()
+        result = await server.make_request(data)
+        return result
+    
+    async def set_physicsEnabled(self, enabled: bool):
+        """
+        This method will set the item ground physicsEnabled flag.
+        **Parameters:**
+        * `bool` **enabled**: represents the state of physicsEnabled flag
+        """
+        data = f'return ItemsGround.getById({self.id}).physicsEnabled = {enabled}'
+        
+        server = await PythonWebsocketServer.get_server()
+        result = await server.make_request(data)
+        return result
+    
     @property
     def id(self) -> int:
         return self._id

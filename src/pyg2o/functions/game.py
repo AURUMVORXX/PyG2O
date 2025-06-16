@@ -29,8 +29,6 @@ async def getHostname() -> str:
     result = await server.make_request(data)
     return result
     
-    
-
 async def getMaxSlots() -> int:
     """
     This function will get the max number of slots available on the server.
@@ -78,6 +76,23 @@ async def getPlayersCount() -> int:
     def evtInit(**kwargs):
         print('Players online:', g2o.getPlayersCount())
     ```
+    """
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result
+
+async def getServerPublic() -> bool:
+    """
+    This function will get the publicity state of the server.
+    
+    ## Declaration
+    ```python
+    async def getServerPublic() -> bool
+    ```
+    ## Returns
+    `bool`: ``true`` if server is publicly available, otherwise ``false``
     """
     data = f'return {get_call_repr()}'
     
@@ -258,6 +273,22 @@ async def setServerWorld(world : str):
     result = await server.make_request(data)
     return result
 
+async def setServerPublic(public : str):
+    """
+    This function will change the publicity state of the server.
+    
+    ## Declaration
+    ```python
+    async def setServerPublic(public : str)
+    ```
+    ## Parameters
+    `bool` **public**: server public state.
+    """
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result
 
 async def setTime(hour : int, min : int, day : int = 0):
     """
