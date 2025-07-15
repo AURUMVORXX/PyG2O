@@ -1,9 +1,9 @@
-[tool.poetry]
+[project]
 name = "PyG2O"
 version = "2.3.0"
-description =  ""
-authors = ["AURUMVORAX <aurumvorax.enthroned@gmail.com>"]
-
-[tool.poetry.dependencies]
-python = "^3.13"
-websockets = "^15.0.1"
+description = ""
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "websockets>=15.0.1",
+]
