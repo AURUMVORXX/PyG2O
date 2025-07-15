@@ -162,8 +162,6 @@ from .classes.items      import ItemsGround
 from .classes.mds        import Mds
 from .classes.sky        import Sky
 
-from .logger             import logger
-
 __all__ = [
     "PythonWebsocketServer",
     
@@ -327,6 +325,4 @@ __all__ = [
     "ItemsGround",
     "Mds",
     "Sky",
-    
-    "logger",
 ]

@@ -6,7 +6,7 @@ from typing import Optional
 from .constants import Constant
 from .functions.event import callEvent
 from .serialize import _deserialize
-from .logger import logger
+from loguru import logger
 
 class PythonWebsocketServer:
     
@@ -50,7 +50,7 @@ class PythonWebsocketServer:
             port=self.port,
             ping_interval=self.ping_interval,
         ):
-            logger.info(f'Server is started at ws://{self.host}:{self.port}')
+            logger.success(f'Server is started at ws://{self.host}:{self.port}')
             PythonWebsocketServer._current_server = self
             asyncio.create_task(callEvent('onInit', **{}))
             await self._stop_event.wait()
