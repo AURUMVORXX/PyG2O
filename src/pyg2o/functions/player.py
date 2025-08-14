@@ -272,6 +272,13 @@ async def getPlayerCameraPosition(id : int) -> Optional[tuple]:
     result = await server.make_request(data)
     return (result['x'], result['y'], result['z']) if result is not None else (None, None, None)
 
+async def getPlayerChunk(id: int):
+    data = f'return {get_call_repr()}'
+
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return (result['x'], result['y']) if result is not None else (None, None)
+
 async def getPlayerCollision(id : int) -> bool:
     """
     This function will get the player collision.

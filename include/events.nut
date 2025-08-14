@@ -595,3 +595,15 @@ addEventHandler("onPlayerUnspawnForPlayer", function(playerid, spawnid)
     if (_globalInstance != -1)
         _globalInstance._send("event", data);
 });
+
+addEventHandler("onPlayerChangeChunk", function(playerid, chunk_index)
+{
+    local data = {
+        event = "onPlayerChangeChunk",
+        playerid = playerid,
+        chunk_index = chunk_index
+    }
+
+    if (_globalInstance != -1)
+        _globalInstance._send("event", data);
+});

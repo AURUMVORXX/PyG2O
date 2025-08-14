@@ -11,6 +11,12 @@ function _message_call(data)
         data["data"]["y"] <- result.y;
         data["data"]["z"] <- result.z;
     }
+    else if (className == "Vec2i")
+    {
+        data["data"] = {};
+        data["data"]["x"] <- result.x;
+        data["data"]["y"] <- result.y;
+    }
     else if (className != null)
     {
         data["data"] = {};

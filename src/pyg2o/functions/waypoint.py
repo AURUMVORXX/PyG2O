@@ -2,7 +2,7 @@ from ..server import PythonWebsocketServer
 from ..call_repr import get_call_repr
 from typing import Optional
 
-async def getNearestWaypoint(world : str, x : int, y : int, z : int) -> Optional[tuple]:
+async def getNearestWaypoint(world : str, x : int, y : int, z : int, distance: int = -1) -> Optional[tuple]:
     """
     This function is used to retrieve the information about nearest waypoint from the specified position.
     Original: [getNearestWaypoint](https://gothicmultiplayerteam.gitlab.io/docs/0.3.0/script-reference/server-functions/waypoint/getNearestWaypoint/)

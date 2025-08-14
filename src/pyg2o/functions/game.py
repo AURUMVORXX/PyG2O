@@ -28,6 +28,13 @@ async def getHostname() -> str:
     server = await PythonWebsocketServer.get_server()
     result = await server.make_request(data)
     return result
+
+async def getOnlinePlayers():
+    data = f'return {get_call_repr()}'
+    
+    server = await PythonWebsocketServer.get_server()
+    result = await server.make_request(data)
+    return result
     
 async def getMaxSlots() -> int:
     """

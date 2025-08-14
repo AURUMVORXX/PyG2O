@@ -90,6 +90,8 @@ class PyG2O
             return "ItemGround";
         else if (object instanceof Vec3)
             return "Vec3";
+        else if (object instanceof Vec2i)
+            return "Vec2i";
 
         return null;
     }
